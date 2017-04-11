@@ -1,0 +1,6 @@
+routes:
+    home: 'Default:home'
+    logout: 'User:logout'
+    connect: 'User:connect'
+
+defaut_route: 'home'
