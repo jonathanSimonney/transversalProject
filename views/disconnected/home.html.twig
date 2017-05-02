@@ -1,5 +1,40 @@
-<form action="?action=connect" method="post">
-    <input type="text" name="username" placeholder="name">
-    <input type="password" name="password" placeholder="password">
-    <input type="submit">
-</form>
+{%  extends 'layout.html.twig' %}
+
+{% block script %}
+    <script src="web/JS/disconnected.js"></script>
+{% endblock %}
+
+{% block content %}
+
+
+    <form action="connect.php" method="post" name="connect">
+        <input type="text" name="username" placeholder="name">
+        <input type="password" name="password" placeholder="password">
+        <input type="submit">
+    </form>
+
+
+    <p>to sign up!</p>
+    <form name="signUp" method="POST" action="register.php">
+        <fieldset>
+            <label for="username">login : </label>
+            <input type="text" name="username" id="username" placeholder="login"><br>
+
+            <label for="email">email : </label>
+            <input type="email" name="email" id="email" placeholder="xyz@example.com"><br>
+
+            <label for="password">password : </label>
+            <input type="password" name="password" id="password" placeholder="password">
+            <br>
+
+            <label for="confirmationOfPassword">confirm your password : </label>
+            <input type="password" name="confirmationOfPassword" id="confirmationOfPassword" placeholder="confirm your password"><!--BONUS : add button show password -->
+            <br>
+
+            <label for="indic">password indication</label>
+            <input type="text" name="indic" id="indic" placeholder="this will be displayed if you don't remember your password"><br>
+            <!--TODO : include capcha if have time-->
+            <button>send</button>
+        </fieldset>
+    </form>
+{% endblock %}

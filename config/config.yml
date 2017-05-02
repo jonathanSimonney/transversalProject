@@ -1,6 +1,9 @@
 routes:
-    home: 'Default:home'
-    logout: 'User:logout'
-    connect: 'User:connect'
-
+    home:                   'Default:home:both'
+    logout:                 'User:logout:connected'
+    login:                  'User:login:disconnected'
+    register:               'User:register:disconnected'
+    changePassword:         'User:changePassword:connected'
+    changeUsername:         'User:changeUsername:connected'
+    sendMessage:            'Message:sendMessageAction:connected'
 defaut_route: 'home'

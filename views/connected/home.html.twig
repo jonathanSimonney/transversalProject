@@ -1,3 +1,41 @@
-<h1>Hello {{ name }} !</h1>
+{%  extends 'layout.html.twig' %}
 
-<a href="?action=logout">log out</a>
+{% block script %}
+    <script src="web/JS/connected.js"></script>
+{% endblock %}
+
+{% block content %}
+    <h1>Hello {{ users[userId]['username'] }} !</h1>
+
+    <a href="?action=logout" id="logout">log out</a>
+
+    <form name="changePassword">
+        <input type="password" name="oldPassword" placeholder="enter your current password">
+        <input type="password" name="newPassword" placeholder="enter your new password">
+        <input type="password" name="confirmPassword" placeholder="confirm your new password">
+        <input type="text" name="indic" placeholder="enter your new indication of password">
+        <input type="submit">
+    </form>
+
+    <p>
+        Et la, c'est pour changer le username.
+    </p>
+
+    <form name="changeUsername">
+        <input type="password" name="password" placeholder="enter your current password">
+        <input type="text" name="username" placeholder="enter your new username">
+        <input type="submit">
+    </form>
+
+    <p>
+        Et la, c'est pour envoyer un message.
+    </p>
+
+    <form name="sendMessage">
+        <input type="text" name="object" placeholder="object of your mail">
+        <input type="text" name="dest" placeholder="enter the name of the person to who you want to send this message">
+        <textarea name="content" placeholder="enter your content"></textarea>
+        <input type="file" name="PJ">
+        <input type="submit">
+    </form>
+{% endblock %}

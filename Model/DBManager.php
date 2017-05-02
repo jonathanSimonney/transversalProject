@@ -2,22 +2,18 @@
 
 namespace Model;
 
-class DBManager
+use PDO;
+use PDOException;
+
+class DBManager extends BaseManager
 {
+    public function setup()
+    {
+        //$this->sessionManager = DataManager::getInstance();
+    }
+
     private $dbh;
-    
-    private static $instance = null;
-    public static function getInstance()
-    {
-        if (self::$instance === null)
-            self::$instance = new DBManager();
-        return self::$instance;
-    }
-    
-    private function __construct()
-    {
-        $this->dbh = null;
-    }
+    //private $sessionManager;
     
     private function connectToDb()
     {
@@ -29,7 +25,7 @@ class DBManager
         
         try {
             $dbh = new \PDO($dsn, $user, $password);
-        } catch (\PDOException $e) {
+        } catch (PDOException $e) {
             echo 'Connexion échouée : ' . $e->getMessage();
         }
         
@@ -39,60 +35,119 @@ class DBManager
     protected function getDbh()
     {
         if ($this->dbh === null)
+        {
             $this->dbh = $this->connectToDb();
+        }
         return $this->dbh;
     }
-    
-    public function insert($table, $data = [])
+
+
+    public function dbInsert($table, array $data = [], $keyCorrespond = false)
     {
         $dbh = $this->getDbh();
-        $query = 'INSERT INTO `' . $table . '` VALUES ("",';
+        $query = 'INSERT INTO `' . $table . '` VALUES (NULL,';
+        $keyQuery = '(`id`';
         $first = true;
-        foreach ($data AS $k => $value)
-        {
-            if (!$first)
+        foreach ($data AS $k => $value) {
+            if (!$first){
                 $query .= ', ';
-            else
+            }else{
                 $first = false;
+            }
             $query .= ':'.$k;
+            $keyQuery .= ',`'.$k.'`';
         }
         $query .= ')';
+        $keyQuery .= ')';
+
+        if ($keyCorrespond){
+            $query = str_replace('INSERT INTO `' . $table . '` VALUES', 'INSERT INTO `' . $table . '`'.$keyQuery.' VALUES', $query);
+        }
         $sth = $dbh->prepare($query);
         $sth->execute($data);
+
+        $data['id'] = $this->getLastInsertedId();
+        //$this->sessionManager->updateSession('insert', $table, $data);
         return true;
     }
-    
+
     public function findOne($query)
     {
         $dbh = $this->getDbh();
-        $data = $dbh->query($query, \PDO::FETCH_ASSOC);
-        $result = $data->fetch();
-        return $result;
+        $data = $dbh->query($query, PDO::FETCH_ASSOC);
+        return $data->fetch();
     }
-    
-    public function findOneSecure($query, $data = [])
+
+    public function findOneSecure($query, array $data = [])
     {
         $dbh = $this->getDbh();
         $sth = $dbh->prepare($query);
         $sth->execute($data);
-        $result = $sth->fetch(\PDO::FETCH_ASSOC);
-        return $result;
+        return $sth->fetch(PDO::FETCH_ASSOC);
     }
-    
+
     public function findAll($query)
     {
         $dbh = $this->getDbh();
-        $data = $dbh->query($query, \PDO::FETCH_ASSOC);
-        $result = $data->fetchAll();
-        return $result;
+        $data = $dbh->query($query, PDO::FETCH_ASSOC);
+        return $data->fetchAll();
     }
-    
-    public function findAllSecure($query, $data = [])
+
+    public function findAllSecure($query, array $data = [])
     {
         $dbh = $this->getDbh();
         $sth = $dbh->prepare($query);
         $sth->execute($data);
-        $result = $sth->fetchAll(\PDO::FETCH_ASSOC);
-        return $result;
+        return $sth->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function getLastInsertedId()
+    {
+        $dbh = $this->getDbh();
+        return $dbh->lastInsertId();
+    }
+
+    public function getWhatHow($needle, $needleColumn, $needleTable)
+    {
+        $data = $this->findAllSecure('SELECT * FROM `'.$needleTable.'` WHERE `'.$needleColumn.'` = :needle',
+            ['needle' => $needle]);
+
+        return $data;
+    }
+
+    public function dbUpdate($table, $id, $fieldToUpdateData)
+    {
+        $dbh = $this->getDbh();
+        $first = true;
+        $query = 'UPDATE `' . $table . '` SET ';
+        foreach ($fieldToUpdateData AS $key => $value){
+            if (!$first){
+                $query .= ', ';
+            }else{
+                $first = false;
+            }
+
+            $query .= '`'.$key.'` =:'.$key;
+        }
+
+        $query .= ' WHERE `'.$table.'`.`id` = '.$id;
+
+        /*echo $query;
+        var_dump($fieldToUpdateData);*/
+        $sth = $dbh->prepare($query);
+        $sth->execute($fieldToUpdateData);
+
+        $fieldToUpdateData['id'] = $id;
+        //$this->sessionManager->updateSession('update', $table, $fieldToUpdateData);
+    }
+
+    public function dbSuppress($table, $id)
+    {
+        $dbh = $this->getDbh();
+        $query = 'DELETE FROM `'.$table.'` WHERE `'.$table.'`.`id` = '.$id.';';
+        $sth = $dbh->prepare($query);
+        $sth->execute();
+
+        //$this->sessionManager->updateSession('suppress', $table, $id);
     }
 }

@@ -24,10 +24,12 @@ class Router
             $method = $parts[1].'Action';
         
             $controller_class = 'Controller\\'.$controller;
-            $controller = new $controller_class($this->twig);
+            $controller = new $controller_class($this->twig, $parts[2]);
             call_user_func([$controller, $method]);
         }
         else
+        {
             die('Illegal route');
+        }
     }
 }

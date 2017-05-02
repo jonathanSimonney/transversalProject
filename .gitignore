@@ -1,6 +1,6 @@
-*.pdf
 *.idea
 *.sass_cache
 test.php
 vendor/*
+db.sql
 private.yml

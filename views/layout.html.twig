@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Florent Jonathan">
+    <title>bully</title>
+    <script src="web/JS/whole.js"></script>
+    {% block script %}{% endblock %}
+</head>
+<body>
+<p>header</p>
+
+<pre>
+    {{ dump() }}<!-- your variables! -->
+    {{ dump(users[1]) }}
+</pre>
+
+{% block content %} {% endblock %}
+<div id="debug"></div>
+
+</body>
+</html>
