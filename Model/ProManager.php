@@ -18,15 +18,9 @@ class ProManager extends UserManager
 
     public function getContact()
     {
-        $ret = [];
+        $ret = $this->DBManager->findAll('SELECT `id`, `pseudo`, `location`, `type`
+        FROM users WHERE type != \'victime\' OR psy_id = '.$_SESSION['currentUser']['data']['id'].' OR lawyer_id = '.$_SESSION['currentUser']['data']['id']);
 
-        $ret[] = $this->DBManager->findAll('SELECT `name`, `firstName`, `id`, `pseudo`, `location` 
-        FROM users WHERE type != \'victime\'');
-
-        $ret[] = $this->DBManager->findOne('SELECT `name`, `firstName`, `id`, `pseudo`, `location` 
-        FROM users WHERE psy_id = '.$_SESSION['currentUser']['data']['id'].' 
-        OR lawyer_id = '.$_SESSION['currentUser']['data']['id']);
-
-        return $ret;
+        return $this->makeInferiorKeyIndex($ret, 'pseudo');
     }
 }

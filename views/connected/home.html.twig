@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block content %}
-    <h1>Hello {{ users[userId]['username'] }} !</h1>
+    <h1>Hello {{ currentUser['pseudo'] }} !</h1>
 
     <a href="?action=logout" id="logout">log out</a>
 

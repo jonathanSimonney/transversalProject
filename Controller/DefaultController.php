@@ -35,8 +35,7 @@ class DefaultController extends BaseController
                 }
 
                 $_SESSION['currentUser']['data']['contact'] = $this->userManager->getContact();
-                $data['contact'] = $_SESSION['currentUser']['data']['contact'];
-                var_dump($_SESSION['currentUser']['data']);
+                $data['currentUser']['contact'] = $_SESSION['currentUser']['data']['contact'];
                 echo $this->renderView('connected/home.html.twig', $data);
                 return;
             }
