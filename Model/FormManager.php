@@ -43,12 +43,37 @@ class FormManager extends BaseManager
         return true;
     }
 
+    private function requiredLength($item, $length)
+    {
+        if (strlen($_POST[$item]) <= $length)
+        {
+            return true;
+        }
+
+        $_SESSION['errorMessage'][$item] = 'too long : max length is '.$length.' characters.';
+        return false;
+    }
+
     public function checkRequiredField(array $arrayRequiredField)
     {
         $ret = true;
         foreach ($arrayRequiredField as $item)
         {
             if ($ret === true && $this->requiredField($item) === false)
+            {
+                $ret = false;
+            }
+        }
+
+        return $ret;
+    }
+
+    public function checkLengthField(array $arrayLengthField, $length)
+    {
+        $ret = true;
+        foreach ($arrayLengthField as $item)
+        {
+            if ($ret === true && $this->requiredLength($item, $length) === false)
             {
                 $ret = false;
             }

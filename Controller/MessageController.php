@@ -24,7 +24,7 @@ class MessageController extends BaseController
     public function sendMessageAction()
     {
         $_SESSION['errorMessage'] = [];
-        if ($this->formManager->checkRequiredField(['object', 'dest', 'content']))
+        if ($this->formManager->checkRequiredField(['object', 'dest', 'content']) && $this->formManager->checkLengthField(['object'], 255))
         {
             if ($this->mailManager->canSendMail())
             {
@@ -34,6 +34,11 @@ class MessageController extends BaseController
             {
                 $this->logManager->generateAccessMessage('tried to send a mail to '.$_POST['dest'], 'security');
             }
+        }
+
+        if (count($_SESSION['errorMessage']) !== 0)
+        {
+            echo json_encode($_SESSION['errorMessage']);
         }
     }
 }

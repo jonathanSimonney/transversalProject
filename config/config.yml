@@ -5,5 +5,5 @@ routes:
     register:               'User:register:disconnected'
     changePassword:         'User:changePassword:connected'
     changeUsername:         'User:changeUsername:connected'
-    sendMessage:            'Message:sendMessageAction:connected'
+    sendMessage:            'Message:sendMessage:connected'
 defaut_route: 'home'

@@ -3,7 +3,6 @@
 namespace Controller;
 
 use Model\ProManager;
-use Model\UserManager;
 use Model\VictimManager;
 
 class DefaultController extends BaseController
@@ -13,7 +12,6 @@ class DefaultController extends BaseController
     public function __construct(\Twig_Environment $twig, $accessLevel)
     {
         parent::__construct($twig, $accessLevel);
-        //$this->userManager = UserManager::getInstance();
     }
 
     public function homeAction()
