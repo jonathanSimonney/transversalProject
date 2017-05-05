@@ -43,12 +43,23 @@ class MessageController extends BaseController
     }
 
     public function downloadPjAction(){
-        if ($this->mailManager->canDownloadPj($_POST['mailId'])){
-            $this->mailManager->downloadPj($_POST['mailId']);
+        if ($this->mailManager->canActOnEmail($_POST['notForUser'])){
+            $this->mailManager->downloadPj($_POST['notForUser']);
         }
         else
         {
-            $this->logManager->generateAccessMessage('tried to download PJ of mail '.$_POST['mailId'], 'security');//todo add owner of file in log.
+            $this->logManager->generateAccessMessage('tried to download PJ of mail '.$_POST['notForUser'], 'security');//todo add owner of file in log.
+        }
+    }
+
+    public function suppressMessageAction()
+    {
+        if ($this->mailManager->canActOnEmail($_POST['notForUser'])){
+            $this->mailManager->suppressMail($_POST['notForUser']);
+        }
+        else
+        {
+            $this->logManager->generateAccessMessage('tried to suppress mail of id '.$_POST['notForUser'], 'security');//todo add owner of file in log.
         }
     }
 }

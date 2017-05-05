@@ -80,7 +80,7 @@ class MailManager extends BaseManager
         $this->logManager->generateAccessMessage('downloaded pj '.$pjName.', in mail of id '.$idMail, 'access');
     }
 
-    public function canDownloadPj($mailId)
+    public function canActOnEmail($mailId)
     {
         $arrayEmail = $this->getAllReceivedEmail($_SESSION['currentUser']['data']['id']);
         if ($arrayEmail === null)
@@ -95,6 +95,13 @@ class MailManager extends BaseManager
             }
         }
         return false;
+    }
+
+    public function suppressMail($mailId)
+    {
+        $this->delTree('mail/'.$mailId);
+        $this->DBManager->dbSuppress('mail', $mailId);
+        $this->logManager->generateAccessMessage('suppressed his mail of id '.$mailId, 'access');
     }
 
     /*****************

@@ -34,17 +34,14 @@ abstract class BaseManager
         return $new_array;
     }
 
-    /*protected function initOrConcatenate($var, $add)
+    protected function delTree($dir)
     {
-        if (!isset($var))
-        {
-            $var = '';
-        }else{
-            $var .= $add;
+        $files = array_diff(scandir($dir), array('.','..'));
+        foreach ($files as $file) {
+            is_dir("$dir/$file") ? delTree("$dir/$file") : unlink("$dir/$file");
         }
-
-        return $var;
-    }*/
+        return rmdir($dir);
+    }
 
     protected function initIfNotSet(&$varToInit, $initValue){
         if (!isset($varToInit))

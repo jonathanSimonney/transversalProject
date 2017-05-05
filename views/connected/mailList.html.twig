@@ -18,10 +18,17 @@
             {% if mail['PJ'] is not empty %}
                 <span class="download">PJ: {{ mail['PJ'] }}</span><br>
                 <form action="?action=downloadPj" method="post">
-                    <input name="mailId" type="number" value="{{ mail['id'] }}">
+                    <input name="notForUser" type="number" value="{{ mail['id'] }}">
                     <input type="submit">
                 </form>
             {% endif %}
+
+            <p>suppression</p>
+
+            <form name="suppressMessage">
+                <input type="number" name="notForUser" value="{{ mail['id'] }}">
+                <input type="submit">
+            </form>
         </div>
     {% endfor %}
 {% endblock %}
