@@ -72,6 +72,35 @@ class MailManager extends BaseManager
         return null;
     }
 
+    public function downloadPj($idMail)
+    {
+        $pjName = $this->DBManager->findOneSecure('SELECT PJ FROM mail WHERE id = :id', ['id' => $idMail])['PJ'];
+        $this->downloadFile('mail/'.$idMail.'/'.$pjName, $pjName);
+        var_dump('PJ downloaded!');
+        $this->logManager->generateAccessMessage('downloaded pj '.$pjName.', in mail of id '.$idMail, 'access');
+    }
+
+    public function canDownloadPj($mailId)
+    {
+        $arrayEmail = $this->getAllReceivedEmail($_SESSION['currentUser']['data']['id']);
+        if ($arrayEmail === null)
+        {
+            return false;
+        }
+        foreach ($arrayEmail as $mail)
+        {
+            if ($mail['id'] === $mailId)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /*****************
+     * end of public functions!
+     * **************/
+
     protected function formatOutputFileContent($fileContent)
     {
         $ret = preg_replace('/\n/','<br>',$fileContent);
@@ -82,5 +111,38 @@ class MailManager extends BaseManager
     {
         $ret = preg_replace('/&/','&amp;',$fileContent);
         return preg_replace('/</','&lt;',$ret);
+    }
+
+    protected function getFileType($filename)
+    {
+        $type = '';
+        if (!empty($filename)){
+            preg_match('/\.[0-9a-z]+$/', $filename, $cor);
+            $type = $cor[0];
+        }
+
+        $type = str_replace('.', '', $type);
+        return $type;
+    }
+
+    protected function downloadFile($filePath, $fileName)
+    {
+        // Specify file path.
+
+        // Getting file extension.
+        $ext = $this->getFileType($fileName);
+        // For Gecko browsers
+        header('Content-Transfer-Encoding: binary');
+        header('Last-Modified: ' . gmdate('D, d M Y H:i:s', filemtime(str_replace($fileName, '', $filePath))) . ' GMT');
+        // Supports for download resume
+        header('Accept-Ranges: bytes');
+        // Calculate File size
+        header('Content-Length: ' . filesize($filePath));
+        header('Content-Encoding: none');
+        // Change the mime type if the file is not PDF
+        header('Content-Type: application/' . $ext);
+        // Make the browser display the Save As dialog
+        header('Content-Disposition: attachment; filename=' . $fileName);
+        readfile($filePath);
     }
 }

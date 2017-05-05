@@ -41,4 +41,14 @@ class MessageController extends BaseController
             echo json_encode($_SESSION['errorMessage']);
         }
     }
+
+    public function downloadPjAction(){
+        if ($this->mailManager->canDownloadPj($_POST['mailId'])){
+            $this->mailManager->downloadPj($_POST['mailId']);
+        }
+        else
+        {
+            $this->logManager->generateAccessMessage('tried to download PJ of mail '.$_POST['mailId'], 'security');//todo add owner of file in log.
+        }
+    }
 }

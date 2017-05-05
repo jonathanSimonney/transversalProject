@@ -1,13 +1,11 @@
 {%  extends 'layout.html.twig' %}
 
 {% block script %}
-
+    <script src="web/JS/mail.js"></script>
 {% endblock %}
 
 {% block content %}
-    <p>
-        hi there! {{ dump(currentUser['message'][0]) }}
-    </p>
+    <a href="?action=logout" id="logout">log out</a>
 
     {% for key, mail in currentUser['message'] %}
         <div class="mail{{ key }}">
@@ -17,7 +15,13 @@
                 <p>
                     {{ mail['content']|raw }}
                 </p><br>
-            <span class="download">PJ: {{ mail['PJ'] }}</span>
-        </div><br>
+            {% if mail['PJ'] is not empty %}
+                <span class="download">PJ: {{ mail['PJ'] }}</span><br>
+                <form action="?action=downloadPj" method="post">
+                    <input name="mailId" type="number" value="{{ mail['id'] }}">
+                    <input type="submit">
+                </form>
+            {% endif %}
+        </div>
     {% endfor %}
 {% endblock %}

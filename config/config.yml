@@ -7,4 +7,5 @@ routes:
     changeUsername:         'User:changeUsername:connected'
     sendMessage:            'Message:sendMessage:connected'
     getMessage:             'Default:getMessage:connected'
+    downloadPj:             'Message:downloadPj:connected'
 defaut_route: 'home'
