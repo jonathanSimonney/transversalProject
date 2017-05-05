@@ -8,4 +8,5 @@ routes:
     sendMessage:            'Message:sendMessage:connected'
     getMessage:             'Default:getMessage:connected'
     downloadPj:             'Message:downloadPj:connected'
+    suppessMessage:         'Message:suppressMessage:connected'
 defaut_route: 'home'
