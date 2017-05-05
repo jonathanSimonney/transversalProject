@@ -6,4 +6,5 @@ routes:
     changePassword:         'User:changePassword:connected'
     changeUsername:         'User:changeUsername:connected'
     sendMessage:            'Message:sendMessage:connected'
+    getMessage:             'Default:getMessage:connected'
 defaut_route: 'home'

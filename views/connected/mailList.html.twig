@@ -1,0 +1,23 @@
+{%  extends 'layout.html.twig' %}
+
+{% block script %}
+
+{% endblock %}
+
+{% block content %}
+    <p>
+        hi there! {{ dump(currentUser['message'][0]) }}
+    </p>
+
+    {% for key, mail in currentUser['message'] %}
+        <div class="mail{{ key }}">
+            <span>object: {{ mail['object'] }}</span><br>
+            <span>Sent by : {{ mail['sender']['pseudo'] }}</span>
+            <button class="answer">answer</button><br>
+                <p>
+                    {{ mail['content']|raw }}
+                </p><br>
+            <span class="download">PJ: {{ mail['PJ'] }}</span>
+        </div><br>
+    {% endfor %}
+{% endblock %}

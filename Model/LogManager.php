@@ -18,8 +18,8 @@ class LogManager extends BaseManager
 
     public function generateAccessMessage($action, $actionType){
 
-        if (isset($_SESSION['currentUser']['data']['username'])){
-            $begin = 'User '.$_SESSION['currentUser']['data']['username'].' of id '.$_SESSION['currentUser']['data']['id'];
+        if (isset($_SESSION['currentUser']['data']['pseudo'])){
+            $begin = 'User '.$_SESSION['currentUser']['data']['pseudo'].' of id '.$_SESSION['currentUser']['data']['id'];
         }else{
             $begin = 'Unknown user';
         }
