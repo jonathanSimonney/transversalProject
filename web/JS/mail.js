@@ -3,7 +3,7 @@ window.onload = function(){
         'suppressMessage'         : ['suppressMessage']
     };
 
-    console.log(document.forms);//todo change handler so that actions are usabe!!! (currently only first one is usable.)
+    console.log(document.forms);//todo change handler so that actions are usable!!! (currently only first one is usable.)
 
     linkAllFormEvent(arrayAction);
 

@@ -62,4 +62,18 @@ class MessageController extends BaseController
             $this->logManager->generateAccessMessage('tried to suppress mail of id '.$_POST['notForUser'], 'security');//todo add owner of file in log.
         }
     }
+
+    public function getReceivedMessageAction()
+    {
+        $data['currentUser'] = $_SESSION['currentUser']['data'];
+        $data['currentUser']['message'] = $this->mailManager->getAllReceivedEmail($_SESSION['currentUser']['data']['id']);
+        echo $this->renderView('connected/mailList.html.twig', $data);
+    }
+
+    public function getSentMessageAction()
+    {
+        $data['currentUser'] = $_SESSION['currentUser']['data'];
+        $data['currentUser']['message'] = $this->mailManager->getAllSentEmail($_SESSION['currentUser']['data']['id']);
+        echo $this->renderView('connected/mailList.html.twig', $data);
+    }
 }

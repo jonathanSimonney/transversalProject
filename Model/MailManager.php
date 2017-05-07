@@ -64,6 +64,24 @@ class MailManager extends BaseManager
             foreach ($ret as &$mail)
             {
                 $mail['sender'] = $this->DBManager->findOne('SELECT `id`, `pseudo`, `location`, `type` FROM users WHERE id = '.$mail['sender_id']);
+                $mail['receptor'] = $_SESSION['currentUser']['data'];
+                $mail['content'] = $this->formatOutputFileContent(file_get_contents('mail/'.$mail['id'].'/content.txt'));
+            }
+
+            return $ret;
+        }
+        return null;
+    }
+
+    public function getAllSentEmail($id)
+    {
+        $ret = $this->DBManager->findAllSecure('SELECT * FROM mail WHERE sender_id = '.$id);
+        if ($ret !== false)
+        {
+            foreach ($ret as &$mail)
+            {
+                $mail['sender'] = $_SESSION['currentUser']['data'];
+                $mail['receptor'] = $this->DBManager->findOne('SELECT `id`, `pseudo`, `location`, `type` FROM users WHERE id = '.$mail['receptor_id']);
                 $mail['content'] = $this->formatOutputFileContent(file_get_contents('mail/'.$mail['id'].'/content.txt'));
             }
 

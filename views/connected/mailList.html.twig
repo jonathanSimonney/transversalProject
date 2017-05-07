@@ -7,11 +7,14 @@
 {% block content %}
     <a href="?action=logout" id="logout">log out</a>
 
+    <p>Received message!</p>
+
     {% for key, mail in currentUser['message'] %}
         <div class="mail{{ key }}">
             <span>object: {{ mail['object'] }}</span><br>
             <span>Sent by : {{ mail['sender']['pseudo'] }}</span>
             <button class="answer">answer</button><br>
+            <span> To : {{ mail['receptor']['pseudo'] }}</span>
                 <p>
                     {{ mail['content']|raw }}
                 </p><br>
@@ -31,4 +34,6 @@
             </form>
         </div>
     {% endfor %}
+
+    <p>Sent message!</p>
 {% endblock %}
