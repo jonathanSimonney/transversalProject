@@ -7,7 +7,7 @@
 {% block content %}
     <a href="?action=logout" id="logout">log out</a>
 
-    <p>Received message!</p>
+    <p>{{ type }} message!</p>
 
     {% for key, mail in currentUser['message'] %}
         <div class="mail{{ key }}">
@@ -28,12 +28,10 @@
 
             <p>suppression</p>
 
-            <form name="suppressMessage">
+            <form name="suppressMessage" class="suppressMessage">
                 <input type="number" name="notForUser" value="{{ mail['id'] }}">
                 <input type="submit">
             </form>
         </div>
     {% endfor %}
-
-    <p>Sent message!</p>
 {% endblock %}

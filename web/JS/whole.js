@@ -9,6 +9,24 @@ function asynchronousTreatment(path,params, responseFunction){
     request.send(params);
 }
 
+function jqueryAsynchronousTreatment(path, form, responseFunction, successFunc, errorFunc){//yes, I know, should keep code logical and coherent, but hey, I AM ALONE AND HAVE ONE WEEK TO DO EVERYTHING!
+    $.ajax({
+        url: path,
+        type: 'post',
+        dataType: 'json',
+        data: form.serialize(),
+        success: function(serverData, statut) {
+            console.log(serverData);
+        },
+        error: function (result, status, error) {
+            console.log(result);
+        },
+        complete: function (serverData) {
+            responseFunction(serverData);
+        }
+    });
+}
+
 function linkFormEvent(form, action, responseFunction){
     form.onsubmit = function(){
         var formData = new FormData(form);//magic!

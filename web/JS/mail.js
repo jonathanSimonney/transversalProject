@@ -1,11 +1,10 @@
 window.onload = function(){
-    var arrayAction = {
-        'suppressMessage'         : ['suppressMessage']
-    };
-
-    console.log(document.forms);//todo change handler so that actions are usable!!! (currently only first one is usable.)
-
-    linkAllFormEvent(arrayAction);
+    $('.suppressMessage').each(function () {
+        $(this).submit(function (event) {
+            event.preventDefault();
+            jqueryAsynchronousTreatment('?action=suppressMessage', $(this), defaultAnswer);
+        })
+    });
 
     var logoutLink = document.getElementById('logout');
 

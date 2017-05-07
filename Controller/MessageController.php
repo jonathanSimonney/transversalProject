@@ -67,6 +67,7 @@ class MessageController extends BaseController
     {
         $data['currentUser'] = $_SESSION['currentUser']['data'];
         $data['currentUser']['message'] = $this->mailManager->getAllReceivedEmail($_SESSION['currentUser']['data']['id']);
+        $data['type'] = 'received';
         echo $this->renderView('connected/mailList.html.twig', $data);
     }
 
@@ -74,6 +75,7 @@ class MessageController extends BaseController
     {
         $data['currentUser'] = $_SESSION['currentUser']['data'];
         $data['currentUser']['message'] = $this->mailManager->getAllSentEmail($_SESSION['currentUser']['data']['id']);
+        $data['type'] = 'sent';
         echo $this->renderView('connected/mailList.html.twig', $data);
     }
 }
