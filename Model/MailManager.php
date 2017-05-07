@@ -58,7 +58,7 @@ class MailManager extends BaseManager
 
     public function getAllReceivedEmail($id)
     {
-        $ret = $this->DBManager->findAllSecure('SELECT * FROM mail WHERE receptor_id = '.$id);
+        $ret = $this->DBManager->findAllSecure('SELECT * FROM mail WHERE receptor_id = :id AND suppression_status != :id', ['id' => $id]);
         if ($ret !== false)
         {
             foreach ($ret as &$mail)
@@ -75,7 +75,7 @@ class MailManager extends BaseManager
 
     public function getAllSentEmail($id)
     {
-        $ret = $this->DBManager->findAllSecure('SELECT * FROM mail WHERE sender_id = '.$id);
+        $ret = $this->DBManager->findAllSecure('SELECT * FROM mail WHERE sender_id = :id AND suppression_status != :id', ['id' => $id]);
         if ($ret !== false)
         {
             foreach ($ret as &$mail)
@@ -94,7 +94,7 @@ class MailManager extends BaseManager
     {
         $pjName = $this->DBManager->findOneSecure('SELECT PJ FROM mail WHERE id = :id', ['id' => $idMail])['PJ'];
         $this->downloadFile('mail/'.$idMail.'/'.$pjName, $pjName);
-        var_dump('PJ downloaded!');
+        //var_dump('PJ downloaded!');
         $this->logManager->generateAccessMessage('downloaded pj '.$pjName.', in mail of id '.$idMail, 'access');
     }
 
@@ -117,8 +117,16 @@ class MailManager extends BaseManager
 
     public function suppressMail($mailId)
     {
-        $this->delTree('mail/'.$mailId);
-        $this->DBManager->dbSuppress('mail', $mailId);
+        $suppressionStatus = $this->DBManager->findOneSecure('SELECT suppression_status FROM mail WHERE id = :id', ['id' => $mailId])['suppression_status'];
+        if ($suppressionStatus !== 'none')
+        {
+            $this->delTree('mail/'.$mailId);
+            $this->DBManager->dbSuppress('mail', $mailId);
+        }
+        else
+        {
+            $this->DBManager->dbUpdate('mail', $mailId, ['suppression_status' => $_SESSION['currentUser']['data']['id']]);
+        }
         $this->logManager->generateAccessMessage('suppressed his mail of id '.$mailId, 'access');
     }
 
