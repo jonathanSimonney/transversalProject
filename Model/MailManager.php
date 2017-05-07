@@ -100,7 +100,7 @@ class MailManager extends BaseManager
 
     public function canActOnEmail($mailId)
     {
-        $arrayEmail = $this->getAllReceivedEmail($_SESSION['currentUser']['data']['id']);
+        $arrayEmail = $this->getAllEmail($_SESSION['currentUser']['data']['id']);
         if ($arrayEmail === null)
         {
             return false;
@@ -125,6 +125,13 @@ class MailManager extends BaseManager
     /*****************
      * end of public functions!
      * **************/
+
+    protected function getAllEmail($userId)
+    {
+        $received = $this->getAllReceivedEmail($userId);
+        $sent = $this->getAllSentEmail($userId);
+        return array_merge($received, $sent);
+    }
 
     protected function formatOutputFileContent($fileContent)
     {
