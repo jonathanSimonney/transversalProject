@@ -11,9 +11,9 @@ class DefaultController extends BaseController
     private $userManager;
     protected $mailManager;
 
-    public function __construct(\Twig_Environment $twig, $accessLevel)
+    public function __construct(\Twig_Environment $twig, $accessLevel, $requestMethod)
     {
-        parent::__construct($twig, $accessLevel);
+        parent::__construct($twig, $accessLevel, $requestMethod);
         $this->mailManager = MailManager::getInstance();
     }
 
@@ -44,7 +44,7 @@ class DefaultController extends BaseController
         echo $this->renderView('disconnected/home.html.twig', $data);
     }
 
-    public function getMessageAction()
+    public function getReceivedMessageAction()
     {
         $data['currentUser'] = $_SESSION['currentUser']['data'];
         $data['currentUser']['message'] = $this->mailManager->getAllReceivedEmail($_SESSION['currentUser']['data']['id']);

@@ -11,7 +11,7 @@ abstract class BaseController
     protected $formManager;
     protected $logManager;
 
-    public function __construct(\Twig_Environment $twig, $accessLevel)
+    public function __construct(\Twig_Environment $twig, $accessLevel, $requestMethod)
     {
         $this->twig = $twig;
         $this->formManager = FormManager::getInstance();
@@ -26,9 +26,9 @@ abstract class BaseController
             }
         }
 
-        if ($_SERVER['REQUEST_METHOD'] !== 'POST' && get_called_class() !== 'Controller\\DefaultController')
+        if ($_SERVER['REQUEST_METHOD'] !== strtoupper($requestMethod))
         {
-            $this->logManager->generateAccessMessage('tried to '.$_GET['action'].' without using the POST method', 'security');
+            $this->logManager->generateAccessMessage('tried to '.$_GET['action'].' without using the '.$requestMethod.' method', 'security');
             http_response_code(405);
             die(json_encode(['error' => 'wrong method']));
         }

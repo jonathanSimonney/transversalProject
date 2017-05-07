@@ -15,9 +15,9 @@ class MessageController extends BaseController
 {
     protected $mailManager;
 
-    public function __construct(\Twig_Environment $twig, $accessLevel)
+    public function __construct(\Twig_Environment $twig, $accessLevel, $requestMethod)
     {
-        parent::__construct($twig, $accessLevel);
+        parent::__construct($twig, $accessLevel, $requestMethod);
         $this->mailManager = MailManager::getInstance();
     }
 

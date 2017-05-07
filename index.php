@@ -19,11 +19,9 @@ $twig = new Twig_Environment($loader, array(//todo activate cache, deactivate de
 $twig->addExtension(new Twig_Extension_Debug());//todo activate cache, deactivate debug BEFORE FINAL COMMIT! IMPORTANT!!!!
 
 $router = new Router($publicConfig['routes'], $twig);
-if (!empty($_GET['action']))
+if (empty($_GET['action']))
 {
-    $router->callAction($_GET['action']);
+    $_GET['action'] = $publicConfig['defaut_route'];
 }
-else
-{
-    $router->callAction($publicConfig['defaut_route']);
-}
+
+$router->callAction($_GET['action']);

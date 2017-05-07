@@ -24,7 +24,7 @@ class Router
             $method = $parts[1].'Action';
         
             $controller_class = 'Controller\\'.$controller;
-            $controller = new $controller_class($this->twig, $parts[2]);
+            $controller = new $controller_class($this->twig, $parts[2], $parts[3]);
             call_user_func([$controller, $method]);
         }
         else
