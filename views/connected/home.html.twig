@@ -38,4 +38,11 @@
         <input type="file" name="PJ">
         <input type="submit">
     </form>
+
+    {% if currentUser['type'] != 'victime' %}
+        <form name="changeFreeSlot">
+            <input name="freeSlot" type="number" value="{{ currentUser['free_slot'] }}">
+            <input type="submit">
+        </form>
+    {% endif %}
 {% endblock %}

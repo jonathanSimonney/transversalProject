@@ -23,4 +23,9 @@ class ProManager extends UserManager
 
         return $this->makeInferiorKeyIndex($ret, 'pseudo');
     }
+
+    public function changeSlot($slotNumber)
+    {
+        $this->DBManager->dbUpdate('users', $_SESSION['currentUser']['data']['id'], ['free_slot' => $slotNumber]);
+    }
 }

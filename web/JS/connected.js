@@ -2,7 +2,8 @@ window.onload = function(){
     var arrayAction = {
         'changePassword'         : ['changePassword'],
         'changeUsername'         : ['changeUsername'],
-        'sendMessage'            : ['sendMessage']
+        'sendMessage'            : ['sendMessage'],
+        'changeFreeSlot'         : ['changeFreeSlot']
     };
 
     linkAllFormEvent(arrayAction);

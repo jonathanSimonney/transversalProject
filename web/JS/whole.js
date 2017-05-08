@@ -28,12 +28,14 @@ function jqueryAsynchronousTreatment(path, form, responseFunction, successFunc, 
 }
 
 function linkFormEvent(form, action, responseFunction){
-    form.onsubmit = function(){
-        var formData = new FormData(form);//magic!
-        asynchronousTreatment(action, formData, responseFunction);
+    if (form !== undefined){
+        form.onsubmit = function(){
+            var formData = new FormData(form);//magic!
+            asynchronousTreatment(action, formData, responseFunction);
 
-        return false;
-    };
+            return false;
+        };
+    }
 }
 
 function defaultAnswer(request){
@@ -49,7 +51,7 @@ function defaultAnswer(request){
 
 function linkAllFormEvent(objectForm){
     for (var i in objectForm){
-        if (typeof objectForm[i][1] === 'undefined') {
+            if (typeof objectForm[i][1] === 'undefined') {
             objectForm[i][1] = defaultAnswer;
         }
         linkFormEvent(document.forms[i], '?action='+objectForm[i][0], objectForm[i][1]);

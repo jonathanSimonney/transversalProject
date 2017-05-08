@@ -10,4 +10,5 @@ routes:
     getSentMessage:         'Message:getSentMessage:connected:get'
     downloadPj:             'Message:downloadPj:connected:post'
     suppressMessage:        'Message:suppressMessage:connected:post'
+    changeFreeSlot:         'Pro:changeFreeSlot:connected:post'
 defaut_route: 'home'
