@@ -72,6 +72,7 @@ class ProManager extends UserManager
     public function takeProfessional($proData)
     {
         $this->DBManager->dbUpdate('users', $_SESSION['currentUser']['data']['id'], [$proData['type'].'_id' => $proData['id']]);
+        $this->DBManager->dbUpdate('users', $proData['id'], ['free_slot' => $proData['free_slot'] - 1]);
         $_SESSION['currentUser']['data'][$proData['type'].'_id'] = $proData['id'];
         $_SESSION['currentUser']['data']['contact'][$proData['pseudo']] =[
             'id' => $proData['id'], 'pseudo' => $proData['pseudo'], 'location' => $proData['location'], 'type' => $proData['type']
