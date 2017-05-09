@@ -11,4 +11,5 @@ routes:
     downloadPj:             'Message:downloadPj:connected:post'
     suppressMessage:        'Message:suppressMessage:connected:post'
     changeFreeSlot:         'Pro:changeFreeSlot:connected:post'
+    findPro:                'Pro:findProfessional:connected:post'
 defaut_route: 'home'

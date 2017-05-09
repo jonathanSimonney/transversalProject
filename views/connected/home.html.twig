@@ -44,5 +44,21 @@
             <input name="freeSlot" type="number" value="{{ currentUser['free_slot'] }}">
             <input type="submit">
         </form>
+    {% else %}
+        <p>To contact a professional!</p>
+        <form name="findPro">
+            <label for="proUsername">Username of the pro.</label>
+            <input name="username" type="text" id="proUsername"><br>
+            <label for="autoMatchButton">Automatic matching.</label>
+            <input type="checkbox" name="autoMatch" value="true" id="autoMatchButton"><br>
+
+            <span>Select your professional type!</span><br>
+            <label for="lawyerRadioButton">lawyer : </label>
+            <input type="radio" name="professionalType" value="lawyer" id="lawyerRadioButton"><br>
+            <label for="psyRadioButton">psy : </label>
+            <input type="radio" name="professionalType" value="psy" id="psyRadioButton"><br>
+
+            <input type="submit">
+        </form>
     {% endif %}
 {% endblock %}

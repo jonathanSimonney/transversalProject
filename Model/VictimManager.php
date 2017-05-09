@@ -18,9 +18,7 @@ class VictimManager extends UserManager
 
     public function getContact()
     {
-        $ret = [];
-        $ret[] = $this->DBManager->findOne('SELECT `id`, `pseudo`, `location`, `type` FROM users WHERE id = '.$_SESSION['currentUser']['data']['lawyer_id']);
-        $ret[] = $this->DBManager->findOne('SELECT `id`, `pseudo`, `location`, `type` FROM users WHERE id = '.$_SESSION['currentUser']['data']['psy_id']);
+        $ret = $this->DBManager->findAll('SELECT `id`, `pseudo`, `location`, `type` FROM users WHERE id IN ('.$_SESSION['currentUser']['data']['lawyer_id'].', '.$_SESSION['currentUser']['data']['psy_id'].')');
         return $this->makeInferiorKeyIndex($ret, 'pseudo');
     }
 }

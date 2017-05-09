@@ -8,3 +8,6 @@ private.yml
 mail/*
 !mail/.htaccess
 node_modules/*
+
+logs/*
+!.gitkeep
