@@ -82,10 +82,9 @@ class UserController extends BaseController
 
     public function changeUsernameAction()
     {
-        $errorMessage = '';
         if (password_verify($_POST['password'], $_SESSION['currentUser']['data']['password']))
         {
-            $errorMessage = $this->formManager->checkUniqField(['username' => 'users']);
+            $errorMessage = $this->formManager->checkUniqField(['pseudo' => 'users']);
         }
         else
         {
@@ -97,8 +96,8 @@ class UserController extends BaseController
             echo json_encode(['invalid', 'reason' => $errorMessage]);
         }
         else{
-            $this->userManager->updateData(['username' => $_POST['username']]);
-            $this->logManager->generateAccessMessage('changed his username', 'access');
+            $this->userManager->updateData(['pseudo' => $_POST['pseudo']]);
+            $this->logManager->generateAccessMessage('changed his username to '.$_POST['pseudo'], 'access');
         }
     }
 }
