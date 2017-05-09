@@ -79,6 +79,38 @@ class ProManager extends UserManager
         ];
     }
 
+    public function abandonPro($proType, $victimId)
+    {
+        $pro = $this->getProPseudoFromType($proType);
+        if ($pro === false)
+        {
+            $_SESSION['errorMessage']['proType'] = 'You don\'t have a pro of this type linked to you!';
+            return false;
+        }
+
+        $this->DBManager->dbUpdate('users', $victimId, [$proType.'_id' => 0]);
+        $_SESSION['currentUser']['data'][$proType.'_id'] = 0;
+        unset($_SESSION['currentUser']['data']['contact'][$pro['pseudo']]);
+        return true;
+    }
+
+    /********
+     * protected functions begin here!
+     */
+
+    protected function getProPseudoFromType($proType)
+    {
+        foreach ($_SESSION['currentUser']['data']['contact'] as $contact)
+        {
+            if ($contact['type'] === $proType )
+            {
+                return $contact;
+            }
+        }
+
+        return false;
+    }
+
     protected function getProWithMinimumUserConnected($proArray)
     {
         if (count($proArray) === 0)

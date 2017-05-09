@@ -26,7 +26,7 @@ not online, but he shall come afterwards.)
      user: _the username to connect to your db_  
      pass: _the password of your db_
 
-Finally, create an _access.log_ AND a _security.log_ file in the logs directory.
+Finally, create an _access.log_, a _message.log_ AND a _security.log_ file in the logs directory.
 
 It was made by _**list of the person participating in the project 
 (I let myself in since it is for private use)**_ and _Jonathan SIMONNEY_. Please contact 

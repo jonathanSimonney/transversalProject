@@ -53,10 +53,24 @@
             <input type="checkbox" name="autoMatch" value="true" id="autoMatchButton"><br>
 
             <span>Select your professional type!</span><br>
-            <label for="lawyerRadioButton">lawyer : </label>
-            <input type="radio" name="professionalType" value="lawyer" id="lawyerRadioButton"><br>
-            <label for="psyRadioButton">psy : </label>
-            <input type="radio" name="professionalType" value="psy" id="psyRadioButton"><br>
+            <label for="lawyerContactRadioButton">lawyer : </label>
+            <input type="radio" name="professionalType" value="lawyer" id="lawyerContactRadioButton"><br>
+            <label for="psyRadioContactButton">psy : </label>
+            <input type="radio" name="professionalType" value="psy" id="psyRadioContactButton"><br>
+
+            <input type="submit">
+        </form>
+
+        <p>To abandon a professional</p>
+
+        <form name="abandonPro">
+            <span>Select your professional type!</span><br>
+            <label for="lawyerSuppressRadioButton">lawyer : </label>
+            <input type="radio" name="professionalType" value="lawyer" id="lawyerSuppressRadioButton"><br>
+            <label for="psySuppressRadioButton">psy : </label>
+            <input type="radio" name="professionalType" value="psy" id="psySuppressRadioButton"><br>
+
+            <textarea name="reason" placeholder="enter the reason why you want to stop this relationship"></textarea>
 
             <input type="submit">
         </form>

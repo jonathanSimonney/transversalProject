@@ -18,10 +18,10 @@ class LogManager extends BaseManager
 
     public function generateAccessMessage($action, $actionType){
 
-        if (isset($_SESSION['currentUser']['data']['pseudo'])){
+        $begin = 'Unknown user';
+        if (isset($_SESSION['currentUser']['data']['pseudo']))
+        {
             $begin = 'User '.$_SESSION['currentUser']['data']['pseudo'].' of id '.$_SESSION['currentUser']['data']['id'];
-        }else{
-            $begin = 'Unknown user';
         }
 
         $this->writeToLog($begin.' '.$action.' at '.date('r'), $actionType);
@@ -29,9 +29,16 @@ class LogManager extends BaseManager
     }
 
     private function writeToLog($newMessage, $file){
-        if ($file === 'access'){
+        if ($file === 'access')
+        {
             $file = fopen('logs/access.log', 'ab');
-        }else{
+        }
+        elseif($file === 'message')
+        {
+            $file = fopen('logs/message.log', 'ab');
+        }
+        else
+        {
             $file = fopen('logs/security.log', 'ab');
         }
         fwrite($file, $newMessage."\n");

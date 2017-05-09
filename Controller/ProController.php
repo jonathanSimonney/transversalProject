@@ -66,13 +66,42 @@ class ProController extends UserController
 
                 if (count($_SESSION['errorMessage']) === 0)
                 {
-                    $this->proManager->takeProfessional($pro);//todo
+                    $this->proManager->takeProfessional($pro);
                     $this->logManager->generateAccessMessage('took pro of pseudo '.$pro['pseudo'].' and of id '.$pro['id'], 'access');
                 }
-                else
+            }
+
+            if (count($_SESSION['errorMessage']) !== 0)
+            {
+                echo json_encode(['error' => $_SESSION['errorMessage']]);
+            }
+        }
+    }
+
+    public function abandonProfessionalAction()
+    {
+        if ($_SESSION['currentUser']['data']['type'] !== 'victime')
+        {
+            $this->logManager->generateAccessMessage('tried to abandon a pro (but he is also a pro!)', 'security');
+        }
+        else
+        {
+            $_SESSION['errorMessage'] = [];
+            if ($this->formManager->checkRequiredField(['professionalType']))
+            {
+                if ($this->proManager->abandonPro($_POST['professionalType'], $_SESSION['currentUser']['data']['id']) === true)
                 {
-                    echo json_encode(['error' => $_SESSION['errorMessage']]);
+                    if ($_POST['reason'] !== '')
+                    {
+                        $this->logManager->generateAccessMessage('gave the following reason for abandoning his '.$_POST['professionalType']." : \n".$_POST['reason'], 'message');
+                    }
+                    $this->logManager->generateAccessMessage('abandoned his '.$_POST['professionalType'], 'access');
                 }
+            }
+
+            if (count($_SESSION['errorMessage']) !== 0)//too much repetitive, should do a function for it. No time though.
+            {
+                echo json_encode(['error' => $_SESSION['errorMessage']]);
             }
         }
     }

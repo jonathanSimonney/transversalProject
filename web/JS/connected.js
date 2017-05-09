@@ -3,7 +3,8 @@ window.onload = function(){
         'changePassword'         : ['changePassword'],
         'changeUsername'         : ['changeUsername'],
         'sendMessage'            : ['sendMessage'],
-        'changeFreeSlot'         : ['changeFreeSlot']
+        'changeFreeSlot'         : ['changeFreeSlot'],
+        'abandonPro'             : ['abandonPro']
     };
 
     linkAllFormEvent(arrayAction);
