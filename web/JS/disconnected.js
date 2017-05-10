@@ -1,8 +1,9 @@
 window.onload = function(){
-    var form = document.forms["connect"];
-    var signUpForm = document.forms["signUp"];
+    var arrayAction = {
+        'connect'                : ['login'],
+        'proInscription'         : ['proInscription'],
+        'victimInscription'      : ['victimInscription']
+    };
 
-    linkFormEvent(form, '?action=login', defaultAnswer);
-
-    linkFormEvent(signUpForm, '?action=register', defaultAnswer);
+    linkAllFormEvent(arrayAction);
 };

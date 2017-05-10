@@ -21,4 +21,27 @@ class VictimManager extends UserManager
         $ret = $this->DBManager->findAll('SELECT `id`, `pseudo`, `location`, `type` FROM users WHERE id IN ('.$_SESSION['currentUser']['data']['lawyer_id'].', '.$_SESSION['currentUser']['data']['psy_id'].')');
         return $this->makeInferiorKeyIndex($ret, 'pseudo');
     }
+
+    public function userRegister()
+    {
+        parent::userRegisterWithParams($_POST, ['pseudo', 'email', 'password', 'indic', 'location', 'birthdate']);
+        //do additional things!
+    }
+
+    public function userCheckRegister()
+    {
+        $arrayReturned = parent::userCheckRegister();
+        $dateArray = explode('-', $_POST['birthdate']);
+        if (count($dateArray) !== 3)
+        {
+            $arrayReturned['formOk'] = false;
+            $arrayReturned[0]['birthdate'] = 'invalid data';
+        }
+        elseif(!checkdate((int)$dateArray[1], (int)$dateArray[2], (int)$dateArray[0]))
+        {
+            $arrayReturned['formOk'] = false;
+            $arrayReturned[0]['birthdate'] = 'invalid data';
+        }
+        return $arrayReturned;
+    }
 }

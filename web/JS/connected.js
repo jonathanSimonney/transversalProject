@@ -17,13 +17,15 @@ window.onload = function(){
         asynchronousTreatment('?action=logout', [], defaultAnswer);
     };
 
-    findProForm.onsubmit = function () {
-        var formData = new FormData(findProForm);//magic!
-        if (formData.get('autoMatch') === null){
-            formData.set('autoMatch', false);
-        }
-        asynchronousTreatment('?action=findPro', formData, defaultAnswer);
+    if (findProForm !== undefined){
+        findProForm.onsubmit = function () {
+            var formData = new FormData(findProForm);//magic!
+            if (formData.get('autoMatch') === null){
+                formData.set('autoMatch', false);
+            }
+            asynchronousTreatment('?action=findPro', formData, defaultAnswer);
 
-        return false;
+            return false;
+        }
     }
 };

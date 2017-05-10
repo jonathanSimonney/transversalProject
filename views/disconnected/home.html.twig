@@ -14,27 +14,70 @@
     </form>
 
 
-    <p>to sign up!</p>
-    <form name="signUp" method="POST" action="register.php">
-        <fieldset>
-            <label for="username">login : </label>
-            <input type="text" name="username" id="username" placeholder="login"><br>
 
-            <label for="email">email : </label>
-            <input type="email" name="email" id="email" placeholder="xyz@example.com"><br>
 
-            <label for="password">password : </label>
-            <input type="password" name="password" id="password" placeholder="password">
-            <br>
+    <p>Inscription : </p>
+    <span>pro : </span>
 
-            <label for="confirmationOfPassword">confirm your password : </label>
-            <input type="password" name="confirmationOfPassword" id="confirmationOfPassword" placeholder="confirm your password"><!--BONUS : add button show password -->
-            <br>
+    <form name="proInscription">
+        <label for="proUsername">login : </label>
+        <input type="text" name="pseudo" id="proUsername" placeholder="login"><br>
 
-            <label for="indic">password indication</label>
-            <input type="text" name="indic" id="indic" placeholder="this will be displayed if you don't remember your password"><br>
-            <!--TODO : include capcha if have time-->
-            <button>send</button>
-        </fieldset>
+        <label for="proEmail">email : </label>
+        <input type="email" name="email" id="proEmail" placeholder="xyz@example.com"><br>
+
+        <label for="proPassword">password : </label>
+        <input type="password" name="password" id="proPassword" placeholder="password">
+        <br>
+
+        <label for="proConfirmationOfPassword">confirm your password : </label>
+        <input type="password" name="confirmationOfPassword" id="proConfirmationOfPassword" placeholder="confirm your password"><!--BONUS : add button show password -->
+        <br>
+
+        <label for="proIndic">password indication</label>
+        <input type="text" name="indic" id="proIndic" placeholder="this will be displayed if you don't remember your password"><br>
+
+        <label for="proLocation">code postal</label>
+        <input type="text" name="location" id="proLocation" placeholder="Entrez votre code postal"><br>
+
+        <label for="proSlot">free slot</label>
+        <input type="number" name="free_slot" id="proSlot"><br>
+
+        <label for="proType">type</label>
+        <select name="type" id="proType">
+            <option value="lawyer">lawyer</option>
+            <option value="psy">psy</option>
+        </select> <br>
+        <!--TODO : include capcha if have time-->
+        <button>send</button>
+    </form>
+
+    <span>Victim</span>
+
+    <form name="victimInscription">
+        <label for="victimUsername">login : </label>
+        <input type="text" name="pseudo" id="victimUsername" placeholder="login"><br>
+
+        <label for="victimEmail">email : </label>
+        <input type="email" name="email" id="victimEmail" placeholder="xyz@example.com"><br>
+
+        <label for="victimPassword">password : </label>
+        <input type="password" name="password" id="victimPassword" placeholder="password">
+        <br>
+
+        <label for="victimConfirmationOfPassword">confirm your password : </label>
+        <input type="password" name="confirmationOfPassword" id="victimConfirmationOfPassword" placeholder="confirm your password"><!--BONUS : add button show password -->
+        <br>
+
+        <label for="victimIndic">password indication</label>
+        <input type="text" name="indic" id="victimIndic" placeholder="this will be displayed if you don't remember your password"><br>
+
+        <label for="victimLocation">code postal</label>
+        <input type="text" name="location" id="victimLocation" placeholder="Entrez votre code postal"><br>
+
+        <label for="victimBirthdate">birthdate</label>
+        <input type="date" name="birthdate" id="victimBirthdate"><br>
+        <!--TODO : include capcha if have time-->
+        <button>send</button>
     </form>
 {% endblock %}

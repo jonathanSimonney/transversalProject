@@ -25,6 +25,12 @@ not online, but he shall come afterwards.)
      host: _your host_  
      user: _the username to connect to your db_  
      pass: _the password of your db_
+     
+>mail_config:  
+   host:     'smtp.example.com;smtp2.example.com'  
+   _(put smtp.gmai.com if you have a gmail adress, for example)_  
+   adress:   _your server email adress_  
+   password: _its password_  
 
 Finally, create an _access.log_, a _message.log_ AND a _security.log_ file in the logs directory.
 

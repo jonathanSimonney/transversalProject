@@ -13,4 +13,6 @@ routes:
     changeFreeSlot:         'Pro:changeFreeSlot:connected:post'
     findPro:                'Pro:findProfessional:connected:post'
     abandonPro:             'Pro:abandonProfessional:connected:post'
+    proInscription:         'User:professionalInscription:disconnected:post'
+    victimInscription:      'User:victimInscription:disconnected:post'
 defaut_route: 'home'

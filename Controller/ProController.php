@@ -29,10 +29,17 @@ class ProController extends UserController
         }
         else
         {
+            $_SESSION['errorMessage'] = [];
+
             if ($this->formManager->checkRequiredField(['freeSlot']))
             {
                 $this->proManager->changeSlot($_POST['freeSlot']);
                 $this->logManager->generateAccessMessage('changed his number of slots to '.$_POST['freeSlot'], 'access');
+            }
+
+            if (count($_SESSION['errorMessage']) !== 0)
+            {
+                echo json_encode(['error' => $_SESSION['errorMessage']]);
             }
         }
     }
@@ -45,9 +52,10 @@ class ProController extends UserController
         }
         else
         {
+            $_SESSION['errorMessage'] = [];
+
             if ($this->formManager->checkRequiredField(['professionalType', 'autoMatch']))
             {
-                $_SESSION['errorMessage'] = [];
                 if ((int)$_SESSION['currentUser']['data'][$_POST['professionalType'].'_id'] !== 0)
                 {
                     $_SESSION['errorMessage']['other'] = 'You already have a professional of this type. Please suppress it before you connect with a new professional.';

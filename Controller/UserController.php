@@ -9,7 +9,9 @@
 namespace Controller;
 
 
+use Model\ProManager;
 use Model\UserManager;
+use Model\VictimManager;
 
 class UserController extends BaseController
 {
@@ -40,18 +42,6 @@ class UserController extends BaseController
     public function logoutAction()
     {
         session_destroy();
-    }
-
-    public function registerAction(){
-        $error = '';
-        http_response_code(200);
-        $arrayReturned = $this->userManager->userCheckRegister();
-        if ($arrayReturned['formOk'])
-        {
-            $this->userManager->userRegister($_POST, ['username', 'email', 'password', 'indic']);
-            //writeToLog(generateAccessMessage('created an account as '.$_POST['username']), 'access');
-        }
-        echo json_encode($arrayReturned);
     }
 
     //todo change two functions following : far too much similitudes!
@@ -99,5 +89,29 @@ class UserController extends BaseController
             $this->userManager->updateData(['pseudo' => $_POST['pseudo']]);
             $this->logManager->generateAccessMessage('changed his username to '.$_POST['pseudo'], 'access');
         }
+    }
+
+    protected function registerAction(){
+        $error = '';
+        http_response_code(200);
+        $arrayReturned = $this->userManager->userCheckRegister();
+        if ($arrayReturned['formOk'])
+        {
+            $this->userManager->userRegister();
+            $this->logManager->generateAccessMessage('created an account as '.$_POST['pseudo'], 'access');
+        }
+        echo json_encode($arrayReturned);
+    }
+
+    public function professionalInscriptionAction()
+    {
+        $this->userManager = ProManager::getInstance();
+        $this->registerAction();
+    }
+
+    public function victimInscriptionAction()
+    {
+        $this->userManager = VictimManager::getInstance();
+        $this->registerAction();
     }
 }

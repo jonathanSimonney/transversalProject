@@ -32,13 +32,15 @@ class UserManager extends BaseManager
     {
         $_SESSION['errorMessage'] = '';
 
-        $this->FormManager->checkRequiredField(['username', 'email', 'password', 'confirmationOfPassword', 'indic']);
-        $this->FormManager->checkUniqField(['username' => 'users', 'email' => 'users']);
+        $this->FormManager->checkRequiredField(['pseudo', 'email', 'password', 'confirmationOfPassword', 'indic', 'location']);
+        $this->FormManager->checkMaxLengthField(['pseudo', 'email', 'password', 'confirmationOfPassword', 'indic'], 255);
+        $this->FormManager->checkUniqField(['pseudo' => 'users', 'email' => 'users']);
 
         $this->FormManager->checkEmail($_POST['email']);
+        $this->FormManager->checkExactLength(['location'], 5);//todo change with much more precise check!
         $this->FormManager->checkPassword($_POST['password'], $_POST['confirmationOfPassword']);
 
-        return $this->FormManager->getArrayReturned($_SESSION['errorMessage'], 'Your inscription is successful! Welcome among us <i>'.htmlspecialchars($_POST['username']).'</i>. <br>You\'ll soon be redirected to home to confirm your inscription by logging in.');
+        return $this->FormManager->getArrayReturned($_SESSION['errorMessage'], 'Your inscription is successful! Welcome among us <i>'.htmlspecialchars($_POST['pseudo']).'</i>. <br>You\'ll soon be redirected to home to confirm your inscription by logging in.');
     }
 
     private function transformData($data){
@@ -54,7 +56,7 @@ class UserManager extends BaseManager
         return password_hash($pass, PASSWORD_BCRYPT);
     }
 
-    public function userRegister($data, array $arrayFields)
+    protected function userRegisterWithParams($data, array $arrayFields)
     {
         $user = [];
         $data = $this->transformData($data);//currently useless (function with only one instruction... But allows easier improvement if in the future one want to add other
@@ -64,7 +66,7 @@ class UserManager extends BaseManager
             $user[$field] = $data[$field];
         }
         $this->DBManager->dbInsert('users', $user, true);
-        $user = $this->DBManager->getWhatHow($data['username'], 'username', 'users')[0];
+        $user = $this->DBManager->getWhatHow($data['pseudo'], 'pseudo', 'users')[0];
         $_SESSION['currentUser']['data'] = $user;//currently useless, but could be used later to pre-fill login field or something else.
         $_SESSION['currentUser']['loggedIn'] = false;
     }

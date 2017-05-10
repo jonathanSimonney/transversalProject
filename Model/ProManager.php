@@ -11,9 +11,12 @@ namespace Model;
 
 class ProManager extends UserManager
 {
+    protected $logManager;
+
     public function setup()
     {
         parent::setup();
+        $this->logManager = LogManager::getInstance();
     }
 
     public function getContact()
@@ -26,7 +29,15 @@ class ProManager extends UserManager
 
     public function changeSlot($slotNumber)
     {
-        $this->DBManager->dbUpdate('users', $_SESSION['currentUser']['data']['id'], ['free_slot' => $slotNumber]);
+        if ($slotNumber >= 0)
+        {
+            $this->DBManager->dbUpdate('users', $_SESSION['currentUser']['data']['id'], ['free_slot' => $slotNumber]);
+            $_SESSION['currentUser']['data']['free_slot'] = $slotNumber;
+        }
+        else
+        {
+            $_SESSION['errorMessage']['freeSlot'] = 'must be non negative number!';
+        }
     }
 
     public function findAutoProfessional($type)
@@ -92,6 +103,37 @@ class ProManager extends UserManager
         $_SESSION['currentUser']['data'][$proType.'_id'] = 0;
         unset($_SESSION['currentUser']['data']['contact'][$pro['pseudo']]);
         return true;
+    }
+
+    public function userRegister()
+    {
+        parent::userRegisterWithParams($_POST, ['pseudo', 'email', 'password', 'indic', 'type', 'location', 'free_slot']);
+
+        $suAdress = $this->DBManager->findOne('SELECT email FROM users WHERE type = \'admin\'')['email'];
+
+        $this->sendMail($suAdress, 'professional inscription',
+            'A professional just created an account on bull.e. Please follow <a href="#">this link</a> to check his informations.', 'A professional just created an account on bull.e');
+    }
+
+    public function userCheckRegister()
+    {
+        $arrayReturned = parent::userCheckRegister();
+        if (isset($_POST['free_slot']))
+        {
+            if ($_POST['free_slot'] < 0)
+            {
+                $arrayReturned['formOk'] = false;
+                $arrayReturned[0]['free_slot'] = 'can\'t be negative';
+            }
+        }
+
+        if ($_POST['type'] !== 'lawyer' && $_POST['type'] !== 'psy')
+        {
+            var_dump($_POST['type'], $_POST['type'] !== 'lawyer' && $_POST['type'] !== 'psy');
+            $arrayReturned['formOk'] = false;
+            $this->logManager->generateAccessMessage('tried to give the type '.$_POST['type'], 'security');
+        }
+        return $arrayReturned;
     }
 
     /********

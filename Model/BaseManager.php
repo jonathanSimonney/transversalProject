@@ -49,4 +49,38 @@ abstract class BaseManager
             $varToInit = $initValue;
         }
     }
+
+    protected function sendMail($to, $object, $content, $altContent)
+    {
+        global $privateConfig;
+        $mail_config = $privateConfig['mail_config'];
+
+        $mail = new \PHPMailer;
+        $mail->isSMTP();                                      // Set mailer to use SMTP
+        $mail->Host = $mail_config['host'];  // Specify main and backup SMTP servers
+        $mail->SMTPAuth = true;                               // Enable SMTP authentication
+        $mail->Username = $mail_config['adress'];                 // SMTP username
+        $mail->Password = $mail_config['password'];                           // SMTP password
+        $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
+        $mail->Port = 587;
+
+        $mail->setFrom($mail_config['adress'], 'noreply');
+        $mail->addAddress($to);
+        $mail->isHTML(true);
+
+        $mail->Subject = $object;
+        $mail->Body    = $content;
+        $mail->AltBody = $altContent;
+
+        $mail->send();
+
+        /*if(!$mail->send()) {    //for debugging!
+            echo 'Message could not be sent.';
+            echo 'Mailer Error: ' . $mail->ErrorInfo;
+        } else {
+            echo 'Message has been sent';
+        }*/
+
+        //var_dump($mail);
+    }
 }

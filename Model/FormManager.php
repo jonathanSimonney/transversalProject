@@ -18,7 +18,7 @@ class FormManager extends BaseManager
         $this->DBManager = DBManager::getInstance();
     }
 
-    private function requiredField($name)
+    protected function requiredField($name)
     {
         $noError = false;
 
@@ -43,7 +43,7 @@ class FormManager extends BaseManager
         return true;
     }
 
-    private function requiredLength($item, $length)
+    protected function requiredLength($item, $length)
     {
         if (strlen($_POST[$item]) <= $length)
         {
@@ -54,12 +54,23 @@ class FormManager extends BaseManager
         return false;
     }
 
+    protected function exactLength($item, $length)
+    {
+        if (strlen($_POST[$item]) === $length)
+        {
+            return true;
+        }
+
+        $_SESSION['errorMessage'][$item] = 'length must be of exactly '.$length.' characters.';
+        return false;
+    }
+
     public function checkRequiredField(array $arrayRequiredField)
     {
         $ret = true;
         foreach ($arrayRequiredField as $item)
         {
-            if ($ret === true && $this->requiredField($item) === false)
+            if ($this->requiredField($item) === false && $ret === true)//DO NOT CHANGE!!!
             {
                 $ret = false;
             }
@@ -68,12 +79,26 @@ class FormManager extends BaseManager
         return $ret;
     }
 
-    public function checkLengthField(array $arrayLengthField, $length)
+    public function checkMaxLengthField(array $arrayLengthField, $length)//todo factorise these 3 functions, too much similitudes (higher-order functions!)
     {
         $ret = true;
         foreach ($arrayLengthField as $item)
         {
-            if ($ret === true && $this->requiredLength($item, $length) === false)
+            if ($this->requiredLength($item, $length) === false && $ret === true)
+            {
+                $ret = false;
+            }
+        }
+
+        return $ret;
+    }
+
+    public function checkExactLength(array $arrayLengthField, $length)
+    {
+        $ret = true;
+        foreach ($arrayLengthField as $item)
+        {
+            if ($this->exactLength($item, $length) === false && $ret === true)
             {
                 $ret = false;
             }
