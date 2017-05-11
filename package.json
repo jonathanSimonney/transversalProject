@@ -1,0 +1,23 @@
+{
+  "name": "bull.e",
+  "version": "1.0.0",
+  "description": "This repository is for the transversal project. Consult the readme to see the command to run.",
+  "main": "index.js",
+  "dependencies": {
+    "jquery": "^3.2.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jonathanSimonney/transversalProject.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jonathanSimonney/transversalProject/issues"
+  },
+  "homepage": "https://github.com/jonathanSimonney/transversalProject#readme"
+}

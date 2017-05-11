@@ -18,6 +18,11 @@ or
 
 (depending of whether you installed it locally or ,globally.)
 
+also, run the command :
+>npm install
+
+, to get all dependencies to the project.
+
 afterward, do not forget to include a private.yml file with the following lines in it (and yes, the .sql file is still 
 not online, but he shall come afterwards.)
 >db_config:  

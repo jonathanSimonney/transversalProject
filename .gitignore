@@ -2,11 +2,11 @@
 *.sass_cache
 test.php
 vendor/*
-db.sql
 private.yml
 
 mail/*
 !mail/.htaccess
+
 node_modules/*
 
 logs/*
