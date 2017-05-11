@@ -92,7 +92,9 @@ class ProManager extends UserManager
 
     public function abandonPro($proType, $victimId)
     {
-        $pro = $this->getProPseudoFromType($proType);
+        $pro = $this->getProDataFromType($proType);
+        /*var_dump($pro);
+        return;*/
         if ($pro === false)
         {
             $_SESSION['errorMessage']['proType'] = 'You don\'t have a pro of this type linked to you!';
@@ -100,6 +102,9 @@ class ProManager extends UserManager
         }
 
         $this->DBManager->dbUpdate('users', $victimId, [$proType.'_id' => 0]);
+        $this->DBManager->dbUpdate('users', $pro['id'], ['free_slot' => $pro['free_slot'] + 1]);
+        $this->sendMail($pro['email'], 'Un utilisateur vous a abandonné',
+            'L\'utilisateur '.$_SESSION['currentUser']['data']['pseudo'].' a décidé qu\'il ne voulait plus que vous suiviez son cas. Un slot a automatiquement été libéré sur votre profil.');
         $_SESSION['currentUser']['data'][$proType.'_id'] = 0;
         unset($_SESSION['currentUser']['data']['contact'][$pro['pseudo']]);
         return true;
@@ -140,13 +145,13 @@ class ProManager extends UserManager
      * protected functions begin here!
      */
 
-    protected function getProPseudoFromType($proType)
+    protected function getProDataFromType($proType)
     {
         foreach ($_SESSION['currentUser']['data']['contact'] as $contact)
         {
             if ($contact['type'] === $proType )
             {
-                return $contact;
+                return $this->DBManager->findOneSecure('SELECT * FROM users WHERE id = :id', ['id' => $contact['id']]);
             }
         }
 

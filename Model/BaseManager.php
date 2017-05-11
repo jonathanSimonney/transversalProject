@@ -50,7 +50,7 @@ abstract class BaseManager
         }
     }
 
-    protected function sendMail($to, $object, $content, $altContent)
+    protected function sendMail($to, $object, $content, $altContent = null)
     {
         global $privateConfig;
         $mail_config = $privateConfig['mail_config'];
@@ -67,9 +67,14 @@ abstract class BaseManager
         $mail->setFrom($mail_config['adress'], 'noreply');
         $mail->addAddress($to);
         $mail->isHTML(true);
+        $mail->CharSet = 'UTF-8';
 
         $mail->Subject = $object;
         $mail->Body    = $content;
+        if ($altContent === null)
+        {
+            $altContent = $content;
+        }
         $mail->AltBody = $altContent;
 
         $mail->send();
