@@ -24,7 +24,7 @@ class VictimManager extends UserManager
 
     public function userRegister()
     {
-        parent::userRegisterWithParams($_POST, ['pseudo', 'email', 'password', 'indic', 'location', 'birthdate']);
+        parent::userRegisterWithParams($_POST, ['pseudo', 'email', 'password', 'indic', 'location', 'birthdate'], true);
         //do additional things!
     }
 

@@ -112,7 +112,7 @@ class ProManager extends UserManager
 
     public function userRegister()
     {
-        parent::userRegisterWithParams($_POST, ['pseudo', 'email', 'password', 'indic', 'type', 'location', 'free_slot']);
+        parent::userRegisterWithParams($_POST, ['pseudo', 'email', 'password', 'indic', 'type', 'location', 'free_slot'], false);
 
         $suAdress = $this->DBManager->findOne('SELECT email FROM users WHERE type = \'admin\'')['email'];
 

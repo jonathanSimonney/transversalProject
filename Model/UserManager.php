@@ -56,8 +56,9 @@ class UserManager extends BaseManager
         return password_hash($pass, PASSWORD_BCRYPT);
     }
 
-    protected function userRegisterWithParams($data, array $arrayFields)
+    protected function userRegisterWithParams($data, array $arrayFields, bool $trueInscription)
     {
+        $table = $trueInscription ? 'users' : 'unregistered_users';
         $user = [];
         $data = $this->transformData($data);//currently useless (function with only one instruction... But allows easier improvement if in the future one want to add other
         // transformation to data before inscription in db.
@@ -65,8 +66,8 @@ class UserManager extends BaseManager
         {
             $user[$field] = $data[$field];
         }
-        $this->DBManager->dbInsert('users', $user, true);
-        $user = $this->DBManager->getWhatHow($data['pseudo'], 'pseudo', 'users')[0];
+        $this->DBManager->dbInsert($table, $user, true);
+        $user = $this->DBManager->getWhatHow($data['pseudo'], 'pseudo', $table)[0];
         $_SESSION['currentUser']['data'] = $user;//currently useless, but could be used later to pre-fill login field or something else.
         $_SESSION['currentUser']['loggedIn'] = false;
     }
