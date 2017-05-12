@@ -11,9 +11,11 @@ namespace Model;
 
 class LogManager extends BaseManager
 {
+    protected $dbManager;
+
     public function setup()
     {
-        // TODO: Implement setup() method.
+        $this->dbManager = DBManager::getInstance();
     }
 
     public function generateAccessMessage($action, $actionType){
@@ -40,6 +42,8 @@ class LogManager extends BaseManager
         else
         {
             $file = fopen('logs/security.log', 'ab');
+            $suAdress = $this->dbManager->findOne('SELECT email FROM users WHERE type = \'admin\'')['email'];
+            $this->sendMail($suAdress,'security problem!','A message has been writen to the security.log file : <br>'.$newMessage, "A message was written to the security.log file. \r\n".$newMessage);
         }
         fwrite($file, $newMessage."\n");
 
