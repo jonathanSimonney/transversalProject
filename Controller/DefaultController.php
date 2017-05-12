@@ -29,6 +29,7 @@ class DefaultController extends BaseController
                     $this->userManager = AdminManager::getInstance();
                     $data['unregistered_user'] = $this->userManager->getUnregisteredUser();
                     $data['registered_user'] = $this->userManager->getRegisteredUser();
+                    $data['logs'] = $this->userManager->getLogs();
 
                     echo $this->renderView('connected/admin.html.twig', $data);
                     return;

@@ -30,4 +30,13 @@
             <br><br>
         </div>
     {% endfor %}
+
+    <h2>LOGS!</h2>
+
+    {% for key, data in logs %}
+        <h3>{{ key }}</h3>
+        <div class="log {{ key }}">
+            <p>{{ data|raw}}</p><br>
+        </div>
+    {% endfor %}
 {% endblock %}

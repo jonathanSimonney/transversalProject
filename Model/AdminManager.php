@@ -43,4 +43,16 @@ class AdminManager extends UserManager
         //$this->userRegisterWithParams($data, ['pseudo', 'email', 'password', 'indic', 'type', 'location', 'free_slot'], true);
         //$this->DBManager->dbSuppress('unregistered_user', $id);
     }
+
+    public function getLogs()
+    {
+        $arrayLogs = ['access', 'message', 'security'];
+        $ret = [];
+        foreach ($arrayLogs as $fileLogName)
+        {
+            $ret[$fileLogName] = str_replace("\n", '<br>', file_get_contents('logs/'.$fileLogName.'.log'));
+        }
+
+        return $ret;
+    }
 }
