@@ -8,6 +8,7 @@
 
 namespace Model;
 
+use \DateTime;
 
 class ProManager extends UserManager
 {
@@ -21,10 +22,18 @@ class ProManager extends UserManager
 
     public function getContact()
     {
-        $ret = $this->DBManager->findAll('SELECT `id`, `pseudo`, `location`, `type`
+        $ret = $this->DBManager->findAll('SELECT `id`, `pseudo`, `location`, `type`, `birthdate`
         FROM users WHERE psy_id = '.$_SESSION['currentUser']['data']['id'].' OR lawyer_id = '.$_SESSION['currentUser']['data']['id']);
 
-        return $this->makeInferiorKeyIndex($ret, 'pseudo');
+        $ret = $this->makeInferiorKeyIndex($ret, 'pseudo');
+
+        foreach ($ret as &$contact)
+        {
+            $currentDate = new DateTime(date('Y-m-d'));
+            $age = $currentDate->diff(new DateTime($contact['birthdate']));
+            $contact['age'] = $age->y;
+        }
+        return $ret;
     }
 
     public function changeSlot($slotNumber)
@@ -140,7 +149,7 @@ class ProManager extends UserManager
 
         if ($arrayReturned['formOk'] === true)
         {
-            
+
             $arrayReturned[0] = 'Your inscription demand has been successfully submitted. A member of our staff should contact you soon to confirm you can be inscribed.';
         }
         return $arrayReturned;

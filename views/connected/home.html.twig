@@ -5,6 +5,8 @@
 {% endblock %}
 
 {% block content %}
+    {{ dump(currentUser['contact']) }}
+
     <h1>Hello {{ currentUser['pseudo'] }} !</h1>
 
     <a href="?action=logout" id="logout">log out</a>
