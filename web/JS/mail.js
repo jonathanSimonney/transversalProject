@@ -2,11 +2,11 @@ window.onload = function(){
     $('.suppressMessage').each(function () {
         $(this).submit(function (event) {
             event.preventDefault();
-            jqueryAsynchronousTreatment('?action=suppressMessage', $(this), defaultAnswer);
+            jqueryAsynchronousTreatment('?action=suppressMessage', $(this).serialize(), defaultAnswer);
         })
     });
 
-    var logoutLink = document.getElementById('logout');
+    var logoutLink = document.getElementById('logout');//repetitive, sorry!
 
     logoutLink.onclick = function (e) {
         e.preventDefault();

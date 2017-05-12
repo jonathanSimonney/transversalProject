@@ -2,6 +2,7 @@
 
 namespace Controller;
 
+use Model\AdminManager;
 use Model\ProManager;
 use Model\VictimManager;
 
@@ -23,6 +24,16 @@ class DefaultController extends BaseController
             unset($data['currentUser']['password']);
             if ($_SESSION['currentUser']['loggedIn'])
             {
+                if ($this->isAdmin())
+                {
+                    $this->userManager = AdminManager::getInstance();
+                    $data['unregistered_user'] = $this->userManager->getUnregisteredUser();
+                    $data['registered_user'] = $this->userManager->getRegisteredUser();
+
+                    echo $this->renderView('connected/admin.html.twig', $data);
+                    return;
+                }
+
                 if ($_SESSION['currentUser']['data']['type'] === 'victime')
                 {
                     $this->userManager = VictimManager::getInstance();

@@ -111,7 +111,7 @@ class FormManager extends BaseManager
     {
         if ($this->DBManager->getWhatHow($needle, $column, $table))
         {
-            $_SESSION['errorMessage'][$column] = 'Already taken. ';
+            $_SESSION['errorMessage'][$column] = 'Already taken in '.$table.'. ';
             return false;
         }
 

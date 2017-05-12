@@ -56,4 +56,13 @@ abstract class BaseController
 
         return 'disconnected';
     }
+
+    protected function isAdmin()
+    {
+        if (!isset($_SESSION['currentUser']))
+        {
+            return false;
+        }
+        return $_SESSION['currentUser']['data']['type'] === 'admin';
+    }
 }

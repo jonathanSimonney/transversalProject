@@ -9,17 +9,23 @@ function asynchronousTreatment(path,params, responseFunction){
     request.send(params);
 }
 
-function jqueryAsynchronousTreatment(path, form, responseFunction, successFunc, errorFunc){//yes, I know, should keep code logical and coherent, but hey, I AM ALONE AND HAVE ONE WEEK TO DO EVERYTHING!
+function jqueryAsynchronousTreatment(path, data, responseFunction, successFunc, errorFunc){//yes, I know, should keep code logical and coherent, but hey, I AM ALONE AND HAVE ONE WEEK TO DO EVERYTHING!
+    console.log(data);
     $.ajax({
         url: path,
         type: 'post',
         dataType: 'json',
-        data: form.serialize(),
+        data: data,
         success: function(serverData, statut) {
-            console.log(serverData);
+            if (successFunc !== undefined){
+                successFunc();
+            }
+            if (errorFunc !== undefined){
+                errorFunc();
+            }
         },
         error: function (result, status, error) {
-            console.log(result);
+            console.log(result, status, error);
         },
         complete: function (serverData) {
             responseFunction(serverData);

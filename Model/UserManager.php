@@ -35,6 +35,7 @@ class UserManager extends BaseManager
         $this->FormManager->checkRequiredField(['pseudo', 'email', 'password', 'confirmationOfPassword', 'indic', 'location']);
         $this->FormManager->checkMaxLengthField(['pseudo', 'email', 'password', 'confirmationOfPassword', 'indic'], 255);
         $this->FormManager->checkUniqField(['pseudo' => 'users', 'email' => 'users']);
+        $this->FormManager->checkUniqField(['pseudo' => 'unregistered_users', 'email' => 'unregistered_users']);
 
         $this->FormManager->checkEmail($_POST['email']);
         $this->FormManager->checkExactLength(['location'], 5);//todo change with much more precise check!
@@ -68,8 +69,12 @@ class UserManager extends BaseManager
         }
         $this->DBManager->dbInsert($table, $user, true);
         $user = $this->DBManager->getWhatHow($data['pseudo'], 'pseudo', $table)[0];
-        $_SESSION['currentUser']['data'] = $user;//currently useless, but could be used later to pre-fill login field or something else.
-        $_SESSION['currentUser']['loggedIn'] = false;
+
+        if (!$this->isAdmin())
+        {
+            $_SESSION['currentUser']['data'] = $user;//currently useless, but could be used later to pre-fill login field or something else.
+            $_SESSION['currentUser']['loggedIn'] = false;
+        }
     }
     
     public function userCheckLogin($data)

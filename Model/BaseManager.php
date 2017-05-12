@@ -88,4 +88,13 @@ abstract class BaseManager
 
         //var_dump($mail);
     }
+
+    protected function isAdmin()
+    {
+        if (!isset($_SESSION['currentUser']))
+        {
+            return false;
+        }
+        return $_SESSION['currentUser']['data']['type'] === 'admin';
+    }
 }

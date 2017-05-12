@@ -9,13 +9,14 @@
 namespace Controller;
 
 
+use Model\AdminManager;
 use Model\ProManager;
 use Model\UserManager;
 use Model\VictimManager;
 
 class UserController extends BaseController
 {
-    private $userManager;
+    protected $userManager;
 
     public function __construct(\Twig_Environment $twig, $accessLevel, $requestMethod)
     {
@@ -113,5 +114,19 @@ class UserController extends BaseController
     {
         $this->userManager = VictimManager::getInstance();
         $this->registerAction();
+    }
+
+    public function activateAccountAction()
+    {
+        if ($this->isAdmin())
+        {
+            $this->userManager = AdminManager::getInstance();
+            $this->userManager->activateAccount($_POST['id']);
+            $this->logManager->generateAccessMessage('activated account of professional ', 'access');
+        }
+        else
+        {
+            $this->logManager->generateAccessMessage('tried to activate an account, but he is not admin', 'security');
+        }
     }
 }

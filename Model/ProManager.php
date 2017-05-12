@@ -134,9 +134,14 @@ class ProManager extends UserManager
 
         if ($_POST['type'] !== 'lawyer' && $_POST['type'] !== 'psy')
         {
-            var_dump($_POST['type'], $_POST['type'] !== 'lawyer' && $_POST['type'] !== 'psy');
             $arrayReturned['formOk'] = false;
             $this->logManager->generateAccessMessage('tried to give the type '.$_POST['type'], 'security');
+        }
+
+        if ($arrayReturned['formOk'] === true)
+        {
+            
+            $arrayReturned[0] = 'Your inscription demand has been successfully submitted. A member of our staff should contact you soon to confirm you can be inscribed.';
         }
         return $arrayReturned;
     }

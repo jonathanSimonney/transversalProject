@@ -1,0 +1,33 @@
+{%  extends 'layout.html.twig' %}
+
+{% block script %}
+    <script src="web/JS/admin.js"></script>
+{% endblock %}
+
+{% block content %}
+    <a href="?action=logout" id="logout">log out</a>
+
+    {% for key, data in unregistered_user %}
+        <div class="unregisteredData">
+            <span>pseudo : {{ key }}</span><br>
+            <span>type : {{ data['type'] }}</span><br>
+            <span>email : {{ data['email'] }}</span><br>
+            <input type="number" class="notForUser" value="{{ data['id'] }}"><br>
+
+            <button class="activate">activate</button>
+            <br><br>
+        </div>
+    {% endfor %}
+
+    {% for key, data in registered_user %}
+        <div class="registeredData">
+            <span>pseudo : {{ key }}</span><br>
+            <span>type : {{ data['type'] }}</span><br>
+            <span>email : {{ data['email'] }}</span><br>
+            <input type="number" class="notForUser" value="{{ data['id'] }}"><br>
+
+            <button class="suppress">suppress</button>
+            <br><br>
+        </div>
+    {% endfor %}
+{% endblock %}
