@@ -32,12 +32,13 @@ class UserManager extends BaseManager
     {
         $_SESSION['errorMessage'] = '';
 
-        $this->FormManager->checkRequiredField(['pseudo', 'email', 'password', 'confirmationOfPassword', 'indic', 'location']);
+        $this->FormManager->checkRequiredField(['pseudo', 'email', 'password', 'confirmationOfPassword', 'indic', 'location', 'gender']);
         $this->FormManager->checkMaxLengthField(['pseudo', 'email', 'password', 'confirmationOfPassword', 'indic'], 255);
         $this->FormManager->checkUniqField(['pseudo' => 'users', 'email' => 'users']);
         $this->FormManager->checkUniqField(['pseudo' => 'unregistered_users', 'email' => 'unregistered_users']);
 
         $this->FormManager->checkEmail($_POST['email']);
+        $this->FormManager->checkGender($_POST['gender']);
         $this->FormManager->checkExactLength(['location'], 5);//todo change with much more precise check!
         $this->FormManager->checkPassword($_POST['password'], $_POST['confirmationOfPassword']);
 
@@ -68,6 +69,7 @@ class UserManager extends BaseManager
             $user[$field] = $data[$field];
         }
         $this->DBManager->dbInsert($table, $user, true);
+        var_dump($table, $user);
         $user = $this->DBManager->getWhatHow($data['pseudo'], 'pseudo', $table)[0];
 
         if (!$this->isAdmin())

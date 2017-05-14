@@ -36,7 +36,7 @@ class AdminManager extends UserManager
         }
         else
         {
-            $this->userRegisterWithParams($data, ['pseudo', 'email', 'password', 'indic', 'type', 'location', 'free_slot'], true);
+            $this->userRegisterWithParams($data, ['pseudo', 'email', 'gender', 'password', 'indic', 'type', 'location', 'free_slot'], true);
             $this->DBManager->dbSuppress('unregistered_users', $id);
             echo json_encode('ok');
         }

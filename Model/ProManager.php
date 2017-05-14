@@ -22,7 +22,7 @@ class ProManager extends UserManager
 
     public function getContact()
     {
-        $ret = $this->DBManager->findAll('SELECT `id`, `pseudo`, `location`, `type`, `birthdate`
+        $ret = $this->DBManager->findAll('SELECT `id`, `pseudo`, `gender`, `location`, `type`, `birthdate`
         FROM users WHERE psy_id = '.$_SESSION['currentUser']['data']['id'].' OR lawyer_id = '.$_SESSION['currentUser']['data']['id']);
 
         $ret = $this->makeInferiorKeyIndex($ret, 'pseudo');
@@ -121,7 +121,7 @@ class ProManager extends UserManager
 
     public function userRegister()
     {
-        parent::userRegisterWithParams($_POST, ['pseudo', 'email', 'password', 'indic', 'type', 'location', 'free_slot'], false);
+        parent::userRegisterWithParams($_POST, ['pseudo', 'email', 'gender', 'password', 'indic', 'type', 'location', 'free_slot'], false);
 
         $suAdress = $this->DBManager->findOne('SELECT email FROM users WHERE type = \'admin\'')['email'];
 

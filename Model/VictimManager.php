@@ -18,13 +18,13 @@ class VictimManager extends UserManager
 
     public function getContact()
     {
-        $ret = $this->DBManager->findAll('SELECT `id`, `pseudo`, `location`, `type` FROM users WHERE id IN ('.$_SESSION['currentUser']['data']['lawyer_id'].', '.$_SESSION['currentUser']['data']['psy_id'].')');
+        $ret = $this->DBManager->findAll('SELECT `id`, `pseudo`, `gender`, `location`, `type` FROM users WHERE id IN ('.$_SESSION['currentUser']['data']['lawyer_id'].', '.$_SESSION['currentUser']['data']['psy_id'].')');
         return $this->makeInferiorKeyIndex($ret, 'pseudo');
     }
 
     public function userRegister()
     {
-        parent::userRegisterWithParams($_POST, ['pseudo', 'email', 'password', 'indic', 'location', 'birthdate'], true);
+        parent::userRegisterWithParams($_POST, ['pseudo', 'email', 'gender', 'password', 'indic', 'location', 'birthdate'], true);
         //do additional things!
     }
 

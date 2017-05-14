@@ -141,6 +141,14 @@ class FormManager extends BaseManager
         }
     }
 
+    public function checkGender($potentialGender)
+    {
+        if ($potentialGender !== 'man' && $potentialGender !== 'woman')
+        {
+            $_SESSION['errorMessage']['gender'] = 'Invalid.';
+        }
+    }
+
     public function checkPassword($password, $confirmationPassword)
     {
         if ($password !== $confirmationPassword)
