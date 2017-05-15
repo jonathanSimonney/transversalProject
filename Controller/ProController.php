@@ -113,4 +113,22 @@ class ProController extends UserController
             }
         }
     }
+
+    public function suppressCandidateAction()
+    {
+        if (!$this->isAdmin())
+        {
+            $this->logManager->generateAccessMessage('tried to reject a candidature (but he is not admin).', 'security');
+            die();
+        }
+        $user = $this->proManager->getUnregisteredUserById($_POST['id']);
+
+
+        $this->proManager->suppressCandidature($_POST['id']);
+        $this->logManager->generateAccessMessage('suppressed the account of '.$user['pseudo'].' of id '.$_POST['id'].' for the following reason : '.$_POST['message'], 'access');
+        $this->userManager->sendMail($user['email'], 'suppression de votre compte', 'Votre compte a été supprimé pour la raison suivante :<br> '.$_POST['message'],
+            "Votre compte a été supprimé pour la raison suivante :\r\n ".$_POST['message']);
+
+        echo json_encode('removal complete!');
+    }
 }

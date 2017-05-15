@@ -16,4 +16,5 @@ routes:
     victimInscription:      'User:victimInscription:disconnected:post'
     activateAccount:        'User:activateAccount:connected:post'
     suppressAccount:        'User:suppressAccount:connected:post'
+    rejectPro:              'Pro:suppressCandidate:connected:post'
 defaut_route: 'home'

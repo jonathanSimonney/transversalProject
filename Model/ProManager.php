@@ -155,6 +155,16 @@ class ProManager extends UserManager
         return $arrayReturned;
     }
 
+    public function getUnregisteredUserById($id)
+    {
+        return $this->DBManager->findOneSecure('SELECT * FROM unregistered_users WHERE id = :id', ['id' => $id]);
+    }
+
+    public function suppressCandidature($id)
+    {
+        $this->DBManager->dbSuppress('unregistered_users', $id);
+    }
+
     /********
      * protected functions begin here!
      */
