@@ -139,7 +139,7 @@ class UserManager extends BaseManager
                 $this->DBManager->dbUpdate('users', $contact['id'], [$_SESSION['currentUser']['data']['type'] . '_id' => 0]);
             }
             $this->sendMail($contact['email'],'un utilisateur a supprimé son compte!',
-                'Désolé, mais l\'utilisateur '.$_SESSION['currentUser']['data']['pseudo'].' a décidé de supprimer son compte.');
+                'Désolé, mais l\'utilisateur '.$_SESSION['currentUser']['data']['pseudo'].'(avec qui vous étiez en contact) a décidé de supprimer son compte.');
         }
     }
 }

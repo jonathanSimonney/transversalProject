@@ -50,7 +50,7 @@ abstract class BaseManager
         }
     }
 
-    protected function sendMail($to, $object, $content, $altContent = null)
+    public function sendMail($to, $object, $content, $altContent = null)
     {
         global $privateConfig;
         $mail_config = $privateConfig['mail_config'];

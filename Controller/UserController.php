@@ -113,16 +113,45 @@ class UserController extends BaseController
 
     public function suppressAccountAction()
     {
-        if (password_verify($_POST['password'], $_SESSION['currentUser']['data']['password']))
-        {
-            $this->userManager->suppressAccount($_SESSION['currentUser']['data']['id']);
-            $this->logManager->generateAccessMessage('suppressed his account.', 'access');
-            session_destroy();
+        if ($this->isAdmin()){
+            $user = $this->userManager->getUserById($_POST['id']);
+            if ($user['type'] === 'admin')
+            {
+                echo json_encode(['error' => 'you can\'t suppress another admin account']);
+            }
+            else
+            {
+                $temp = $_SESSION;
+                $_SESSION['currentUser']['data'] = ['type' => $user['type'], 'pseudo' => $user['pseudo'], 'id' => $_POST['id']
+                    , 'lawyer_id' => $user['lawyer_id'], 'psy_id' => $user['psy_id']];
+                if ($user['type'] === 'victime')
+                {
+                    $this->userManager = VictimManager::getInstance();
+                }
+                else
+                {
+                    $this->userManager = ProManager::getInstance();
+                }
+                $_SESSION['currentUser']['data']['contact'] = $this->userManager->getContact();
+                $this->userManager->suppressAccount($_POST['id']);
+                $_SESSION = $temp;
+                $this->logManager->generateAccessMessage('suppressed the account of '.$user['pseudo'].' of id '.$_POST['id'].' for the following reason : '.$_POST['message'], 'access');
+                $this->userManager->sendMail($user['email'], 'suppression de votre compte', 'Votre compte a été supprimé pour la raison suivante :<br> '.$_POST['message'],
+                    "Votre compte a été supprimé pour la raison suivante :\r\n ".$_POST['message']);
+            }
         }
         else
         {
-            $this->logManager->generateAccessMessage('tried to suppress his account without entering his password???');
+            if (password_verify($_POST['password'], $_SESSION['currentUser']['data']['password']))
+            {
+                $this->userManager->suppressAccount($_SESSION['currentUser']['data']['id']);
+                $this->logManager->generateAccessMessage('suppressed his account.', 'access');
+                session_destroy();
+            }
+            else
+            {
+                $this->logManager->generateAccessMessage('tried to suppress his account without entering his password???');
+            }
         }
-
     }
 }
