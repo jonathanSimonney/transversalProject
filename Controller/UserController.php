@@ -138,6 +138,8 @@ class UserController extends BaseController
                 $this->logManager->generateAccessMessage('suppressed the account of '.$user['pseudo'].' of id '.$_POST['id'].' for the following reason : '.$_POST['message'], 'access');
                 $this->userManager->sendMail($user['email'], 'suppression de votre compte', 'Votre compte a été supprimé pour la raison suivante :<br> '.$_POST['message'],
                     "Votre compte a été supprimé pour la raison suivante :\r\n ".$_POST['message']);
+
+                echo json_encode('removal complete!');
             }
         }
         else
