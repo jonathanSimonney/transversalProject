@@ -69,7 +69,6 @@ class UserManager extends BaseManager
             $user[$field] = $data[$field];
         }
         $this->DBManager->dbInsert($table, $user, true);
-        var_dump($table, $user);
         $user = $this->DBManager->getWhatHow($data['pseudo'], 'pseudo', $table)[0];
 
         if (!$this->isAdmin())

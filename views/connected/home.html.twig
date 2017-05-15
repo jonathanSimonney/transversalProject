@@ -11,21 +11,16 @@
 
     <a href="?action=logout" id="logout">log out</a>
 
-    <form name="changePassword">
+    <p>Et la, c'est pour changer les infos utilisateur</p>
+
+    <form name="changeData">
         <input type="password" name="oldPassword" placeholder="enter your current password">
+        <input type="text" name="location" placeholder="enter your location" value="{{ currentUser['location'] }}">
+        <input type="email" name="email" placeholder="enter your email adress" value="{{ currentUser['email'] }}">
+        <input type="text" name="pseudo" placeholder="enter your pseudo" value="{{ currentUser['pseudo'] }}">
         <input type="password" name="newPassword" placeholder="enter your new password">
-        <input type="password" name="confirmPassword" placeholder="confirm your new password">
-        <input type="text" name="indic" placeholder="enter your new indication of password">
-        <input type="submit">
-    </form>
-
-    <p>
-        Et la, c'est pour changer le username.
-    </p>
-
-    <form name="changeUsername">
-        <input type="password" name="password" placeholder="enter your current password">
-        <input type="text" name="pseudo" placeholder="enter your new username">
+        <input type="password" name="confirmationOfPassword" placeholder="confirm your new password">
+        <input type="text" name="indic" placeholder="enter your new indication of password" value="{{ currentUser['indic'] }}">
         <input type="submit">
     </form>
 

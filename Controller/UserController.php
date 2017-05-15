@@ -47,48 +47,29 @@ class UserController extends BaseController
 
     //todo change two functions following : far too much similitudes!
 
-    public function changePasswordAction()
+    public function changeDataAction()
     {
-        $errorMessage = '';
+        $errorMessage = [];
         if (password_verify($_POST['oldPassword'], $_SESSION['currentUser']['data']['password']))
         {
             $_SESSION['errorMessage']['password'] = '';
-            $errorMessage = $this->formManager->checkPassword($_POST['newPassword'], $_POST['confirmPassword']);
+            $errorMessage = $this->formManager->checkUpdate();
         }
         else
         {
-            $errorMessage = 'wrong password';
+            $errorMessage[0]['oldPassword'] = 'wrong password. Indic is '.$_SESSION['currentUser']['data']['indic'];
+            $errorMessage['formOk'] = false;
         }
 
-        if ($errorMessage !== '')
+
+        if (!$errorMessage['formOk'])
         {
-            echo json_encode(['invalid', 'reason' => $errorMessage]);
+            echo json_encode(['invalid', 'reason' => $errorMessage[0]]);
         }
         else
         {
-            $this->userManager->updateData(['password' => $_POST['newPassword'], 'indic' => $_POST['indic']]);
-            $this->logManager->generateAccessMessage('changed his password', 'access');
-        }
-    }
-
-    public function changeUsernameAction()
-    {
-        if (password_verify($_POST['password'], $_SESSION['currentUser']['data']['password']))
-        {
-            $errorMessage = $this->formManager->checkUniqField(['pseudo' => 'users']);
-        }
-        else
-        {
-            $errorMessage = 'wrong password';
-        }
-
-        if ($errorMessage !== '')
-        {
-            echo json_encode(['invalid', 'reason' => $errorMessage]);
-        }
-        else{
-            $this->userManager->updateData(['pseudo' => $_POST['pseudo']]);
-            $this->logManager->generateAccessMessage('changed his username to '.$_POST['pseudo'], 'access');
+            $this->userManager->updateData(['pseudo' => $_POST['pseudo'], 'password' => $_POST['newPassword'], 'indic' => $_POST['indic'], 'email' => $_POST['email'], 'location' => $_POST['location']]);
+            $this->logManager->generateAccessMessage('changed his data', 'access');
         }
     }
 

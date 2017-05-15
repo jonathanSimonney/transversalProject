@@ -65,6 +65,42 @@ class FormManager extends BaseManager
         return false;
     }
 
+    public function checkUpdate()
+    {
+        $_SESSION['errorMessage'] = '';
+
+        $this->checkRequiredField(['pseudo', 'email', 'indic', 'location']);
+        $this->checkMaxLengthField(['pseudo', 'email', 'newPassword', 'confirmationOfPassword', 'indic'], 255);
+
+        if ($_POST['pseudo'] !== $_SESSION['currentUser']['data']['pseudo'])
+        {
+            $this->checkUniqField(['pseudo' => 'users']);
+            $this->checkUniqField(['pseudo' => 'unregistered_users']);
+        }
+        if ($_POST['email'] !== $_SESSION['currentUser']['data']['email'])
+        {
+            $this->checkUniqField(['email' => 'users']);
+            $this->checkUniqField(['email' => 'unregistered_users']);
+        }
+
+        $this->checkEmail($_POST['email']);
+        $this->checkExactLength(['location'], 5);//todo change with much more precise check!
+
+        $temp = $_SESSION['errorMessage'];
+
+        if ($this->checkRequiredField(['newPassword', 'confirmationOfPassword']))
+        {
+            $this->checkPassword($_POST['newPassword'], $_POST['confirmationOfPassword']);
+        }
+        else
+        {
+            $_POST['newPassword'] = $_POST['oldPassword'];
+            $_SESSION['errorMessage'] = $temp;
+        }
+
+        return $this->getArrayReturned($_SESSION['errorMessage'], 'Your change have been registered.');
+    }
+
     public function checkRequiredField(array $arrayRequiredField)
     {
         $ret = true;

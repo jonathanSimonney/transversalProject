@@ -1,7 +1,6 @@
 window.onload = function(){
     var arrayAction = {
-        'changePassword'         : ['changePassword'],
-        'changeUsername'         : ['changeUsername'],
+        'changeData'             : ['changeData'],
         'sendMessage'            : ['sendMessage'],
         'changeFreeSlot'         : ['changeFreeSlot'],
         'abandonPro'             : ['abandonPro']
