@@ -110,4 +110,19 @@ class UserController extends BaseController
             $this->logManager->generateAccessMessage('tried to activate an account, but he is not admin', 'security');
         }
     }
+
+    public function suppressAccountAction()
+    {
+        if (password_verify($_POST['password'], $_SESSION['currentUser']['data']['password']))
+        {
+            $this->userManager->suppressAccount($_SESSION['currentUser']['data']['id']);
+            $this->logManager->generateAccessMessage('suppressed his account.', 'access');
+            session_destroy();
+        }
+        else
+        {
+            $this->logManager->generateAccessMessage('tried to suppress his account without entering his password???');
+        }
+
+    }
 }

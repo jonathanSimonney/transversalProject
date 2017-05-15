@@ -6,11 +6,13 @@ class UserManager extends BaseManager
 {
     protected $DBManager;
     protected $FormManager;
+    protected $mailManager;
 
     public function setup()
     {
         $this->DBManager = DBManager::getInstance();
         $this->FormManager = FormManager::getInstance();
+        $this->mailManager = MailManager::getInstance();
     }
 
     public function getContact(){}
@@ -117,6 +119,27 @@ class UserManager extends BaseManager
         foreach ($data as $key => $value)
         {
             $_SESSION['currentUser']['data'][$key] = $value;
+        }
+    }
+
+    public function suppressAccount($userId)
+    {
+        $this->DBManager->dbSuppress('users', $userId);
+        $mailToSuppress = $this->DBManager->findAllSecure('SELECT * FROM mail WHERE receptor_id = :id OR sender_id = :id', ['id' => $userId]);
+
+        foreach ($mailToSuppress as $mail) {
+            $this->mailManager->suppressMail($mail['id']);
+        }
+
+        foreach ($_SESSION['currentUser']['data']['contact'] as $contact)
+        {
+            $contact = $this->DBManager->findOne('SELECT * FROM users WHERE id = '.$contact['id']);
+            if ($_SESSION['currentUser']['data']['type'] !== 'victime')
+            {
+                $this->DBManager->dbUpdate('users', $contact['id'], [$_SESSION['currentUser']['data']['type'] . '_id' => 0]);
+            }
+            $this->sendMail($contact['email'],'un utilisateur a supprimé son compte!',
+                'Désolé, mais l\'utilisateur '.$_SESSION['currentUser']['data']['pseudo'].' a décidé de supprimer son compte.');
         }
     }
 }

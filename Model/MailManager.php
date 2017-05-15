@@ -29,7 +29,7 @@ class MailManager extends BaseManager
         return isset($_SESSION['currentUser']['data']['contact'][$_POST['dest']]);
     }
 
-    public function sendMail()
+    public function userSendMail()
     {
         $filename = $_FILES['PJ']['name'];
         if (strlen($filename) > 255)

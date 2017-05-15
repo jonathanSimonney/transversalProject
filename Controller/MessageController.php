@@ -28,7 +28,7 @@ class MessageController extends BaseController
         {
             if ($this->mailManager->canSendMail())
             {
-                $this->mailManager->sendMail();
+                $this->mailManager->userSendMail();
             }
             else
             {

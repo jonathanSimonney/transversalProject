@@ -11,6 +11,10 @@
 
     <a href="?action=logout" id="logout">log out</a>
 
+    <a href="?action=getReceivedMessage" id="logout">messages reçus : </a>
+
+    <a href="?action=getSentMessage" id="logout">messages envoyés : </a>
+
     <p>Et la, c'est pour changer les infos utilisateur</p>
 
     <form name="changeData">
@@ -21,6 +25,13 @@
         <input type="password" name="newPassword" placeholder="enter your new password">
         <input type="password" name="confirmationOfPassword" placeholder="confirm your new password">
         <input type="text" name="indic" placeholder="enter your new indication of password" value="{{ currentUser['indic'] }}">
+        <input type="submit">
+    </form>
+
+    <p>Et la, c'est pour supprimer le compte</p>
+
+    <form name="suppress">
+        <input type="password" name="password" placeholder="enter your password">
         <input type="submit">
     </form>
 
