@@ -63,3 +63,34 @@ function linkAllFormEvent(objectForm){
         linkFormEvent(document.forms[i], '?action='+objectForm[i][0], objectForm[i][1]);
     }
 }
+
+function openModal(htmlPath, receptor, additionalAction){
+    $.ajax({
+        url: htmlPath,
+        type: 'get',
+        dataType: 'html',
+        success: function(serverData, statut) {
+            receptor.html(serverData);
+            $('#close').click(function (e) {
+                e.preventDefault();
+                receptor.html('');
+            });
+
+            $(document).click(function (e) {
+                if ($(e.target).closest('#modal').length === 0){
+                    $('#close').click();
+                }
+            });
+
+            if (additionalAction !== undefined){
+                additionalAction();
+            }
+        },
+        error: function (result, status, error) {
+            console.log(result, status, error);
+        },
+        complete: function (serverData) {
+            console.log(serverData);
+        }
+    });
+}

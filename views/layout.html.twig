@@ -2,21 +2,22 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="author" content="Florent Jonathan">
-    <title>bully</title>
+    <meta name="author" content="Lucie Elliott Jonathan">
+    <title>bull-E</title>
     <script src="node_modules/jquery/dist/jquery.min.js"></script>
     <script src="web/JS/whole.js"></script>
+    <link rel="stylesheet" href="web/style/style.css">
 </head>
 <body>
-<p>header</p>
 
-<pre>
-    {{ dump() }}<!-- your variables! -->
-    {{ dump(users[1]) }}
-</pre>
+{% block header %} {% endblock %}
 
 {% block content %} {% endblock %}
-<div id="debug"></div>
+<div id="debug">
+    <pre>
+        {{ dump() }}<!-- your variables! -->
+    </pre>
+</div>
 
 
 {% block script %}{% endblock %}
