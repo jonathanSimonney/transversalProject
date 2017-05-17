@@ -8,6 +8,7 @@ routes:
     getProSignUpModal:      'Default:showProSignUp:disconnected:get'
     getVictimSignUpModal:   'Default:showVictimSignUp:disconnected:get'
     legalNotice:            'Default:getLegalNoticePage:both:get'
+    proList:                'Default:getProfessionalList:both:get'
     documentation:          'Default:showDocPage:both:get'
     logout:                 'User:logout:connected:post'
     login:                  'User:login:disconnected:post'

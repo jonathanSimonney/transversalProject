@@ -4,6 +4,7 @@ namespace Controller;
 
 use Model\AdminManager;
 use Model\ProManager;
+use Model\UserManager;
 use Model\VictimManager;
 
 class DefaultController extends BaseController
@@ -13,6 +14,7 @@ class DefaultController extends BaseController
     public function __construct(\Twig_Environment $twig, $accessLevel, $requestMethod)
     {
         parent::__construct($twig, $accessLevel, $requestMethod);
+        $this->userManager = UserManager::getInstance();
     }
 
     public function homeAction()//will be changed!
@@ -97,6 +99,12 @@ class DefaultController extends BaseController
     public function getLegalNoticePageAction()
     {
         $this->simplyShowPage('both/legal.html.twig');
+    }
+
+    public function getProfessionalListAction()
+    {
+        $proArray = $this->userManager->getAllProfessionalData();
+        $this->simplyShowPage('both/proList.html.twig', ['lawyer' => $proArray['lawyer'], 'psy' => $proArray['psy']]);
     }
 
     public function showDocPageAction()

@@ -1,6 +1,10 @@
 $('#signIn').click(function (e) {
     e.preventDefault();
-    openModal('?action=getSignInModal', $('#modalWaiter'));
+    openModal('?action=getSignInModal', $('#modalWaiter'), function(){
+        $('#signUpModal').click(function () {
+            $('#signUp').click();
+        })
+    });
 });
 
 $('#signUp').click(function (e) {
@@ -14,7 +18,7 @@ $('#signUp').click(function (e) {
         });
         $('#signInModal').click(function (e) {
             e.preventDefault();
-            openModal('?action=getSignInModal', $('#modalWaiter'));
+            $('#signIn').click();
         })
     });
 });

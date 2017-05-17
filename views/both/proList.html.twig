@@ -1,0 +1,46 @@
+{%  extends 'layout.html.twig' %}
+
+{% block content %}
+<div class="containerPro">
+    <div class="researchPro">
+        <div class="tittlePro">
+            <span>liste de nos professionnels</span>
+            <div class="underlinePro"></div>
+        </div>
+        <div class="containerInput">
+            <span>Pour rechercher quelqu'un, n'oubliez pas d'utiliser ctrl + f ou cmd + f si vous êtes sur Mac !</span>
+        </div>
+    </div>
+    <div class="listPro">
+        <div class="list1">
+            <h2>psychologues</h2>
+            <div class="listPsychologues">
+                <!-- TODO -->
+                {% for psyUser in psy %}
+                    <div class="listProRepeat">
+                        <span class="name">{{ psyUser['pseudo'] }}</span>
+                        <br>
+                        <span class="departement">{{ psyUser['location'] }}</span>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="list2">
+            <h2>juristes</h2>
+            <div class="listJuristes">
+                <!-- TODO -->
+                {% for lawyerUser in lawyer %}
+                    <div class="listProRepeat">
+                        <span class="name">{{ lawyerUser['pseudo'] }}</span>
+                        <br>
+                        <span class="departement">{{ lawyerUser['location'] }}</span>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div>
+
+    </div>
+</div>
+{% endblock %}

@@ -2223,15 +2223,22 @@ form {
 }
 
 .listPro {
-    height: 250px;
-    width: 500px;
+    height: 350px;
+    width: 100%;
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: space-around;
-    align-items: stretch;
-    align-content: stretch;
+    align-content: center;
     margin: auto;
+}
+
+.list1 {
+    width: 35%;
+}
+
+.list2 {
+    width: 35%;
 }
 
 .listPro h2 {
@@ -2245,6 +2252,9 @@ form {
     flex-direction: column;
     flex-wrap: nowrap;
     justify-content: flex-start;
+    overflow: auto;
+    height: 330px;
+    max-height: 330px;
 }
 
 .listJuristes {
@@ -2252,10 +2262,15 @@ form {
     flex-direction: column;
     flex-wrap: nowrap;
     justify-content: flex-start;
+    overflow: auto;
+    height: 330px;
+    max-height: 330px;
 }
 
 .listProRepeat {
     margin: 10px 5px 5px 0;
+    height: 330px;
+    max-height: 330px;
 }
 
 .listProRepeat .name {
@@ -2263,6 +2278,7 @@ form {
     font-size: 12px;
     Font-Weight: Bold;
     max-width: 75px;
+    text-transform: uppercase;
 }
 
 .listProRepeat .departement {

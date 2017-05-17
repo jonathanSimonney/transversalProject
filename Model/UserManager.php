@@ -142,4 +142,20 @@ class UserManager extends BaseManager
                 'Désolé, mais l\'utilisateur '.$_SESSION['currentUser']['data']['pseudo'].'(avec qui vous étiez en contact) a décidé de supprimer son compte.');
         }
     }
+
+    public function getAllProfessionalData()
+    {
+        $proArray = $this->DBManager->findAll('SELECT type, location, pseudo FROM users WHERE type = \'psy\' OR type = \'lawyer\' ');
+        $ret = ['lawyer' => [], 'psy' => []];
+        foreach ($proArray as $pro)
+        {
+            if ($pro['location'] === '')
+            {
+                $pro['location'] = 'unknown';
+            }
+            $ret[$pro['type']][] = $pro;
+        }
+
+        return $ret;
+    }
 }
