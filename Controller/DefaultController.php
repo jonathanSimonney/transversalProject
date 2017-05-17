@@ -94,6 +94,11 @@ class DefaultController extends BaseController
         $this->simplyShowPage('disconnected/modal/victimSignUp.html.twig');
     }
 
+    public function getLegalNoticePageAction()
+    {
+        $this->simplyShowPage('both/legal.html.twig');
+    }
+
     public function showDocPageAction()
     {
         $article = $_GET['article'] ?? 'what';
