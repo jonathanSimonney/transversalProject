@@ -44,7 +44,7 @@ function linkFormEvent(form, action, responseFunction){
     }
 }
 
-function defaultAnswer(request){
+function debugAnswer(request){
     //document.write(request.responseText);//todo comment this before final commit! EXTREMELY IMPORTANT!!!
     if (request.responseText !== ''){
         document.getElementById('debug').innerHTML = request.responseText;
@@ -58,10 +58,26 @@ function defaultAnswer(request){
 function linkAllFormEvent(objectForm){
     for (var i in objectForm){
             if (typeof objectForm[i][1] === 'undefined') {
-            objectForm[i][1] = defaultAnswer;
+            objectForm[i][1] = debugAnswer;
         }
         linkFormEvent(document.forms[i], '?action='+objectForm[i][0], objectForm[i][1]);
     }
+}
+
+function saveFormData(form, key){
+    sessionStorage.removeItem(key);
+    var stockedArray = {};
+    $.each($(form).serializeArray(), function(i, field){
+        stockedArray[field.name] = field.value;
+    });
+    sessionStorage.setItem(key, JSON.stringify(stockedArray));
+}
+
+function putFormData(form, key){
+    $.each(JSON.parse(sessionStorage.getItem(key)), function(i, field){
+        $("[name= '"+i+"']").val(field);
+    })
+
 }
 
 function openModal(htmlPath, receptor, additionalAction){
@@ -73,6 +89,10 @@ function openModal(htmlPath, receptor, additionalAction){
             receptor.html(serverData);
             $('#close').click(function (e) {
                 e.preventDefault();
+                //todo! use sessionManager to save their data! (And restore it when modal reopen!)
+               if ($('#modalForm').length === 1){
+                   saveFormData($('#modalForm'), htmlPath);
+               }
                 receptor.html('');
             });
 
@@ -82,6 +102,10 @@ function openModal(htmlPath, receptor, additionalAction){
                 }
             });
 
+            if ($('#modalForm').length === 1){
+                putFormData($('#modalForm'), htmlPath);
+            }
+
             if (additionalAction !== undefined){
                 additionalAction();
             }
@@ -90,7 +114,6 @@ function openModal(htmlPath, receptor, additionalAction){
             console.log(result, status, error);
         },
         complete: function (serverData) {
-            console.log(serverData);
         }
     });
 }

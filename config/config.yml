@@ -12,7 +12,6 @@ routes:
     documentation:          'Default:showDocPage:both:get'
     logout:                 'User:logout:connected:post'
     login:                  'User:login:disconnected:post'
-    register:               'User:register:disconnected:post'
     changeData:             'User:changeData:connected:post'
     sendMessage:            'Message:sendMessage:connected:post'
     getReceivedMessage:     'Message:getReceivedMessage:connected:get'

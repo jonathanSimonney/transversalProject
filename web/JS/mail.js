@@ -2,7 +2,7 @@ window.onload = function(){
     $('.suppressMessage').each(function () {
         $(this).submit(function (event) {
             event.preventDefault();
-            jqueryAsynchronousTreatment('?action=suppressMessage', $(this).serialize(), defaultAnswer);
+            jqueryAsynchronousTreatment('?action=suppressMessage', $(this).serialize(), debugAnswer);
         })
     });
 
@@ -10,7 +10,7 @@ window.onload = function(){
 
     logoutLink.onclick = function (e) {
         e.preventDefault();
-        asynchronousTreatment('?action=logout', [], defaultAnswer);
+        asynchronousTreatment('?action=logout', [], debugAnswer);
     }
 
 

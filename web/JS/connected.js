@@ -14,7 +14,7 @@ window.onload = function(){
 
     logoutLink.onclick = function (e) {
         e.preventDefault();
-        asynchronousTreatment('?action=logout', [], defaultAnswer);
+        asynchronousTreatment('?action=logout', [], debugAnswer);
     };
 
     if (findProForm !== undefined){
@@ -23,7 +23,7 @@ window.onload = function(){
             if (formData.get('autoMatch') === null){
                 formData.set('autoMatch', false);
             }
-            asynchronousTreatment('?action=findPro', formData, defaultAnswer);
+            asynchronousTreatment('?action=findPro', formData, debugAnswer);
 
             return false;
         }

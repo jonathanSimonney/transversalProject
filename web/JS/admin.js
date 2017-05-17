@@ -1,7 +1,7 @@
 window.onload = function () {
     $('.activate').click(function (e) {
         var id = $(e.target).siblings('.notForUser').val();
-        jqueryAsynchronousTreatment('?action=activateAccount', {'id' : id}, defaultAnswer, function () {
+        jqueryAsynchronousTreatment('?action=activateAccount', {'id' : id}, debugAnswer, function () {
             $(e.target).parent().remove();
         });
     });
@@ -10,7 +10,7 @@ window.onload = function () {
         var id = $(e.target).siblings('.notForUser').val();
         var message = $(e.target).siblings('.message').val();
 
-        jqueryAsynchronousTreatment('?action=suppressAccount', {'id' : id, 'message' : message}, defaultAnswer, function () {
+        jqueryAsynchronousTreatment('?action=suppressAccount', {'id' : id, 'message' : message}, debugAnswer, function () {
             $(e.target).parent().remove();
         });
     });
@@ -19,7 +19,7 @@ window.onload = function () {
         var id = $(e.target).siblings('.notForUser').val();
         var message = $(e.target).siblings('.message').val();
 
-        jqueryAsynchronousTreatment('?action=rejectPro', {'id' : id, 'message' : message}, defaultAnswer, function () {
+        jqueryAsynchronousTreatment('?action=rejectPro', {'id' : id, 'message' : message}, debugAnswer, function () {
             $(e.target).parent().remove();
         });
     });
@@ -28,6 +28,6 @@ window.onload = function () {
 
     logoutLink.onclick = function (e) {
         e.preventDefault();
-        asynchronousTreatment('?action=logout', [], defaultAnswer);
+        asynchronousTreatment('?action=logout', [], debugAnswer);
     }
 };
