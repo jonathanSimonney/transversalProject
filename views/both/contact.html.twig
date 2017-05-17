@@ -1,0 +1,42 @@
+{%  extends 'layout.html.twig' %}
+
+{% block content %}
+<div class="containerContact">
+    <div class="imgProfile">
+        <img src="web/style/img/mail.png" alt="Mail" />
+    </div>
+    <div class="formContact">
+        <div class="text">
+            <h1>contact</h1>
+            <div class="contactUnderline"></div>
+            <span> Utilisez le formulaire ci-dessous ou contactez nous <span class="linkColor"> par e-mail.</span></span>
+        </div>
+        <div class="headerForm">
+            <div class="divName">
+                <p>nom</p>
+                <input type="text" placeholder="entrer votre nom" class="inputText">
+                <!--TODO-->
+            </div>
+            <div class="divEmail">
+                <p>adresse e-mail</p>
+                <input type="password" placeholder="entrer votre adresse e-mail" class="inputText">
+                <!--TODO-->
+            </div>
+        </div>
+        <div class="bottomForm">
+            <p>objet
+            <p>
+                <input type="text" placeholder="renseignez l'objet de votre message" class="inputText">
+                <!--TODO-->
+            <p>message</p>
+            <textarea placeholder="écrivez votre message..." class="textArea"></textarea>
+            <!--TODO-->
+            <br>
+            <div class="submitBtn">
+                <input type="submit" value="envoyer" class="submit">
+                <!--TODO-->
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

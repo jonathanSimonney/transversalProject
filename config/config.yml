@@ -1,5 +1,9 @@
 routes:
-    home:                   'Default:home:both:get'
+    home:                   'Default:showHomePage:both:get' #todo misses picture. See link as well
+    about:                  'Default:showAboutPage:both:get'
+    forum:                  'Default:showForumPage:both:get' #not functional
+    contact:                'Default:showContactPage:both:get' #not functionnal
+    documentation:          'Default:showDocPage:both:get'
     logout:                 'User:logout:connected:post'
     login:                  'User:login:disconnected:post'
     register:               'User:register:disconnected:post'

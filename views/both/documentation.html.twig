@@ -1,0 +1,33 @@
+{%  extends 'layout.html.twig' %}
+
+{% block content %}
+<div class="containerDocumentation">
+    <div class="emptyDiv">
+        <div class="colorDiv"></div>
+    </div>
+    <div class="textDocumentation">
+        <div class="annexePage">
+            <a href="?action=documentation&article=what"><p>Qu'est-ce que le cyber-bullying ?</p></a>
+            <a href="?action=documentation&article=gesture"><p>Les bons gestes</p></a>
+            <a href="?action=documentation&article=who"><p>Les recours</p></a>
+            <a href="?action=documentation&article=ressources"><p>Ressources externes</p></a>
+        </div>
+        <div class="twoDiv">
+            <div class="divInDivDocumentation">
+                <h1>{{ title }}</h1>
+                <div class="documentationUnderline"></div>
+                <p>{{ content|raw  }}</p>
+            </div>
+            <div class="divPaintingRight">
+
+            </div>
+        </div>
+        <div class="blockColor">
+            <div class="divPaintingBottom"></div>
+        </div>
+    </div>
+
+</div>
+
+    <script src="web/JS/documentation.js"></script>
+{% endblock %}

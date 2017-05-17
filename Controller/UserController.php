@@ -144,16 +144,9 @@ class UserController extends BaseController
         }
         else
         {
-            if (password_verify($_POST['password'], $_SESSION['currentUser']['data']['password']))
-            {
-                $this->userManager->suppressAccount($_SESSION['currentUser']['data']['id']);
-                $this->logManager->generateAccessMessage('suppressed his account.', 'access');
-                session_destroy();
-            }
-            else
-            {
-                $this->logManager->generateAccessMessage('tried to suppress his account without entering his password???');
-            }
+            $this->userManager->suppressAccount($_SESSION['currentUser']['data']['id']);
+            $this->logManager->generateAccessMessage('suppressed his account.', 'access');
+            session_destroy();
         }
     }
 }

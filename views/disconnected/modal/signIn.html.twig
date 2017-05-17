@@ -1,27 +1,27 @@
 <div class="opacityBg">
     <div class="logPage">
-        <div id="modal" class="flex">
-            <div class="formLog">
-                <form action="?action=login" method="POST">
-                    <h2>connexion</h2>
-                    <p>nom d'utilisateur</p>
-                    <input type="email" name="email" placeholder="entrer votre adresse mail">
-                    <p> mot de passe</p>
-                    <input type="password" name="password" placeholder="entrer votre nouveau mot de passe">
-                    <span class="passwordForget">mot de passe oublié ?</span>
-                    <input type="submit" value="se connecter" class="newPwd">
-                </form>
-            </div>
-            <div class="signUpDiv">
-                <a id="close"><img alt="cross" src="http://www27.atpages.jp/tasuku/work/paint_tool/img/batu.png"></a>
-                <div class="divTitle">
-                    <h1> vous n'êtes pas membre ?</h1></div>
-                <div class="divDescribeSite">
-                    <p>Que vous soyez un professionnel désireux d'apporter votre contribution, ou un membre à la recherche de soutien, n'attendez pas plus.</p>
-                    <p>Venez nous rejoindre !</p>
+        <div class="closePopUp">
+        </div>
+        <div class="formLog">
+            <form action="?action=login" method="POST">
+                <h2>connexion</h2>
+                <p>nom d'utilisateur</p>
+                <input type="text" name="pseudo" placeholder="entrer votre pseudo">
+                <div class="indicPassword notForUser">
+                    <p>Indication du mot de passe :</p>
+                    <span>Phrase d'indication de l'utilisateur</span> <!--TODO-->
                 </div>
-                <div class="divSubmitSignUp"><input type="submit" value="inscrivez-vous" class="btnSubmit"></div>
-            </div>
+                <p> mot de passe</p>
+                <input type="password" name="password" placeholder="entrer votre nouveau mot de passe">
+                <a href="#"><span class="passwordForget">mot de passe oublié ?</span></a>
+                <input type="submit" value="se connecter" class="newPwd">
+            </form>
+        </div>
+        <div class="signUpDiv">
+            <a><img alt="cross" src="http://www27.atpages.jp/tasuku/work/paint_tool/img/batu.png"></a>
+            <div class="divTitle"><h1> vous n'êtes pas membre ?</h1></div>
+            <div class="divDescribeSite"><p>Que vous soyez un professionnel désireux d'apporter votre contribution, ou un membre à la recherche de soutien, n'attendez pas plus.</p><p>Venez nous rejoindre !</p></div>
+            <div class="divSubmitSignUp"><input type="submit" value="inscrivez-vous" class="btnSubmit"></div>
         </div>
     </div>
 </div>

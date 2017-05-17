@@ -2482,3 +2482,26 @@ footer {
 .flex{
     display: flex;
 }
+
+.imgCross{
+    display: flex;
+    flex-direction:column;
+    flex-wrap: wrap;
+    justify-content:flex-start;
+    align-items: flex-end;
+    align-content:flex-end;
+}
+
+.imgCross img{
+    margin:0;
+}
+
+.titleSignUp img {
+    margin: 5px 0 0 5px;
+    width: 20px;
+    height: 20px;
+}
+
+.notForUser{
+    display:none;
+}

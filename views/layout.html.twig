@@ -10,16 +10,47 @@
 </head>
 <body>
 
-{% block header %} {% endblock %}
+{% if loggedIn == false %}
+    {% include 'disconnected/header.html.twig' %}
+{% endif %}
 
+<div id="modalWaiter"></div>
 {% block content %} {% endblock %}
+
+<footer>
+    <div class="footerContainer">
+        <div class="links">
+            <ul class=linksList>
+                <li><a href="?action=home">index</a></li>
+                <li><a href="?action=about">à propos</a></li>
+                <li><a href="?action=forum">forum</a></li>
+                <li><a href="proList.html">liste des professionnels</a></li>
+                <li><a href="#">nous soutenir</a></li>
+                <li><a href="ML.html">mentions légales</a></li>
+                <li><a href="?action=documentation&article=what">qu'est-ce que le cyber-bullying</a></li>
+                <li><a href="?action=documentation&article=gesture">les bons gestes</a></li>
+                <li><a href="?action=documentation&article=who">quels recours</a></li>
+                <li><a href="?action=documentation&article=ressources">ressources externes</a></li>
+            </ul>
+        </div>
+        <div class="logoRights">
+            <div class="logo">
+                <a href="#"><img src="web/style/img/logoTwitter.png" alt="logo twitter" class="twitter"></a>
+                <a href="#"><img src="web/style/img/logoFb.png" alt="logo facebook" class="facebook"></a>
+            </div>
+            <span class="copyrights">@ Bull-E 2017 / Tous droits réservés</span>
+        </div>
+    </div>
+</footer>
+
 <div id="debug">
     <pre>
         {{ dump() }}<!-- your variables! -->
     </pre>
 </div>
 
-
-{% block script %}{% endblock %}
+{% if loggedIn == false %}
+    <script src="web/JS/disconnected/whole.js"></script>
+{% endif %}
 </body>
 </html>
