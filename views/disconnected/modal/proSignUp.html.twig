@@ -10,30 +10,37 @@
                 <div class="containerInputSignUp">
                     <div class="divLeftSignUp">
                         <div class="inputTextSignUp">
-                            <p>nom d'utilisateur*</p>
-                            <input type="text" placeholder="Entrer votre nom d'utilisateur">
+                            <label for="username">
+                                <p>nom d'utilisateur*</p>
+                            </label>
+                            <input type="text" placeholder="Entrer votre nom d'utilisateur" name="username" id="username">
                             <!--TODO-->
                         </div>
                         <div class="inputTextSignUp">
-                            <p>mot de passe*</p>
-                            <input type="password" placeholder="entrer votre mot de passe">
+                            <label for="password">
+                                <p>mot de passe*</p>
+                            </label>
+                            <input type="password" placeholder="entrer votre mot de passe" name="password" id="password">
                             <!--TODO-->
                         </div>
 
                     </div>
-                    <div class="divRightSingUp">
+                    <div class="divRightSignUp">
                         <div class="inputTextSignUp">
                             <p>profession*</p>
                             <select class="listProfession">
-                                <option value="choose">choisissez votre profession</option> <!-- TODO -->
+                                <option value="choose">choisissez votre profession</option>
+                                <!-- TODO -->
                                 <option value="psy">psychologue</option>
                                 <option value="juriste">juriste</option>
                             </select>
                             <!--TODO-->
                         </div>
                         <div class="inputTextSignUp">
-                            <p>confirmation mot de passe</p>
-                            <input type="password" placeholder="confirmer votre mot de passe">
+                            <label for="confirmPassword">
+                                <p>confirmation mot de passe</p>
+                            </label>
+                            <input type="password" placeholder="confirmer votre mot de passe" name="confirmPassword" id="confirmPassword">
                             <!--TODO -->
                         </div>
                     </div>
@@ -41,20 +48,39 @@
 
                 <div class="centerDivSignUp">
                     <div>
-                        <p>indication mot de passe*</p>
-                        <input type="text" placeholder="écrivez une indication en cas d'oubli de votre mot de passe">
+                        <label for="hintPassword">
+                            <p>indication mot de passe*</p>
+                        </label>
+                        <input type="text" placeholder="écrivez une indication en cas d'oubli de votre mot de passe" name="hintPassword" id="hintPassword">
                     </div>
+                </div>
+
+                <div class="emailGender">
                     <div>
-                        <p>adresse email*</p>
-                        <input type="text" placeholder="entrer votre adresse email">
+                        <label for="email">
+                            <p>adresse email*</p>
+                        </label>
+                        <input type="email" placeholder="entrer votre adresse email" name="email" id="email">
                         <!-- TODO adresse mail-->
+                    </div>
+                    <div class="inputTextSignUp">
+                        <p>genre*</p>
+                        <select class="listProfession">
+                            <option value="choose">choisissez votre genre</option>
+                            <!-- TODO -->
+                            <option value="psy">femme</option>
+                            <option value="juriste">homme</option>
+                        </select>
+                        <!--TODO-->
                     </div>
                 </div>
 
                 <div class="postalCode">
                     <div class="inputTextSignUp">
-                        <p>code postal</p>
-                        <input type="text" class="postalInput" placeholder="entrez votre code postal">
+                        <label for="location">
+                            <p>code postal</p>
+                        </label>
+                        <input type="text" class="postalInput" placeholder="entrez votre code postal" name="postalCode" id="location">
                         <!--TODO code postal-->
                     </div>
                     <div class="buttonBottom">

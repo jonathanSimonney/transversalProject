@@ -74,6 +74,26 @@ class DefaultController extends BaseController
         $this->simplyShowPage('both/contact.html.twig');
     }
 
+    public function showSignInAction()
+    {
+        $this->simplyShowPage('disconnected/modal/signIn.html.twig');
+    }
+
+    public function showSignUpAction()
+    {
+        $this->simplyShowPage('disconnected/modal/signUp.html.twig');
+    }
+
+    public function showProSignUpAction()
+    {
+        $this->simplyShowPage('disconnected/modal/proSignUp.html.twig');
+    }
+
+    public function showVictimSignUpAction()
+    {
+        $this->simplyShowPage('disconnected/modal/victimSignUp.html.twig');
+    }
+
     public function showDocPageAction()
     {
         $article = $_GET['article'] ?? 'what';

@@ -5,14 +5,14 @@
         <div class="formLog">
             <form action="?action=login" method="POST">
                 <h2>connexion</h2>
-                <p>nom d'utilisateur</p>
-                <input type="text" name="pseudo" placeholder="entrer votre pseudo">
+                <label for="pseudo"><p>nom d'utilisateur</p></label>
+                <input type="text" placeholder="entrer votre pseudo" name="pseudo" id="pseudo">
                 <div class="indicPassword notForUser">
                     <p>Indication du mot de passe :</p>
                     <span>Phrase d'indication de l'utilisateur</span> <!--TODO-->
                 </div>
-                <p> mot de passe</p>
-                <input type="password" name="password" placeholder="entrer votre nouveau mot de passe">
+                <label for="password"><p>mot de passe</p></label>
+                <input type="password" placeholder="entrer votre nouveau mot de passe"  name="password" id="password">
                 <a href="#"><span class="passwordForget">mot de passe oublié ?</span></a>
                 <input type="submit" value="se connecter" class="newPwd">
             </form>

@@ -554,6 +554,9 @@ nav {
     display: flex;
     flex-direction: column;
     align-items: center;
+    align-content: center;
+    justify-content: center;
+    margin: 0 0 40px 0;
 }
 
 .profilePicture img {
@@ -865,7 +868,7 @@ nav {
 
 .categories div {
     padding: 10px 0 0 0;
-    height: 50px;
+    height: 35px;
 }
 
 .categories div:hover {
@@ -1852,6 +1855,12 @@ form {
     min-width: 455px;
 }
 
+.containerSignUp p {
+    margin: 5px 0 5px 0;
+    font-size: 12px;
+    margin: 15px 0 5px 0;
+}
+
 .containerInputSignUp {
     display: flex;
     flex-direction: row;
@@ -1863,15 +1872,6 @@ form {
 
 .divLeftSignUp {
     margin: 0 30px 0 0;
-}
-
-.inputTextSignUp {
-    margin-top: 15px;
-    font-size: 12px;
-}
-
-.inputTextSignUp p {
-    margin: 5px 0 5px 0;
 }
 
 .containerInputSignUp .inputTextSignUp input {
@@ -1931,22 +1931,36 @@ form {
     justify-content: flex-start;
 }
 
-.centerDivSignUp p {
-    margin: 5px 0 5px 0;
-    font-size: 12px;
-    margin-top: 15px;
-}
-
 .centerDivSignUp input {
-
     font-weight: normal;
     background: transparent;
     text-transform: uppercase;
     font-size: 9px;
     height: 40px;
-    width: 98%;
+    width: 99%;
     border: 2px #A67E96 solid;
-    padding: 0 0 0 10px;
+    padding: 0 0 0 15px;
+}
+
+.emailGender {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    align-content: center;
+    justify-content: space-between;
+}
+
+.emailGender input {
+    font-weight: normal;
+    background: transparent;
+    text-transform: uppercase;
+    font-size: 9px;
+    height: 40px;
+    width: 200px;
+    border: 2px #A67E96 solid;
+    padding: 0 0 0 15px;
+    margin: 0 35px 0 0;
 }
 
 .postalCode {
@@ -1956,7 +1970,7 @@ form {
 }
 
 .postalInput {
-font-weight: normal;
+    font-weight: normal;
     background: transparent;
     text-transform: uppercase;
     font-size: 9px;
@@ -1968,8 +1982,8 @@ font-weight: normal;
 }
 
 .buttonBottom {
-        display: flex;
-        align-items: flex-end;
+    display: flex;
+    align-items: flex-end;
 }
 
 .inputButtonSignUp {
@@ -1980,6 +1994,11 @@ font-weight: normal;
     height: 43px;
     border: 0;
     color: #FFFFFF;
+    transition: all 0.3s ease;
+}
+
+.inputButtonSignUp:hover {
+    background-color: #962959;
 }
 
 
@@ -2005,7 +2024,9 @@ font-weight: normal;
 
 /* END FORGOT PWD */
 
+
 /* POPUP FORGOT PWD */
+
 .messageForgot {
     color: #4c4a4e;
     background: #F2F2F2;
@@ -2016,10 +2037,14 @@ font-weight: normal;
     align-items: center;
     align-content: center;
 }
+
 .messageForgot div {
     width: 75%;
 }
+
+
 /* END POPUP FORGOT PWD */
+
 
 /* CHOOSE SIGN UP */
 
@@ -2114,6 +2139,7 @@ font-weight: normal;
 
 
 /* END CHOOSE SIGN UP */
+
 
 /* LIST PRO */
 
@@ -2479,21 +2505,22 @@ footer {
 
 
 /*MY ADDON (sorry, no time to make everything clean */
-.flex{
+
+.flex {
     display: flex;
 }
 
-.imgCross{
+.imgCross {
     display: flex;
-    flex-direction:column;
+    flex-direction: column;
     flex-wrap: wrap;
-    justify-content:flex-start;
+    justify-content: flex-start;
     align-items: flex-end;
-    align-content:flex-end;
+    align-content: flex-end;
 }
 
-.imgCross img{
-    margin:0;
+.imgCross img {
+    margin: 0;
 }
 
 .titleSignUp img {
@@ -2502,6 +2529,6 @@ footer {
     height: 20px;
 }
 
-.notForUser{
-    display:none;
+.notForUser {
+    display: none;
 }

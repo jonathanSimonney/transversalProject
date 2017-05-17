@@ -3,6 +3,10 @@ routes:
     about:                  'Default:showAboutPage:both:get'
     forum:                  'Default:showForumPage:both:get' #not functional
     contact:                'Default:showContactPage:both:get' #not functionnal
+    getSignInModal:         'Default:showSignIn:disconnected:get'
+    getSignUpModal:         'Default:showSignUp:disconnected:get'
+    getProSignUpModal:      'Default:showProSignUp:disconnected:get'
+    getVictimSignUpModal:   'Default:showVictimSignUp:disconnected:get'
     documentation:          'Default:showDocPage:both:get'
     logout:                 'User:logout:connected:post'
     login:                  'User:login:disconnected:post'

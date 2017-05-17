@@ -1,20 +1,20 @@
 $('#signIn').click(function (e) {
     e.preventDefault();
-    openModal('views/disconnected/modal/signIn.html.twig', $('#modalWaiter'));
+    openModal('?action=getSignInModal', $('#modalWaiter'));
 });
 
 $('#signUp').click(function (e) {
     e.preventDefault();
-    openModal('views/disconnected/modal/signUp.html.twig', $('#modalWaiter'), function () {
+    openModal('?action=getSignUpModal', $('#modalWaiter'), function () {
         $('#victimSignUp').click(function () {
-            openModal('views/disconnected/modal/victimSignUp.html.twig', $('#modalWaiter'));
+            openModal('?action=getVictimSignUpModal', $('#modalWaiter'));
         });
         $('#proSignUp').click(function () {
-            openModal('views/disconnected/modal/proSignUp.html.twig', $('#modalWaiter'));
+            openModal('?action=getProSignUpModal', $('#modalWaiter'));
         });
         $('#signInModal').click(function (e) {
             e.preventDefault();
-            openModal('views/disconnected/modal/signIn.html.twig', $('#modalWaiter'));
+            openModal('?action=getSignInModal', $('#modalWaiter'));
         })
     });
 });
