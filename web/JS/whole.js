@@ -14,6 +14,7 @@ function jqueryAsynchronousTreatment(path, data, responseFunction, successFunc, 
     $.ajax({
         url: path,
         type: 'post',
+        processData:false,
         dataType: 'json',
         data: data,
         success: function(serverData, statut) {

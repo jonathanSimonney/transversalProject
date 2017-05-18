@@ -119,7 +119,7 @@ class DefaultController extends BaseController
 
     public function showAccountPageAction()
     {
-       $data = [];
+        $data = [];
         $data['currentUser']['contact'] = $this->getAndSetContact();
         $this->simplyShowPage('connected/account.html.twig', $data);
     }
@@ -144,7 +144,7 @@ class DefaultController extends BaseController
         return $_SESSION['currentUser']['data']['contact'];
     }
 
-    private function simplyShowPage($pagePath, $data = [])
+    protected function simplyShowPage($pagePath, $data = [])
     {
         $data['loggedIn'] = false;
         if (isset($_SESSION['currentUser']))

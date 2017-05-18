@@ -70,7 +70,7 @@ class MailManager extends BaseManager
 
             return $ret;
         }
-        return null;
+        return [];
     }
 
     public function getAllSentEmail($id)
@@ -87,7 +87,7 @@ class MailManager extends BaseManager
 
             return $ret;
         }
-        return null;
+        return [];
     }
 
     public function downloadPj($idMail)

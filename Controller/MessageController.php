@@ -11,7 +11,7 @@ namespace Controller;
 
 use Model\MailManager;
 
-class MessageController extends BaseController
+class MessageController extends DefaultController
 {
     protected $mailManager;
 
@@ -24,7 +24,7 @@ class MessageController extends BaseController
     public function sendMessageAction()
     {
         $_SESSION['errorMessage'] = [];
-        if ($this->formManager->checkRequiredField(['object', 'dest', 'content']) && $this->formManager->checkLengthField(['object'], 255))
+        if ($this->formManager->checkRequiredField(['object', 'dest', 'content']) && $this->formManager->checkMaxLengthField(['object'], 255))
         {
             if ($this->mailManager->canSendMail())
             {
@@ -33,12 +33,17 @@ class MessageController extends BaseController
             else
             {
                 $this->logManager->generateAccessMessage('tried to send a mail to '.$_POST['dest'], 'security');
+                $_SESSION['errorMessage']['dest'] = 'This person is not in your contact!';
             }
         }
 
         if (count($_SESSION['errorMessage']) !== 0)
         {
-            echo json_encode($_SESSION['errorMessage']);
+            echo json_encode(['formOk' => false, 'error' => $_SESSION['errorMessage']]);
+        }
+        else
+        {
+            echo json_encode(['formOk' => true]);
         }
     }
 
@@ -63,13 +68,26 @@ class MessageController extends BaseController
         }
     }
 
-    public function getReceivedMessageAction()
+    public function showInboxAction()
+    {
+        $data = [];
+        $data['currentUser']['contact'] = $this->getAndSetContact();
+        $data['currentUser']['message'] = $this->mailManager->getAllReceivedEmail($_SESSION['currentUser']['data']['id']);
+        $this->simplyShowPage('connected/inbox.html.twig', $data);
+    }
+
+    public function sendMessageFormAction()
+    {
+        $this->simplyShowPage('connected/sendMessageForm.html.twig');
+    }
+
+    /*public function getReceivedMessageAction()
     {
         $data['currentUser'] = $_SESSION['currentUser']['data'];
         $data['currentUser']['message'] = $this->mailManager->getAllReceivedEmail($_SESSION['currentUser']['data']['id']);
         $data['type'] = 'received';
         echo $this->renderView('connected/mailList.html.twig', $data);
-    }
+    }*/
 
     public function getSentMessageAction()
     {

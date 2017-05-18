@@ -1,0 +1,65 @@
+{%  extends 'layout.html.twig' %}
+
+{% block content %}
+<div class="profileMain">
+    <div class="accountMenu">
+        <div class="accountSelect">
+            <a href="?action=account">
+                <p><span>retour au profil</span></p>
+            </a>
+            <div class="accountUnderline"></div>
+            <a href="#" id="writeNewMessage">
+                <p class="newMsg">nouveau message</p>
+            </a>
+            <div class="categories">
+                <div>
+                    <a href="?action=inbox"><span class="categoriesName">Boîte de réception</span></a>
+                </div>
+                <div>
+                    <a href="invalid!"><span class="categoriesName">Envoyés</span></a>
+                </div>
+            </div>
+            <div class="accountUnderline"></div>
+            <a href="#">
+                <p>mes contacts</p>
+            </a>
+        </div>
+        {% for key, name in currentUser['contact'] %}
+            <div class="accountContacts">
+                <span>{{ key }}</span>
+                <span class="status">disponible</span>
+            </div>
+        {% endfor %}
+    </div>
+    <div class="accountContent" id="receptor">
+        <div class="topPart">
+            <div>
+                <span>Boîte de réception</span> (9 non lus)</div>
+            <!-- TODO ADD NUMBER OF UNSEEN MESSAGES -->
+            <div>
+                <input type="text" placeholder="rechercher destinataire...">
+            </div>
+        </div>
+        <div class="inboxInfo">
+            <div class="inboxActions">
+                <button>envoyer</button><button>archiver</button><button>supprimer</button>
+            </div>
+            <div class="inboxUnderline"></div>
+            <div class="typeOfInfo">
+                <input type="checkbox" id="selectedMail" class="checkbox" value="mail">
+                <div class="content">
+                    <div class="nameDate">
+                        <span class="name">Charlie Parker</span><span class="date">28 Oct.</span>
+                        <!-- TODO ADD USERNAME AND DATE -->
+                    </div>
+                    <p>lorem ipsum dolor sit amet, consectetur aipiscing...</p>
+                    <!-- TODO ADD CONTENT OF MESSAGE -->
+                </div>
+            </div>
+            <div class="inboxUnderline"></div>
+        </div>
+    </div>
+</div>
+
+    <script src="web/JS/connected/inbox.js"></script>
+{% endblock %}
