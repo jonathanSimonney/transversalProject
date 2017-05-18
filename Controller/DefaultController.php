@@ -119,12 +119,29 @@ class DefaultController extends BaseController
 
     public function showAccountPageAction()
     {
-        $this->simplyShowPage('connected/account.html.twig');
+       $data = [];
+        $data['currentUser']['contact'] = $this->getAndSetContact();
+        $this->simplyShowPage('connected/account.html.twig', $data);
     }
 
     public function showModifAccountPageAction()
     {
         $this->simplyShowPage('connected/accountModify.html.twig');
+    }
+
+    protected function getAndSetContact()
+    {
+        if ($_SESSION['currentUser']['data']['type'] === 'victime')
+        {
+            $this->userManager = VictimManager::getInstance();
+        }
+        else
+        {
+            $this->userManager = ProManager::getInstance();
+        }
+
+        $_SESSION['currentUser']['data']['contact'] = $this->userManager->getContact();
+        return $_SESSION['currentUser']['data']['contact'];
     }
 
     private function simplyShowPage($pagePath, $data = [])

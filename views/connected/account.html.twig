@@ -4,7 +4,7 @@
     <div class="profileMain">
         <div class="accountMenu">
             <div class="accountSelect">
-                <a href="accountPRO.html">
+                <a href="?action=account">
                     <p><span>mon profil</span></p>
                 </a>
                 <div class="accountUnderline"></div>
@@ -16,10 +16,13 @@
                     <p>mes contacts</p>
                 </a>
             </div>
-            <div class="accountContacts">
-                <span>Pierre</span> <!-- TODO ADD NAME CONTACT -->
-                <span class="status">disponible</span>
-            </div>
+            {% for key, name in currentUser['contact'] %}
+                <div class="accountContacts">
+                    <span>{{ key }}</span>
+                    <span class="status">disponible</span>
+                </div>
+            {% endfor %}
+
         </div>
         <div class="accountContent" id="receptor">
             <div class="topPart"></div>
