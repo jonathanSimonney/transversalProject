@@ -117,6 +117,16 @@ class DefaultController extends BaseController
         $this->simplyShowPage('both/documentation.html.twig', $data);
     }
 
+    public function showAccountPageAction()
+    {
+        $this->simplyShowPage('connected/account.html.twig');
+    }
+
+    public function showModifAccountPageAction()
+    {
+        $this->simplyShowPage('connected/accountModify.html.twig');
+    }
+
     private function simplyShowPage($pagePath, $data = [])
     {
         $data['loggedIn'] = false;

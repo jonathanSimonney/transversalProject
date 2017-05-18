@@ -26,4 +26,6 @@ routes:
     activateAccount:        'User:activateAccount:connected:post'
     suppressAccount:        'User:suppressAccount:connected:post'
     rejectPro:              'Pro:suppressCandidate:connected:post'
+    account:                'Default:showAccountPage:connected:get'
+    accountModif:           'Default:showModifAccountPage:connected:get'
 defaut_route: 'home'

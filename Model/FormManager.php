@@ -88,7 +88,7 @@ class FormManager extends BaseManager
 
         $temp = $_SESSION['errorMessage'];
 
-        if ($this->checkRequiredField(['newPassword', 'confirmationOfPassword']))
+        if (!$this->checkEmptyField(['newPassword', 'confirmationOfPassword']))
         {
             $this->checkPassword($_POST['newPassword'], $_POST['confirmationOfPassword']);
         }
@@ -99,6 +99,20 @@ class FormManager extends BaseManager
         }
 
         return $this->getArrayReturned($_SESSION['errorMessage'], 'Your change have been registered.');
+    }
+
+    public function checkEmptyField(array $arrayEmptyField)
+    {
+        $ret = true;
+        foreach ($arrayEmptyField as $item)
+        {
+            if ($this->requiredField($item) === true && $ret === true)//DO NOT CHANGE!!!
+            {
+                $ret = false;
+            }
+        }
+
+        return $ret;
     }
 
     public function checkRequiredField(array $arrayRequiredField)
@@ -173,7 +187,7 @@ class FormManager extends BaseManager
         $re = '/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/';
         if (preg_match($re, $potentialEmail) !== 1)
         {
-            $_SESSION['errorMessage']['email'] .= 'Invalid adress. ';
+            $_SESSION['errorMessage']['email'] = 'Invalid adress. ';
         }
     }
 

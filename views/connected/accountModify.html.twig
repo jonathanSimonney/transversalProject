@@ -1,0 +1,61 @@
+<div class="topPart"></div>
+<form id="changeData">
+<div class="accountInfo">
+        <div class="accountUnderline"></div>
+        <div class="typeOfInfo">
+            <div class="nameOfInfo"><label for="formPseudo">nom d'utilisateur</label></div>
+            <div class="valueInfo"><input type="text" value = "{{ currentUser['pseudo'] }}" name="pseudo" id="formPseudo" placeholder="enter your pseudo"></div>
+        </div>
+        <div class="accountUnderline"></div>
+        <div class="typeOfInfo">
+            <div class="nameOfInfo"><label for="oldPassword">ancien mot de passe</label></div>
+            <div class="valueInfo"><input name="oldPassword" id="oldPassword" type="password" class="previousPwd" placeholder="*****"></div>
+        </div>
+        <div class="accountUnderline"></div>
+        <div class="typeOfInfo">
+            <div class="nameOfInfo"><label for="newPassword">nouveau mot de passe</label></div>
+            <div class="valueInfo"><input id="newPassword" name="newPassword" type="password" class="newPwd" placeholder="*****"></div>
+        </div>
+        <div class="accountUnderline"></div>
+        <div class="typeOfInfo">
+            <div class="nameOfInfo"><label for="confirmPassword">confirmation</label></div>
+            <div class="valueInfo"><input type="password" name="confirmationOfPassword" id="confirmPassword" class="confirmNewPwd" placeholder="*****"></div>
+        </div>
+        <div class="accountUnderline"></div>
+        <div class="typeOfInfo">
+            <div class="nameOfInfo"><label for="indic">indication mot de passe</label></div>
+            <div class="valueInfo"><input value="{{ currentUser['indic'] }}" id="indic" type="text" placeholder="indication to find back your password" name="indic"></div>
+        </div>
+        <div class="accountUnderline"></div>
+        <div class="typeOfInfo">
+            <div class="nameOfInfo"><label for="email">e-mail</label></div>
+            <div class="valueInfo"><input name="email" value="{{ currentUser['email'] }}" type="text" id="email" placeholder="enter your email"></div>
+        </div>
+        <div class="accountUnderline"></div>
+        <div class="typeOfInfo">
+            {% if currentUser['type'] == 'victime' %}
+                <div class="nameOfInfo">date de naissance</div>
+                <div class="valueInfo">{{ currentUser['birthdate'] }}</div>
+            {% else %}
+                <div class="nameOfInfo">profession</div>
+                <div class="valueInfo">
+                    {% if currentUser['type'] == 'psy' %}
+                        psychologue
+                    {% else %}
+                        juriste
+                    {% endif %}
+                </div>
+            {% endif %}
+        </div>
+        <div class="accountUnderline"></div>
+        <div class="typeOfInfo">
+            <div class="nameOfInfo"><label for="location">département</label></div>
+            <div class="valueInfo"><input type="text" value="{{ currentUser['location'] }}" name="location" id="location"></div>
+        </div>
+        <div class="accountUnderline"></div>
+    <div class="accountEdit">
+        <input type="submit" value="annuler" id="cancelEdit" class="cancelBtn">
+        <input type="submit" value="enregistrer" id="saveEdit" class="contactBtn">
+    </div>
+</div>
+</form>

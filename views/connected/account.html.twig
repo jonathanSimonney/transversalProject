@@ -1,0 +1,77 @@
+{%  extends 'layout.html.twig' %}
+
+{% block content %}
+    <div class="profileMain">
+        <div class="accountMenu">
+            <div class="accountSelect">
+                <a href="accountPRO.html">
+                    <p><span>mon profil</span></p>
+                </a>
+                <div class="accountUnderline"></div>
+                <a href="inbox.html">
+                    <p>messagerie</p>
+                </a>
+                <div class="accountUnderline"></div>
+                <a href="#">
+                    <p>mes contacts</p>
+                </a>
+            </div>
+            <div class="accountContacts">
+                <span>Pierre</span> <!-- TODO ADD NAME CONTACT -->
+                <span class="status">disponible</span>
+            </div>
+        </div>
+        <div class="accountContent" id="receptor">
+            <div class="topPart"></div>
+            <div class="accountInfo">
+                <div class="accountUnderline"></div>
+                <div class="typeOfInfo">
+                    <div class="nameOfInfo">nom d'utilisateur</div>
+                    <div class="valueInfo">{{ currentUser['pseudo'] }}</div>
+                </div>
+                <div class="accountUnderline"></div>
+                <div class="typeOfInfo">
+                    <div class="nameOfInfo">mot de passe</div>
+                    <div class="valueInfo">*******</div>
+                </div>
+                <div class="accountUnderline"></div>
+                <div class="typeOfInfo">
+                    <div class="nameOfInfo">indication mot de passe</div>
+                    <div class="valueInfo">{{ currentUser['indic'] }}</div>
+                </div>
+                <div class="accountUnderline"></div>
+                <div class="typeOfInfo">
+                    <div class="nameOfInfo">e-mail</div>
+                    <div class="valueInfo">{{ currentUser['email'] }}</div>
+                </div>
+                <div class="accountUnderline"></div>
+                <div class="typeOfInfo">
+                    {% if currentUser['type'] == 'victime' %}
+                        <div class="nameOfInfo">date de naissance</div>
+                        <div class="valueInfo">{{ currentUser['birthdate'] }}</div>
+                    {% else %}
+                        <div class="nameOfInfo">profession</div>
+                        <div class="valueInfo">
+                            {% if currentUser['type'] == 'psy' %}
+                                psychologue
+                            {% else %}
+                                juriste
+                            {% endif %}
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="accountUnderline"></div>
+                <div class="typeOfInfo">
+                    <div class="nameOfInfo">département</div>
+                    <div class="valueInfo">{{ currentUser['location'] }}</div>
+                </div>
+                <div class="accountUnderline"></div>
+                <div class="accountEdit">
+                    <input type="submit" id="enableModif" value="modifier" class="contactBtn">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="web/JS/connected/account.js"></script>
+{% endblock %}

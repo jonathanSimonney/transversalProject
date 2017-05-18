@@ -61,7 +61,6 @@ class UserController extends BaseController
             $errorMessage['formOk'] = false;
         }
 
-
         if (!$errorMessage['formOk'])
         {
             echo json_encode(['invalid', 'reason' => $errorMessage[0]]);

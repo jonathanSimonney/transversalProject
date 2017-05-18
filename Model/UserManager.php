@@ -87,12 +87,12 @@ class UserManager extends BaseManager
     {
         if (empty($data['username']) || empty($data['password']))
         {
-            return [false, 'field empty', []];
+            return [false, 'champ vide', []];
         }
         $user = $this->getUserByUsername($data['username']);
         if ($user === false)
         {
-            return [false, 'unregistered user', []];
+            return [false, 'utilisateur non enregistré', []];
         }
 
         return [password_verify($data['password'], $user['password']), 'password', $user['indic']];
