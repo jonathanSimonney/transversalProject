@@ -38,21 +38,22 @@
         </div>
         <div class="inboxInfo">
             <div class="inboxActions">
-                <button>supprimer</button>
+                <button id="suppressEmail">supprimer</button>
             </div>
+
             <div class="inboxUnderline"></div>
-            <div class="typeOfInfo">
-                <input type="checkbox" id="selectedMail" class="checkbox" value="mail">
-                <div class="content">
-                    <div class="nameDate">
-                        <span class="name">Charlie Parker</span><span class="date">28 Oct.</span>
-                        <!-- TODO ADD USERNAME AND DATE -->
+            {% for mail in message %}
+                <div class="typeOfInfo">
+                    <input type="checkbox" class="checkbox checkboxMailId" value="{{ mail['id'] }}" name="mailId">
+                    <div class="content">
+                        <div class="nameDate">
+                            <span class="name">{{ mail['sender']['pseudo'] }}</span>
+                        </div>
+                        <p>{{ mail['shortObject'] }}</p>
                     </div>
-                    <p>lorem ipsum dolor sit amet, consectetur aipiscing...</p>
-                    <!-- TODO ADD CONTENT OF MESSAGE -->
                 </div>
-            </div>
-            <div class="inboxUnderline"></div>
+                <div class="inboxUnderline"></div>
+            {% endfor %}
         </div>
     </div>
 </div>

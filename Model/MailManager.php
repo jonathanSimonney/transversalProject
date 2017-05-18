@@ -66,6 +66,7 @@ class MailManager extends BaseManager
                 $mail['sender'] = $this->DBManager->findOne('SELECT `id`, `pseudo`, `location`, `type` FROM users WHERE id = '.$mail['sender_id']);
                 $mail['receptor'] = $_SESSION['currentUser']['data'];
                 $mail['content'] = $this->formatOutputFileContent(file_get_contents('mail/'.$mail['id'].'/content.txt'));
+                $mail['shortObject'] = $this->shortenData($mail['object'], 50);
             }
 
             return $ret;
@@ -83,6 +84,7 @@ class MailManager extends BaseManager
                 $mail['sender'] = $_SESSION['currentUser']['data'];
                 $mail['receptor'] = $this->DBManager->findOne('SELECT `id`, `pseudo`, `location`, `type` FROM users WHERE id = '.$mail['receptor_id']);
                 $mail['content'] = $this->formatOutputFileContent(file_get_contents('mail/'.$mail['id'].'/content.txt'));
+                $mail['shortObject'] = $this->shortenData($mail['object'], 50);
             }
 
             return $ret;
@@ -184,5 +186,14 @@ class MailManager extends BaseManager
         // Make the browser display the Save As dialog
         header('Content-Disposition: attachment; filename=' . $fileName);
         readfile($filePath);
+    }
+
+    protected function shortenData(string $data, int $maxlength)
+    {
+        if (strlen($data) < $maxlength)
+        {
+            return $data;
+        }
+        return substr($data, 0, $maxlength - 3).'...';
     }
 }

@@ -61,6 +61,7 @@ class MessageController extends DefaultController
     {
         if ($this->mailManager->canActOnEmail($_POST['notForUser'])){
             $this->mailManager->suppressMail($_POST['notForUser']);
+            echo json_encode('suppression successful!');
         }
         else
         {
