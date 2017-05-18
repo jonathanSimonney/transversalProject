@@ -22,6 +22,7 @@ $('#suppressEmail').click(function () {
         if (value.checked){
             jqueryAsynchronousTreatment('?action=suppressMessage', {'notForUser': $(value).val()}, debugAnswer, function (serverData) {
                 $(value).parent().remove();
+                $('#messageNumber').text(parseInt($('#messageNumber').text()) - 1);
             });
         }
     })
