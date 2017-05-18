@@ -98,6 +98,14 @@ class FormManager extends BaseManager
             $_SESSION['errorMessage'] = $temp;
         }
 
+        if ($_SESSION['currentUser']['data']['type'] !== 'victime' )
+        {
+            if ($this->checkRequiredField(['freeSlot']) && $_POST['freeSlot'] < 0)
+            {
+                $_SESSION['errorMessage']['freeSlot'] = 'must be non negative number!';
+            }
+        }
+
         return $this->getArrayReturned($_SESSION['errorMessage'], 'Your change have been registered.');
     }
 

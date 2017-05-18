@@ -34,15 +34,11 @@
     <div class="accountContent" id="receptor">
         <div class="topPart">
             <div>
-                <span>Boîte de réception</span> (9 non lus)</div>
-            <!-- TODO ADD NUMBER OF UNSEEN MESSAGES -->
-            <div>
-                <input type="text" placeholder="rechercher destinataire...">
-            </div>
+                <span>Boîte de réception</span> {{ message|length }} messages</div>
         </div>
         <div class="inboxInfo">
             <div class="inboxActions">
-                <button>envoyer</button><button>archiver</button><button>supprimer</button>
+                <button>supprimer</button>
             </div>
             <div class="inboxUnderline"></div>
             <div class="typeOfInfo">

@@ -67,7 +67,14 @@ class UserController extends BaseController
         }
         else
         {
-            $this->userManager->updateData(['pseudo' => $_POST['pseudo'], 'password' => $_POST['newPassword'], 'indic' => $_POST['indic'], 'email' => $_POST['email'], 'location' => $_POST['location']]);
+            if ($_SESSION['currentUser']['data']['type'] !== 'victime')
+            {
+                $this->userManager->updateData(['pseudo' => $_POST['pseudo'], 'free_slot' => $_POST['freeSlot'], 'password' => $_POST['newPassword'], 'indic' => $_POST['indic'], 'email' => $_POST['email'], 'location' => $_POST['location']]);
+            }
+            else
+            {
+                $this->userManager->updateData(['pseudo' => $_POST['pseudo'], 'password' => $_POST['newPassword'], 'indic' => $_POST['indic'], 'email' => $_POST['email'], 'location' => $_POST['location']]);
+            }
             $this->logManager->generateAccessMessage('changed his data', 'access');
         }
     }

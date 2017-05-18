@@ -47,6 +47,15 @@
                 </div>
             {% endif %}
         </div>
+
+    {% if currentUser['type'] != 'victime' %}
+        <div class="accountUnderline"></div>
+        <div class="typeOfInfo">
+            <div class="nameOfInfo"><label for="freeSlot">slot disponibles</label></div><!-- TODO add label and value and change form treatment!!! -->
+            <div class="valueInfo"><input name="freeSlot" value="{{ currentUser['free_slot'] }}" id="freeSlot" type="number"></div>
+        </div>
+    {% endif %}
+
         <div class="accountUnderline"></div>
         <div class="typeOfInfo">
             <div class="nameOfInfo"><label for="location">département</label></div>

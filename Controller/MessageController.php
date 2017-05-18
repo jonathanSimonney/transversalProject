@@ -72,7 +72,7 @@ class MessageController extends DefaultController
     {
         $data = [];
         $data['currentUser']['contact'] = $this->getAndSetContact();
-        $data['currentUser']['message'] = $this->mailManager->getAllReceivedEmail($_SESSION['currentUser']['data']['id']);
+        $data['message'] = $this->mailManager->getAllReceivedEmail($_SESSION['currentUser']['data']['id']);
         $this->simplyShowPage('connected/inbox.html.twig', $data);
     }
 
