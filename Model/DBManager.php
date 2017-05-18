@@ -66,7 +66,6 @@ class DBManager extends BaseManager
         $sth = $dbh->prepare($query);
         $sth->execute($data);
 
-        $data['id'] = $this->getLastInsertedId();
         //$this->sessionManager->updateSession('insert', $table, $data);
         return true;
     }

@@ -25,7 +25,7 @@ class ProController extends UserController
     {
         if ($_SESSION['currentUser']['data']['type'] === 'victime')
         {
-            $this->logManager->generateAccessMessage('tried to change his number of free slot(but he is a victim, not a pro!)', 'security');
+            $this->logManager->generateAccessMessage('tried to change his number of free slot(but he is a victime, not a pro!)', 'security');
         }
         else
         {

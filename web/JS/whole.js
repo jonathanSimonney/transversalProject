@@ -17,8 +17,9 @@ function jqueryAsynchronousTreatment(path, data, responseFunction, successFunc, 
         dataType: 'json',
         data: data,
         success: function(serverData, statut) {
+            console.log(successFunc, errorFunc);
             if (successFunc !== undefined){
-                successFunc();
+                successFunc(serverData);
             }
             if (errorFunc !== undefined){
                 errorFunc();
@@ -89,7 +90,6 @@ function openModal(htmlPath, receptor, additionalAction){
             receptor.html(serverData);
             $('#close').click(function (e) {
                 e.preventDefault();
-                //todo! use sessionManager to save their data! (And restore it when modal reopen!)
                if ($('#modalForm').length === 1){
                    saveFormData($('#modalForm'), htmlPath);
                }

@@ -1,0 +1,42 @@
+<header>
+    <div class="topContainer">
+        <div class="topHeader">
+            <div class="logoTitle">
+                <div><img src="web/style/img/logoBullE.png" alt="logo Bull-E"></div>
+                <a href="?action=home"><h1>Bull-E</h1></a>
+            </div>
+            <div class="accountProfile">
+                <input type="submit" value="rechercher un professionnel" class="signUp">
+            </div>
+            <div class="accessProfileMain">
+                <div class="signInUp accessProfile">
+                    <form action="GET" class="formLogIn">
+                        <p class="username"><a href="#">{{ currentUser['pseudo'] }}</a></p>
+                        <div class="myAccount">
+                            <p class="account"><a href="accountMEMBER.html">mon compte</a></p>
+                        </div>
+                    </form>
+                </div>
+                <div class="accountProfile">
+                    <img class="accountPicture" src="accountPicture.png" alt="account picture">
+                </div>
+            </div>
+        </div>
+    </div>
+    <nav class="navigation">
+        <ul class="menu">
+            <li><a href="?action=about">à propos</a></li>
+            <li><a href="?action=contact">contact</a></li>
+            <li><a href="?action=forum">forum</a></li>
+            <li class="documentation">
+                <a href="?action=documentation">documentation</a>
+                <ul>
+                    <li><a href="?action=documentation&article=what">Qu'est-ce que le cyber-bullying ?</a></li>
+                    <li><a href="?action=documentation&article=gesture">Les bons gestes</a></li>
+                    <li><a href="?action=documentation&article=who">Quels recours</a></li>
+                    <li><a href="?action=documentation&article=ressources">Ressources externes</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+</header>
