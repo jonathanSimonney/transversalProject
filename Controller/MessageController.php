@@ -77,28 +77,13 @@ class MessageController extends DefaultController
         $data = [];
         $data['currentUser']['contact'] = $this->getAndSetContact();
         $data['message'] = $this->mailManager->getAllReceivedEmail($_SESSION['currentUser']['data']['id']);
+        $data['receptorOrSender'] = 'sender';
         $this->simplyShowPage('connected/inbox.html.twig', $data);
     }
 
     public function sendMessageFormAction()
     {
         $this->simplyShowPage('connected/sendMessageForm.html.twig');
-    }
-
-    /*public function getReceivedMessageAction()
-    {
-        $data['currentUser'] = $_SESSION['currentUser']['data'];
-        $data['currentUser']['message'] = $this->mailManager->getAllReceivedEmail($_SESSION['currentUser']['data']['id']);
-        $data['type'] = 'received';
-        echo $this->renderView('connected/mailList.html.twig', $data);
-    }*/
-
-    public function getSentMessageAction()
-    {
-        $data['currentUser'] = $_SESSION['currentUser']['data'];
-        $data['currentUser']['message'] = $this->mailManager->getAllSentEmail($_SESSION['currentUser']['data']['id']);
-        $data['type'] = 'sent';
-        echo $this->renderView('connected/mailList.html.twig', $data);
     }
 
     public function showEmailAction()
@@ -111,8 +96,18 @@ class MessageController extends DefaultController
         else
         {
             $mail['content'] = $this->mailManager->formatOutputFileContent(file_get_contents('mail/'.$mail['id'].'/content.txt'));
-            $mail['sender'] = $this->userManager->getUserById($mail['sender_id'], '`id`, `pseudo`, `location`, `type`');
+            $mail['receptorOrSender'] = $_SESSION['currentUser']['data']['id'] === $mail['sender_id'] ? 'receptor' : 'sender';
+            $mail['person'] = $this->userManager->getUserById($mail[$mail['receptorOrSender'].'_id'], '`id`, `pseudo`, `location`, `type`');
             echo $this->renderView('connected/singleMail.html.twig', $mail);
         }
+    }
+
+    public function showSentMessageAction()
+    {
+        $data = [];
+        $data['currentUser']['contact'] = $this->getAndSetContact();
+        $data['message'] = $this->mailManager->getAllSentEmail($_SESSION['currentUser']['data']['id']);
+        $data['receptorOrSender'] = 'receptor';
+        $this->simplyShowPage('connected/inbox.html.twig', $data);
     }
 }

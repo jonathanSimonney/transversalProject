@@ -1,13 +1,19 @@
 <div class="topPart">
-    <span>{{ sender['pseudo'] }}</span>
+    <span>{{ person['pseudo'] }}</span>
 </div>
 <div class="inboxInfo">
     <div class="view">
         <div class="content">
             <div class="nameDate">
                 <div>
-                    <span class="categorie">De : </span>
-                    <span class="name">{{ sender['pseudo'] }}</span>
+                    <span class="categorie">
+                        {% if receptorOrSender == 'receptor' %}
+                            A :
+                        {% else %}
+                            De :
+                        {% endif %}
+                    </span>
+                    <span class="name">{{ person['pseudo'] }}</span>
                 </div>
             </div>
             <span class="categorie">Objet : </span><span class="titleMsg">{{ object }}</span>

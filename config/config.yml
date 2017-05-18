@@ -31,4 +31,5 @@ routes:
     inbox:                  'Message:showInbox:connected:get'
     showSendingMessageForm: 'Message:sendMessageForm:connected:get'
     showEmail:              'Message:showEmail:connected:get'
+    consultSentMessage:     'Message:showSentMessage:connected:get'
 defaut_route: 'home'
