@@ -30,4 +30,5 @@ routes:
     accountModif:           'Default:showModifAccountPage:connected:get'
     inbox:                  'Message:showInbox:connected:get'
     showSendingMessageForm: 'Message:sendMessageForm:connected:get'
+    showEmail:              'Message:showEmail:connected:get'
 defaut_route: 'home'

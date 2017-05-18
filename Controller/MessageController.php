@@ -10,15 +10,18 @@ namespace Controller;
 
 
 use Model\MailManager;
+use Model\UserManager;
 
 class MessageController extends DefaultController
 {
     protected $mailManager;
+    protected $userManager;
 
     public function __construct(\Twig_Environment $twig, $accessLevel, $requestMethod)
     {
         parent::__construct($twig, $accessLevel, $requestMethod);
         $this->mailManager = MailManager::getInstance();
+        $this->userManager = UserManager::getInstance();
     }
 
     public function sendMessageAction()
@@ -96,5 +99,20 @@ class MessageController extends DefaultController
         $data['currentUser']['message'] = $this->mailManager->getAllSentEmail($_SESSION['currentUser']['data']['id']);
         $data['type'] = 'sent';
         echo $this->renderView('connected/mailList.html.twig', $data);
+    }
+
+    public function showEmailAction()
+    {
+        $mail = $this->mailManager->getEmailById($_GET['id']);
+        if ($_SESSION['currentUser']['data']['id'] !== $mail['receptor_id'] && $_SESSION['currentUser']['data']['id'] !== $mail['sender_id'])
+        {
+            $this->logManager->generateAccessMessage('tried to read the mail of id '.$_GET['id'].', but he did not send it nor received it.');
+        }
+        else
+        {
+            $mail['content'] = $this->mailManager->formatOutputFileContent(file_get_contents('mail/'.$mail['id'].'/content.txt'));
+            $mail['sender'] = $this->userManager->getUserById($mail['sender_id'], '`id`, `pseudo`, `location`, `type`');
+            echo $this->renderView('connected/singleMail.html.twig', $mail);
+        }
     }
 }

@@ -1,0 +1,21 @@
+<div class="topPart">
+    <span>{{ sender['pseudo'] }}</span>
+</div>
+<div class="inboxInfo">
+    <div class="view">
+        <div class="content">
+            <div class="nameDate">
+                <div>
+                    <span class="categorie">De : </span>
+                    <span class="name">{{ sender['pseudo'] }}</span>
+                </div>
+            </div>
+            <span class="categorie">Objet : </span><span class="titleMsg">{{ object }}</span>
+            <div class="viewMessage">
+                <p>{{ content|raw }}</p>
+
+            </div>
+            <div class="inboxUnderline"></div>
+        </div>
+    </div>
+</div>

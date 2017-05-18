@@ -27,3 +27,10 @@ $('#suppressEmail').click(function () {
         }
     })
 });
+
+$('.typeOfInfo').click(function (e) {
+    if (!$(e.target).hasClass('checkboxMailId')){
+        var id = $(e.currentTarget).children('.checkboxMailId').val();
+        openModal('?action=showEmail&id='+id, $('#receptor'));
+    }
+});

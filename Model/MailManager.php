@@ -24,6 +24,11 @@ class MailManager extends BaseManager
         $this->logManager = LogManager::getInstance();
     }
 
+    public function getEmailById($id, string $fields = '*')
+    {
+        return $this->DBManager->findOneSecure('SELECT '.$fields.' FROM mail WHERE id = :id', ['id' => $id]);
+    }
+
     public function canSendMail()
     {
         return isset($_SESSION['currentUser']['data']['contact'][$_POST['dest']]);
@@ -143,7 +148,7 @@ class MailManager extends BaseManager
         return array_merge($received, $sent);
     }
 
-    protected function formatOutputFileContent($fileContent)
+    public function formatOutputFileContent($fileContent)//todo move with public function, and REFACTORISE FOR BETTER ORGANISATION! SUPPRESS USELESS FUNCTIONS, AND SO ON!
     {
         $ret = preg_replace('/\n/','<br>',$fileContent);
         return preg_replace('/\s/','&nbsp;',$ret);

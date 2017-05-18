@@ -17,10 +17,10 @@ class UserManager extends BaseManager
 
     public function getContact(){}
 
-    public function getUserById($id)
+    public function getUserById($id, $data = '*')
     {
         $id = (int)$id;
-        return $this->DBManager->findOne('SELECT * FROM users WHERE id = '.$id);
+        return $this->DBManager->findOneSecure('SELECT '.$data.' FROM users WHERE id = :id', ['id' => $id]);
     }
     
     private function getUserByUsername($username)
