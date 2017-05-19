@@ -19,7 +19,7 @@ abstract class BaseController
         if ($accessLevel !== 'both')
         {
             $connectionStatus = $this->getConnectionStatus();
-            if ($accessLevel !== $connectionStatus)
+            if ($accessLevel !== $connectionStatus && ($connectionStatus !== 'admin' || $accessLevel !== 'connected'))
             {
                 $this->logManager->generateAccessMessage('tried to '.$_GET['action'].' while being '.$connectionStatus, 'security');
                 die(json_encode(['error' => 'You must be '.$accessLevel.' to access to this page.']));
@@ -50,6 +50,9 @@ abstract class BaseController
         {
             if ($_SESSION['currentUser']['loggedIn'])
             {
+                if ($this->isAdmin()){
+                    return 'admin';
+                }
                 return 'connected';
             }
         }

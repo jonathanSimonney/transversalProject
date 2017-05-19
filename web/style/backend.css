@@ -1,0 +1,370 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+/* Header Back End*/
+
+.headerBack {
+    background-color: #4C4A4E;
+    width: 100%;
+    height: 100px;
+}
+.headerBlockFlex {
+    width: 70%;
+    height: 100px;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+}
+
+.titleBullE h1 {
+    text-transform: uppercase;
+    color: #cdcdcd;
+    font-size: 35px;
+}
+
+.administration {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: stretch;
+}
+
+.adminBoard {
+    font-size: 18px;
+    text-transform: uppercase;
+    color: #cdcdcd;
+    margin-bottom: 10px;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.adminConnection {
+    color: #cdcdcd;
+}
+
+.adminConnection a {
+    font-size: 15px;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #FFFFFF;
+}
+
+.administration a:visited {
+    color: #FFFFFF;
+}
+
+/* header Back End */
+
+/* Body Logs Back End */
+body {
+    background-color: #dad8da;
+}
+
+.containerBackEnd {
+    height: 800px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    align-content: center;
+    width: 70%;
+    margin: auto;
+    background-color: #f2f2f2;
+}
+
+.containerInputBackEnd {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+
+.submitLogs, .submitUtilisateur {
+    border: 0;
+    width: 300px;
+    height: 45px;
+    margin: 0 30px 0 30px;
+    border-radius: 7px;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 13px;
+}
+
+.submitLogs {
+    background-color: #8A2552;
+    color: #FFFFFF;
+}
+
+.submitUtilisateur {
+    background-color: #4C4A4E;
+    color: #cdcdcd;
+}
+
+.divHr {
+    background-color: #cdcdcd;
+    width: 98%;
+    height: 1px;
+    margin: 30px 0 30px 0;
+}
+
+.containerConsole {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-items: stretch;
+    align-content: stretch;
+    width: 90%;
+    margin: 20px 0 30px 0;
+}
+
+.typeConsole {
+    width: 15%;
+}
+
+.typeConsole p.selectedLog {
+    font-weight: bold;
+    color: #8A2552;
+}
+
+.typeConsole p {
+    font-size: 16px;
+    text-transform: uppercase;
+    margin-bottom: 25px;
+}
+
+.divConsole {
+    padding: 20px;
+    width: 80%;
+    height: 500px;
+    border: 1px #cdcdcd solid;
+    border-radius: 5px;
+    background-color: #FFFFFF;
+
+}
+
+.divConsole p {
+    font-size: 12px;
+}
+
+/* End body logs End */
+
+
+/* Body Users Back End*/
+
+.containerUsers {
+    width: 70%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-content: center;
+}
+
+.accountInactive, .accountActive {
+    width: 30%;
+    margin: 0 0 0 30px;
+}
+
+.accountInactive h1, .accountActive h1 {
+    font-size: 13px;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    color: #8A2552;
+}
+
+.accountInactive, .accountActive p {
+    font-size: 14px;
+}
+
+
+.divLine {
+    height: 300px;
+    width: 1px;
+    background-color: #cdcdcd;
+}
+
+.descriptionUsers {
+    width: 330px;
+    height: 100px;
+    margin: 0 0 30px 50px;
+}
+
+.textDescriptionUsers {
+    color: #cdcdcd;
+    text-transform: uppercase;
+    margin: 0 0 30px 0;
+}
+
+.textDescriptionUsers p {
+    color: #4C4A4E;
+    font-weight: bold;
+
+}
+
+.secondTextDescriptionUsers {
+    font-size: 14px;
+    margin-bottom: 30px;
+}
+
+.secondTextDescriptionUsers h1{
+    font-size: 17px;
+    text-transform: uppercase;
+    color: #8A2552;
+    margin-bottom: 10px;
+}
+
+.secondTextDescriptionUsers p span{
+    font-weight: bold;
+}
+
+.inputDescriptionUsers {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: stretch;
+    align-content: center;
+    height: 95px;
+}
+
+.inputDescriptionUsers input {
+    text-transform: uppercase;
+    width: 80%;
+    height: 40px;
+    border: 0;
+
+}
+
+.submitUnBackEnd {
+    background-color: #4C4A4E;
+    color: #FFFFFF;
+}
+
+.submitTwoBackEnd {
+    color: #FFFFFF;
+    background-color: #8A2552;
+}
+
+.usersSelected {
+    font-weight: bold;
+}
+
+/* End User Back End s*/
+
+/* Back End POP UP*/
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.opacityBg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+.allPopUp {
+    height: 100%;
+    box-shadow: 1px 3px 0px 1px rgba(0,0,0,0.65);
+}
+
+.choosePro {
+    padding: 10% 0 10%;
+    margin: 0 auto;
+    width: 50%;
+}
+
+.PopUpSignUp {
+    background-color: #f2f2f2;
+    padding: 20px 20px 20px 50px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+
+}
+
+.PopUpSignUp p {
+    text-transform: uppercase;
+    font-size: 20px;
+
+}
+.crossImg {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-end;
+    align-content: flex-end;
+}
+
+.crossImg img {
+    width: 20px;
+    height: 20px;
+}
+
+
+.messageBackEnd {
+    width: 100%;
+    background: #F2F2F2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    justify-content: space-around;
+}
+
+.textAreaDiv {
+    width: 86%;
+}
+
+.textAreaDiv textArea {
+    border: 0;
+    width: 100%;
+    max-width: 100%;
+    height: 120px;
+    max-height: 300px;
+    padding: 25px 0 0 15px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    font-size: 8px;
+}
+
+.buttonDiv {
+    background-color: #F2F2F2;
+    width: 41%;
+    margin-bottom: 20px;
+}
+
+.buttonDiv button {
+    cursor: pointer;
+    width: 100%;
+    background-color: #8A2552;
+    border: 0;
+    color: #FFFFFF;
+    -webkit-transition: 0.3s ease;
+    transition: 0.3s ease;
+    font-size: 11px;
+    height: 40px;
+    text-transform: uppercase;
+}
+
+
+/* end POP UP Back End */

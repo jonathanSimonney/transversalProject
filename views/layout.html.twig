@@ -14,8 +14,6 @@
     {% include 'disconnected/header.html.twig' %}
 {% elseif currentUser['type'] == 'victime' %}
     {% include 'connected/victime/header.html.twig' %}
-{% elseif currentUser['type'] == 'admin' %}
-    {% include 'connected/admin/header.html.twig' %}
 {% else %}
     {% include 'connected/pro/header.html.twig' %}
 {% endif %}
@@ -59,10 +57,10 @@
     <script src="web/JS/disconnected/whole.js"></script>
 {% elseif currentUser['type'] == 'victime' %}
     <script src="web/JS/connected/victime.js"></script>
-{% elseif currentUser['type'] == 'admin' %}
-    <script src="web/JS/connected/admin.js"></script>
+    <script src="web/JS/connected/whole.js"></script>
 {% else %}
     <script src="web/JS/connected/pro.js"></script>
+    <script src="web/JS/connected/whole.js"></script>
 {% endif %}
 </body>
 </html>

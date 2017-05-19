@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+    <title>Bull-E</title>
+    <link rel="stylesheet" href="web/style/backend.css">
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="web/JS/whole.js"></script>
+</head>
+
+<body>
+<div class="headerBack">
+    <div class="headerBlockFlex">
+        <div class="titleBullE">
+            <h1>bull-e</h1>
+        </div>
+        <div class="administration">
+            <div class="adminBoard">
+                <span>Panneau d'<span class="bold">administration</span></span>
+            </div>
+            <div class="adminConnection">
+                <a href="#" id="logout"><span>me déconnecter </span></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="modalWaiter"></div>
+
+<div class="containerBackEnd">
+    <div class="divHr"></div>
+    <div class="containerInputBackEnd">
+        <input type="submit" value="consulter les logs" class="submitUtilisateur" id="seeLogs">
+        <input type="submit" value="gérer les utilisateurs" class="submitUtilisateur" id="seeUsers">
+    </div>
+    <div class="divHr"></div>
+    <div id="actionReceptor">
+    </div>
+</div>
+
+<div id="debug">
+</div>
+
+<script src="web/JS/connected/admin.js"></script>
+<script src="web/JS/connected/whole.js"></script>
+</body>
+
+</html>

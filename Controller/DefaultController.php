@@ -134,6 +134,17 @@ class DefaultController extends BaseController
         $this->simplyShowPage('both/confirmSuppression.html.twig');
     }
 
+    public function showLogPageAction()
+    {
+        echo $this->renderView('connected/admin/logs.html.twig');
+    }
+
+    public function getLogsAction()
+    {
+        $this->userManager = AdminManager::getInstance();
+        echo json_encode($this->userManager->getLogs());
+    }
+
     protected function getAndSetContact()
     {
         if ($_SESSION['currentUser']['data']['type'] === 'victime')
@@ -159,16 +170,16 @@ class DefaultController extends BaseController
             if ($_SESSION['currentUser']['loggedIn'])
             {
                 $data['loggedIn'] = true;
-                /*if ($this->isAdmin())
+                if ($this->isAdmin())
                 {
                     $this->userManager = AdminManager::getInstance();
-                    $data['unregistered_user'] = $this->userManager->getUnregisteredUser();
+                    /*$data['unregistered_user'] = $this->userManager->getUnregisteredUser();
                     $data['registered_user'] = $this->userManager->getRegisteredUser();
-                    $data['logs'] = $this->userManager->getLogs();
+                    $data['logs'] = $this->userManager->getLogs();*/
 
-                    echo $this->renderView('connected/admin.html.twig', $data);
+                    echo $this->renderView('connected/admin/admin.html.twig', $data);
                     return;
-                }*/
+                }
             }
         }
         echo $this->renderView($pagePath, $data);
