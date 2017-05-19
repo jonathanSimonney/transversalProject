@@ -6,18 +6,35 @@
     <h1>compte actifs</h1>
 </div>
 <div class="divLine"></div> <!-- TODO faire apparaitre infos utilisateurs -->
-<div class="descriptionUsers notForUser">
+<div class="descriptionUsers notForUser" id="dataActiveUser">
     <div class="textDescriptionUsers"> <!--TODO info Users-->
         <p>Utilisateur</p>
         <span>actif</span> <!-- TODO online or offline -->
     </div>
     <div class="secondTextDescriptionUsers">
-        <h1 id="username">nom d'utilisateur</h1> <!-- TODO name user-->
-        <p> <span>Adresse e-mail :</span> utilisateur@gmail.com</p> <!-- TODO adresse email users-->
-        <p> <span>Type :</span> 01/01/1992</p> <!-- TODO birth date-->
+        <h1 id="activePseudo">nom d'utilisateur</h1> <!-- TODO name user-->
+        <p> <span>Adresse e-mail :</span> <span id="activeEmail">utilisateur@gmail.com</span></p>
+        <p> <span>Type :</span> <span id="activeType">pro/victime</span></p>
+        <p> <span>Nombre de messages sur le forum :</span> Aucun.</p>
+    </div>
+    <div class="inputDescriptionUsers">
+        <input type="submit" value="supprimer le compte" class="submitTwoBackEnd" id="suppressAccount">
+    </div>
+</div>
+
+<div class="descriptionUsers notForUser" id="dataInactiveUser">
+    <div class="textDescriptionUsers"> <!--TODO info Users-->
+        <p>Utilisateur</p>
+        <span>actif</span> <!-- TODO online or offline -->
+    </div>
+    <div class="secondTextDescriptionUsers">
+        <h1 id="inactivePseudo">nom d'utilisateur</h1> <!-- TODO name user-->
+        <p> <span>Adresse e-mail :</span> <span id="inactiveEmail">utilisateur@gmail.com</span></p> <!-- TODO adresse email users-->
+        <p> <span>Type :</span> <span id="inactiveType">pro/victime</span></p> <!-- TODO birth date-->
         <p> <span>Nombre de messages sur le forum :</span> Aucun.</p> <!-- TODO Numbers message-->
     </div>
     <div class="inputDescriptionUsers">
-        <input type="submit" value="supprimer le compte" class="submitTwoBackEnd">
+        <input type="submit" value="Activer le compte" class="submitUnBackEnd" id="activateAccount">
+        <input type="submit" value="supprimer le compte" class="submitTwoBackEnd" id="rejectPro">
     </div>
 </div>

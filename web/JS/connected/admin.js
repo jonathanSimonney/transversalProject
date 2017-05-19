@@ -46,20 +46,66 @@ $('#seeUsers').click(function(e){
                 $('.accountActive').append('<p>'+i+'</p>');
             }
 
-            $('.accountActive p').click(function (e) {
+            $('.accountActive').on("click", "p", function (e) {//todo refactorise!!! Really sorry for ugliness of this code!
                 $('.usersSelected').removeClass('usersSelected');
 
                 $(e.currentTarget).addClass('usersSelected');
 
+                $('#dataActiveUser').removeClass('notForUser');
+                $('#dataInactiveUser').addClass('notForUser');
 
+                var data = arrayUsers['registered_user'][$(e.currentTarget).text()];
+
+                $('#activeEmail').text(data['email']);
+                $('#activeType').text(data['type']);
+                $('#activePseudo').text(data['pseudo']);
+
+                $('#suppressAccount').click(function () {
+                    openModal('?action=suppressionMessageModal', $('#modalWaiter'), function () {
+                        $('#confirm').click(function (e) {
+                            jqueryAsynchronousTreatment('?action=suppressAccount', {'id': data['id'], 'message': $('#message').val()}, debugAnswer);
+                            $('#dataActiveUser').addClass('notForUser');
+                            $('.accountActive .usersSelected').remove();
+                            $('#close').click();
+                        })
+                    });
+                })
             });
 
-            $('.accountInactive p').click(function (e) {
+            $('.accountInactive').on("click", "p", function (e) {
                 $('.usersSelected').removeClass('usersSelected');
 
                 $(e.currentTarget).addClass('usersSelected');
 
+                $('#dataActiveUser').addClass('notForUser');
+                $('#dataInactiveUser').removeClass('notForUser');
 
+                var data = arrayUsers['unregistered_user'][$(e.currentTarget).text()];
+
+                $('#inactiveEmail').text(data['email']);
+                $('#inactiveType').text(data['type']);
+                $('#inactivePseudo').text(data['pseudo']);
+
+                $('#rejectPro').click(function () {
+                    openModal('?action=suppressionMessageModal', $('#modalWaiter'), function () {
+                        $('#confirm').click(function (e) {
+                            jqueryAsynchronousTreatment('?action=rejectPro', {'id': data['id'], 'message': $('#message').val()}, debugAnswer);
+                            $('#dataInactiveUser').addClass('notForUser');
+                            $('.accountInactive .usersSelected').remove();
+                            $('#close').click();
+                        })
+                    });
+                });
+
+                $('#activateAccount').click(function () {
+                    jqueryAsynchronousTreatment('?action=activateAccount', {'id': data['id']}, debugAnswer, function () {
+                        var added = $('<p>'+data['pseudo']+'</p>');
+                        added.appendTo('.accountActive');
+                        arrayUsers['registered_user'][data['pseudo']] = data;
+                        added.click();
+                        $('.accountInactive .usersSelected').remove();
+                    })
+                })
             });
         });
     });

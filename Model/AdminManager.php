@@ -25,7 +25,7 @@ class AdminManager extends UserManager
 
     public function activateAccount($id)
     {
-        $data = $this->DBManager->findOneSecure('SELECT pseudo, email, password, indic, location, type, free_slot FROM unregistered_users WHERE id = :id', ['id' => $id]);
+        $data = $this->DBManager->findOneSecure('SELECT pseudo, email, gender, password, indic, location, type, free_slot FROM unregistered_users WHERE id = :id', ['id' => $id]);
         $_POST['pseudo'] = $data['pseudo'];
         $_POST['email'] = $data['email'];
         $_SESSION['errorMessage'] = [];

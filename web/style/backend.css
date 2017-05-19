@@ -227,7 +227,7 @@ body {
     margin-bottom: 10px;
 }
 
-.secondTextDescriptionUsers p span{
+.secondTextDescriptionUsers p span:nth-child(1){
     font-weight: bold;
 }
 
@@ -366,5 +366,7 @@ body {
     text-transform: uppercase;
 }
 
-
+.notForUser {
+    display: none;
+}
 /* end POP UP Back End */

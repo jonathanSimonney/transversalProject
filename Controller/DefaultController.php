@@ -158,6 +158,11 @@ class DefaultController extends BaseController
         echo json_encode($data);
     }
 
+    public function getSuppressionMessageAction()
+    {
+        echo $this->renderView('connected/admin/modal.html.twig');
+    }
+
     protected function getAndSetContact()
     {
         if ($_SESSION['currentUser']['data']['type'] === 'victime')
