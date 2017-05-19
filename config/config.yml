@@ -35,5 +35,7 @@ routes:
     confirmSuppressionModal: 'Default:showConfirmSuppressionModal:both:get'
     getLogs:                 'Default:getLogs:admin:post'
     seeLogTwig:              'Default:showLogPage:admin:get'
+    seeUserList:             'Default:seeUserPage:admin:get'
+    getUserList:             'Default:getUserList:admin:post'
     # getUserData:            'User:showUserData:connected:get' not decided yet
 defaut_route: 'home'

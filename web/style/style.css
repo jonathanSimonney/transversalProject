@@ -1,16 +1,16 @@
 @font-face {
     font-family: "Source Sans Pro";
-    src: url("assets/typo/SourceSansPro-Regular.otf");
+    src: url("typo/SourceSansPro-Regular.otf");
 }
 
 @font-face {
     font-family: "Avenir Next";
-    src: url("assets/typo/Avenir Next.ttc");
+    src: url("typo/Avenir Next.ttc");
 }
 
 @font-face {
     font-family: "Raleway";
-    src: url("assets/typo/Raleway-Regular.ttf");
+    src: url("typo/Raleway-Regular.ttf");
 }
 
 * {

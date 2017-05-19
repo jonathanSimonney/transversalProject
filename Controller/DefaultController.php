@@ -145,6 +145,19 @@ class DefaultController extends BaseController
         echo json_encode($this->userManager->getLogs());
     }
 
+    public function seeUserPageAction()
+    {
+        echo $this->renderView('connected/admin/userList.html.twig');
+    }
+
+    public function getUserListAction()
+    {
+        $this->userManager = AdminManager::getInstance();
+        $data['unregistered_user'] = $this->userManager->getUnregisteredUser();
+        $data['registered_user'] = $this->userManager->getRegisteredUser();
+        echo json_encode($data);
+    }
+
     protected function getAndSetContact()
     {
         if ($_SESSION['currentUser']['data']['type'] === 'victime')

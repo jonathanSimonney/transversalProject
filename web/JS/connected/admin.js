@@ -30,4 +30,37 @@ $('#seeUsers').click(function(e){
         document.querySelector('.submitLogs').className = 'submitUtilisateur';
     }
     document.querySelector('#seeUsers').className = 'submitLogs';
+
+    openModal('?action=seeUserList', $('#actionReceptor'), function () {
+        document.getElementById('actionReceptor').className = 'containerUsers';
+
+        jqueryAsynchronousTreatment('?action=getUserList', [], function (serverData) {
+            arrayUsers = JSON.parse(serverData.responseText);
+            console.log(arrayUsers);
+
+            for (i in arrayUsers['unregistered_user']){
+                $('.accountInactive').append('<p>'+i+'</p>');
+            }
+
+            for (i in arrayUsers['registered_user']){
+                $('.accountActive').append('<p>'+i+'</p>');
+            }
+
+            $('.accountActive p').click(function (e) {
+                $('.usersSelected').removeClass('usersSelected');
+
+                $(e.currentTarget).addClass('usersSelected');
+
+
+            });
+
+            $('.accountInactive p').click(function (e) {
+                $('.usersSelected').removeClass('usersSelected');
+
+                $(e.currentTarget).addClass('usersSelected');
+
+
+            });
+        });
+    });
 });
