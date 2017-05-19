@@ -129,6 +129,11 @@ class DefaultController extends BaseController
         $this->simplyShowPage('connected/accountModify.html.twig');
     }
 
+    public function showConfirmSuppressionModalAction()
+    {
+        $this->simplyShowPage('both/confirmSuppression.html.twig');
+    }
+
     protected function getAndSetContact()
     {
         if ($_SESSION['currentUser']['data']['type'] === 'victime')

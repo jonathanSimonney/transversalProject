@@ -76,7 +76,7 @@ class MessageController extends DefaultController
     {
         $data = [];
         $data['currentUser']['contact'] = $this->getAndSetContact();
-        $data['message'] = $this->mailManager->getAllReceivedEmail($_SESSION['currentUser']['data']['id']);
+        $data['message'] = $this->mailManager->getAllReceivedEmail($_SESSION['currentUser']['data']['id']);//todo modify, no need to ask that much data!
         $data['receptorOrSender'] = 'sender';
         $this->simplyShowPage('connected/inbox.html.twig', $data);
     }
@@ -91,7 +91,7 @@ class MessageController extends DefaultController
         $mail = $this->mailManager->getEmailById($_GET['id']);
         if ($_SESSION['currentUser']['data']['id'] !== $mail['receptor_id'] && $_SESSION['currentUser']['data']['id'] !== $mail['sender_id'])
         {
-            $this->logManager->generateAccessMessage('tried to read the mail of id '.$_GET['id'].', but he did not send it nor received it.');
+            $this->logManager->generateAccessMessage('tried to read the mail of id '.$_GET['id'].', but he did not send it nor received it.', 'security');
         }
         else
         {

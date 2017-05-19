@@ -1,15 +1,10 @@
-This repository is a basis of mvc in oop programming with functions 
-that I find myself usually copying from one project to another, so I
- decided to make a new basis.  
- Do not forget when you take it, 
- to add the private.yml in the .gitignore, and to change its value with your settings.
+# Bull-E
 
-# title of your repo
+This repository contains the code for our transversal project.  
+This project is about a website with a private messagery and a forum (though we didn't have time to develop it), to put in contact professional (either psys or lawyers)
+and people being or having been victim of cyber bullying.
 
-This repository contains the code for _**change it by the name of your project**_  
-This project is about _**short description here!**_
-
-More seriously, to use this repository, do not forget to install composer. (The **doc** is available [here](https://getcomposer.org/))  
+To use this repository, do not forget to install composer. (The **doc** is available [here](https://getcomposer.org/))  
 and to run the command
 >composer install  
 
@@ -39,7 +34,9 @@ not online, but he shall come afterwards.)
 
 Finally, create an _access.log_, a _message.log_ AND a _security.log_ file in the logs directory.
 
-It was made by _**list of the person participating in the project 
-(I let myself in since it is for private use)**_ and _Jonathan SIMONNEY_. Please contact 
-one of us at _**same as precedent!**_ or 
+It was made by _Eugénie POUPET_, _Eddy TONG_ and _Jonathan SIMONNEY_. Please contact 
+one of us at _eugenie.poupet@supinternet.fr_, _eddy.tong@supinternet.fr_ or 
 _jonathan.simonney@supinternet.fr_ if you experiment any problem with this repository.
+
+possible amelioration :  
+- refactorisation of the code, mainly!

@@ -17,8 +17,11 @@
                 </a>
             </div>
             {% for key, name in currentUser['contact'] %}
-                <div class="accountContacts">
-                    <span>{{ key }}</span>
+                <div class="accountContacts contact">
+                    <span>
+                        {{ key }}
+                        <input type="number" class="notForUser" value="{{ name['id'] }}">
+                    </span>
                     <span class="status">disponible</span>
                 </div>
             {% endfor %}
@@ -78,10 +81,12 @@
                 <div class="accountUnderline"></div>
                 <div class="accountEdit">
                     <input type="submit" id="enableModif" value="modifier" class="contactBtn">
+                    <input type="submit" id="suppressAccount" value="supprimer" class="contactBtn">
                 </div>
             </div>
         </div>
     </div>
 
     <script src="web/JS/connected/account.js"></script>
+    <script src="web/JS/connected/contactList.js"></script>
 {% endblock %}

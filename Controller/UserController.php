@@ -155,4 +155,17 @@ class UserController extends BaseController
             session_destroy();
         }
     }
+
+    /*public function showUserDataAction() //not decided yet
+    {
+        if (!$this->userManager->hasAsContact($_GET['id'])){
+            $this->logManager->generateAccessMessage('tried to consult data of user of id : '.$_GET['id'], 'security');
+            die();
+        }
+
+        $contact = $_SESSION['currentContact'];
+        unset($_SESSION['currentContact']);
+
+        $this->renderView('');
+    }*/
 }

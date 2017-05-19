@@ -161,4 +161,19 @@ class UserManager extends BaseManager
 
         return $ret;
     }
+
+    public function hasAsContact($contactId)
+    {
+        $arrayContact = $_SESSION['currentUser']['data']['contact'];
+        foreach ($arrayContact as $contact)
+        {
+            if ($contact['id'] === $contactId)
+            {
+                $_SESSION['currentContact'] = $contact;
+                return true;
+            }
+        }
+
+        return false;
+    }
 }

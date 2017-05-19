@@ -25,8 +25,11 @@
             </a>
         </div>
         {% for key, name in currentUser['contact'] %}
-            <div class="accountContacts">
-                <span>{{ key }}</span>
+            <div class="accountContacts contact">
+                <span>
+                    {{ key }}
+                    <input type="number" class="notForUser" value="{{ name['id'] }}">
+                </span>
                 <span class="status">disponible</span>
             </div>
         {% endfor %}
@@ -34,7 +37,13 @@
     <div class="accountContent" id="receptor">
         <div class="topPart">
             <div>
-                <span>Boîte de réception</span> <span id="messageNumber">{{ message|length }}</span> messages</div>
+                <span>
+                    {% if receptorOrSender == 'receptor' %}
+                        Element envoyés
+                    {% else %}
+                        Boîte de réception
+                    {% endif %}
+                </span> <span id="messageNumber">{{ message|length }}</span> messages</div>
         </div>
         <div class="inboxInfo">
             <div class="inboxActions">
@@ -59,4 +68,5 @@
 </div>
 
     <script src="web/JS/connected/inbox.js"></script>
+    <script src="web/JS/connected/contactList.js"></script>
 {% endblock %}

@@ -11,3 +11,16 @@ $('#enableModif').click(function (e) {
         });
     })
 });
+
+$('#suppressAccount').click(function (e) {
+    openModal('?action=confirmSuppressionModal', $('#modalWaiter'), function () {
+        $('#validate').click(function () {
+            jqueryAsynchronousTreatment('?action=suppressAccount', [], function(){
+                window.location.replace('?action=home');
+            })
+        });
+        $('#decline').click(function () {
+            $('#close').click();
+        })
+    })
+});
