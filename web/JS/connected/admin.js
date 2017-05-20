@@ -39,11 +39,11 @@ $('#seeUsers').click(function(e){
             console.log(arrayUsers);
 
             for (i in arrayUsers['unregistered_user']){
-                $('.accountInactive').append('<p>'+i+'</p>');
+                $('.accountInactive').append('<p>'+encodeURIComponent(i)+'</p>');
             }
 
             for (i in arrayUsers['registered_user']){
-                $('.accountActive').append('<p>'+i+'</p>');
+                $('.accountActive').append('<p>'+encodeURIComponent(i)+'</p>');
             }
 
             $('.accountActive').on("click", "p", function (e) {//todo refactorise!!! Really sorry for ugliness of this code!
@@ -54,7 +54,7 @@ $('#seeUsers').click(function(e){
                 $('#dataActiveUser').removeClass('notForUser');
                 $('#dataInactiveUser').addClass('notForUser');
 
-                var data = arrayUsers['registered_user'][$(e.currentTarget).text()];
+                var data = arrayUsers['registered_user'][decodeURIComponent($(e.currentTarget).text())];
 
                 $('#activeEmail').text(data['email']);
                 $('#activeType').text(data['type']);
@@ -80,7 +80,8 @@ $('#seeUsers').click(function(e){
                 $('#dataActiveUser').addClass('notForUser');
                 $('#dataInactiveUser').removeClass('notForUser');
 
-                var data = arrayUsers['unregistered_user'][$(e.currentTarget).text()];
+                var data = arrayUsers['unregistered_user'][decodeURIComponent($(e.currentTarget).text())];
+                console.log(arrayUsers['unregistered_user'], decodeURIComponent($(e.currentTarget).text()));
 
                 $('#inactiveEmail').text(data['email']);
                 $('#inactiveType').text(data['type']);
@@ -99,7 +100,7 @@ $('#seeUsers').click(function(e){
 
                 $('#activateAccount').click(function () {
                     jqueryAsynchronousTreatment('?action=activateAccount', {'id': data['id']}, debugAnswer, function () {
-                        var added = $('<p>'+data['pseudo']+'</p>');
+                        var added = $('<p>'+encodeURIComponent(data['pseudo'])+'</p>');
                         added.appendTo('.accountActive');
                         arrayUsers['registered_user'][data['pseudo']] = data;
                         $('.accountInactive .usersSelected').remove();
