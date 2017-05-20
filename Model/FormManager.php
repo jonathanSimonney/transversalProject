@@ -203,7 +203,12 @@ class FormManager extends BaseManager
     {
         if ($potentialGender !== 'man' && $potentialGender !== 'woman')
         {
-            $_SESSION['errorMessage']['gender'] = 'Invalid.';
+            $_SESSION['errorMessage']['gender'] = 'This field is required.';
+
+            if ($potentialGender !== 'choose')
+            {
+                $this->logManager->generateAccessMessage('tried to give the gender '.$potentialGender, 'security');
+            }
         }
     }
 

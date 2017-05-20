@@ -29,7 +29,14 @@ input {
     font-family: "Source Sans Pro";
     font-family: "Avenir Next";
     font-weight: bold;
+}
+
+input::placeholder {
     text-transform: uppercase;
+}
+
+.writeMsg input::placeholder {
+    text-transform: none;
 }
 
 a {
@@ -46,10 +53,10 @@ h3 {
 
 header {
     background-color: #50324c;
-    font-family: "Avenir Next";
 }
 
 nav {
+font-family: "Avenir Next";
     background-color: #4c4a4e;
 }
 
@@ -59,8 +66,13 @@ nav {
     padding: 8px 0 8px 0;
 }
 
+.topContainer a {
+    color: #FFFFFF;
+}
+
 .topHeader {
     display: flex;
+    align-items: center;
     justify-content: space-between;
 }
 
@@ -71,6 +83,7 @@ nav {
 }
 
 .logoTitle {
+    font-family: "Avenir Next";
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
@@ -99,6 +112,26 @@ nav {
     background: transparent;
     font-size: 10px;
     padding: 10px 15px;
+    text-transform: uppercase;
+}
+
+.supportUsBtn input {
+    cursor: pointer;
+    background: transparent;
+    margin: 10px;
+    padding: 12px;
+}
+
+.supportUsBtn .suppBtn {
+    color: #FFFFFF;
+    border: 1px solid #FFFFFF;
+    transition: 0.3s all ease;
+}
+
+.supportUsBtn .suppBtn:hover {
+    color: #d7d6d6;
+    border: 1px solid #d7d6d6;
+    transition: 0.3s all ease;
 }
 
 .topHeader .signUp {
@@ -139,7 +172,10 @@ nav {
     color: #F2F2F2;
 }
 
-.username {
+.accessProfile .username {
+    display: flex;
+    justify-content: flex-end;
+    font-family: "Avenir Next";
     font-size: 13px;
     font-weight: bold;
 }
@@ -148,17 +184,58 @@ nav {
     font-size: 10px;
 }
 
+.separator {
+    font-size: 10px;
+    margin: 0 5px 0 5px;
+}
+
 .myAccount {
+    margin: 2px 0 5px 0;
+    display: flex;
+    align-items: center;
+    align-content: space-between;
+    justify-content: flex-end;
+}
+
+.disconnect {
     display: flex;
     justify-content: flex-end;
+    color: #42b6b2;
+    font-size: 10px;
+    font-style: italic;
+}
+
+.disconnect a {
+    color: #42b6b2;
 }
 
 .accountProfile {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     align-content: center;
     margin: 0 0 0 20px;
+}
+
+.accountProfile input {
+    text-transform: uppercase;
+}
+
+.suppUs {
+    margin: 8px;
+    font-size: 10px;
+    color: #d7d6d6;
+    text-transform: uppercase;
+}
+
+.supportUsBtn input {
+    text-transform: uppercase;
+}
+
+.suppUs a {
+    text-decoration: underline;
+    color: #d7d6d6;
 }
 
 .accountPicture {
@@ -263,8 +340,13 @@ nav {
 
 .homeImg {
     width: 35%;
-    height: 150px;
-    background: grey;
+    height: 180px;
+    background: transparent;
+}
+
+.homeImg img {
+    width: 100%;
+    height: 100%;
 }
 
 .homeContent {
@@ -281,6 +363,8 @@ nav {
 }
 
 .homeContent p {
+    height: 130px;
+    overflow: auto;
     margin: 10px 0 0 0;
     color: #4c4a4e;
 }
@@ -301,6 +385,7 @@ nav {
 }
 
 .homeContact input {
+    text-transform: uppercase;
     cursor: pointer;
     background: transparent;
     margin: 10px;
@@ -714,6 +799,11 @@ nav {
     background: #5f5e60;
 }
 
+.containerAccount {
+    height: 300px;
+    overflow: auto;
+}
+
 .accountContacts {
     display: flex;
     flex-direction: column;
@@ -730,6 +820,12 @@ nav {
 .accountContacts span {
     color: #FFFFFF;
     font-size: 14px;
+    margin: 0 0 0 5px;
+}
+
+.accountContacts p {
+    color: #FFFFFF;
+    font-size: 14px;
     margin: 0px 0 2px 15px;
 }
 
@@ -739,6 +835,11 @@ nav {
     color: #F2F2F2;
     letter-spacing: 1px;
 }
+
+.accountContacts .span {
+    margin: 0 0 0 10px;
+}
+
 
 .accountContent {
     width: 50%;
@@ -806,7 +907,6 @@ nav {
 
 .typeOfInfo .valueInfo {
     display: flex;
-    align-items: center;
     color: #ababac;
     font-size: 10px;
 }
@@ -838,6 +938,31 @@ nav {
     border: 2px solid #cfa1bd;
 }
 
+.accountEdit .deleteBtn {
+    padding: 10px;
+    margin: 0 20px 0 0;
+    color: #FFFFFF;
+    border: 2px solid #50324c;
+    background: #50324c;
+}
+
+.accountEdit .delete:hover {
+    color: #FFFFFF;
+    border: 2px solid #71476b;
+    background: #71476b;
+}
+
+.accountEdit .contactBtn {
+    background: #8a2552;
+    width: 150px;
+    transition: 0.3s all ease;
+}
+
+.accountEdit .contactBtn:hover {
+    background: #962959;
+    width: 150px;
+    transition: 0.3s all ease;
+}
 
 /* END ACCOUNT */
 
@@ -845,9 +970,16 @@ nav {
 /* INBOX */
 
 .accountSelect .newMsg {
+    font-size: 10px;
     background: #b78ca6;
     color: #FFFFFF;
     padding: 10px 10px 10px 10px;
+    transition: all 0.3s ease;
+}
+
+.accountSelect .newMsg:hover {
+    background: #c496b2;
+    color: #FFFFFF;
 }
 
 .categories {
@@ -867,8 +999,9 @@ nav {
 }
 
 .categories div {
-    padding: 10px 0 0 0;
-    height: 35px;
+    padding: 5px 0 5px 0;
+    height: 25px;
+    transition: all 0.3s ease;
 }
 
 .categories div:hover {
@@ -892,6 +1025,23 @@ nav {
     display: flex;
     justify-content: flex-end;
     margin: 10px;
+}
+
+.containerInbox {
+    height: 500px;
+    overflow: auto;
+}
+
+.suppEmail {
+    font-size: 10px;
+    padding: 5px;
+    width: 100px;
+    color: #FFFFFF;
+    background: #b78ca6;
+    border: 2px solid #b78ca6;
+    transition: 0.3s all ease;
+    text-transform: uppercase;
+    font-weight: bold;
 }
 
 .inboxInfo .typeOfInfo {
@@ -937,8 +1087,13 @@ nav {
 }
 
 .inboxInfo .content {
-    margin: 5px;
+    margin: 8px;
     width: 90%;
+}
+
+.view .content {
+    padding: 10px;
+    background: #f2f2f2;
 }
 
 
@@ -948,6 +1103,7 @@ nav {
 /* WRITE MESSAGE */
 
 .inboxInfo .writeMsg input {
+    font-family: "source sans pro";
     margin: 0;
     font-weight: normal;
     text-transform: none;
@@ -956,6 +1112,7 @@ nav {
 }
 
 .inboxInfo textarea {
+    outline: none;
     border: 0;
     color: #ababac;
     font-style: italic;
@@ -979,16 +1136,21 @@ nav {
 }
 
 .writeMsgActions input {
-    width: 70px;
     margin: 0 5px 0 5px;
     padding: 5px;
     margin: 0;
     font-size: 10px;
     color: #FFFFFF;
-    text-transform: uppercase;
     background: #b78ca6;
 }
 
+.writeMsgButtons input {
+    padding: 5px;
+    margin: 0;
+    font-size: 10px;
+    color: #b78ca6;
+    background: transparent;
+}
 
 /* END WRITE MESSAGE */
 
@@ -1004,7 +1166,6 @@ nav {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    align-items: center;
     align-content: center;
     width: 100%;
     min-height: 240px;
@@ -1036,6 +1197,16 @@ nav {
     margin: 10px 0 10px 0;
 }
 
+.viewMessageSize {
+    height: 340px;
+    padding: 5px 0 5px 0;
+    overflow: auto;
+}
+
+.downloadFile {
+    display: flex;
+    justify-content: flex-end;
+}
 
 /* END SEE MESSAGE */
 
@@ -1184,6 +1355,7 @@ nav {
 }
 
 .divConsole {
+    overflow: auto;
     padding: 20px;
     width: 80%;
     height: 500px;
@@ -1306,10 +1478,11 @@ nav {
     justify-content: center;
     align-items: stretch;
     align-content: stretch;
+    padding: 30px;
 }
 
 .colorDiv {
-    background-color: #A67E96;
+    background-color: #a67e96;
     width: 140px;
     height: 600px;
 }
@@ -1319,7 +1492,7 @@ nav {
 }
 
 .textDocumentation p {
-    color: #8A2552;
+    color: #8a2453;
     margin: 6px 0 6px 0;
 }
 
@@ -1330,7 +1503,7 @@ nav {
 
 .divInDivDocumentation {
     background-color: white;
-    padding: 10px 30px 0 30px;
+    padding: 20px 30px 0 30px;
     width: 600px;
     height: 300px;
     margin: 0 0 0 -95px;
@@ -1345,11 +1518,13 @@ nav {
     background-color: #42B6B2;
     height: 2px;
     width: 110px;
-    margin: 0px 0px 25px 0;
+    margin: 5px 0px 25px 0;
 }
 
 .divInDivDocumentation p {
-    color: black;
+    color: #4c4a4d;
+    height: 210px;
+    overflow: auto;
 }
 
 .blockColor {
@@ -1372,15 +1547,15 @@ nav {
 
 .divPaintingRight {
     background-color: #A67E96;
-    width: 7px;
+    width: 8px;
     height: 160px;
-    margin-top: 150px;
+    margin-top: 160px;
 }
 
 .divPaintingBottom {
     background-color: #A67E96;
     width: 350px;
-    height: 7px;
+    height: 8px;
 }
 
 
@@ -1437,8 +1612,9 @@ nav {
     flex-wrap: nowrap;
     justify-content: center;
     align-content: center;
-    width: 70%;
+    width: 60%;
     margin: auto;
+    padding: 30px;
 }
 
 .titleML {
@@ -1461,8 +1637,8 @@ nav {
     font-size: 13px;
 }
 
-.divTitle {
-    margin: 0 0 20px 30px;
+.divTitleML {
+    margin: 0 20px 20px 20px;
     font-size: 18px;
     font-style: italic;
 }
@@ -1487,7 +1663,7 @@ nav {
     height: 45px;
     background: transparent;
     text-align: center;
-    border: 1.5px #8A2552 solid;
+    border: 2px #8A2552 solid;
     cursor: pointer;
     transition: 0.3s all;
     text-transform: uppercase;
@@ -1497,22 +1673,40 @@ nav {
 }
 
 .buttonML input:hover {
-    background: pink;
+    color: #9a2a5c;
+    border: 2px #9a2a5c solid;
+}
+
+.tableML {
+    color: #4c4a4d;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    width: 90%;
+    margin: auto;
 }
 
 .tableML h1 {
-    font-size: 14px;
+    font-size: 15px;
+    font-weight: bold;
     text-transform: uppercase;
     margin: 0 0 30px 40px;
 }
 
 .tableML span {
+    font-size: 13px;
     font-weight: bold;
     margin: 0 0 0 40px;
 }
 
 .tableML li {
-    margin: 10px 0 0 0;
+    font-size: 11px;
+    margin: 10px 0 10px 0;
+    padding: 0 0 0 15px;
+}
+
+.tableML ol {
+    padding: 10px;
 }
 
 
@@ -1540,7 +1734,7 @@ nav {
     background-color: #42B6B2;
     height: 2px;
     width: 50px;
-    margin-bottom: 30px;
+    margin: 5px 0 30px 0;
 }
 
 .imgProfile {
@@ -1577,7 +1771,7 @@ nav {
     width: 180px;
     padding: 5px 10px 5px 10px;
     margin: 5px 5px 5px 0px;
-    border: 1.5px #A67E96 solid;
+    border: 2px #A67E96 solid;
 }
 
 .headerForm {
@@ -1597,7 +1791,7 @@ nav {
     height: 27px;
     width: 467px;
     padding: 5px 0px 5px 10px;
-    border: 1.5px #A67E96 solid;
+    border: 2px #A67E96 solid;
 }
 
 .bottomForm p {
@@ -1607,7 +1801,8 @@ nav {
 }
 
 .textArea {
-    border: 1.5px #A67E96 solid;
+    outline: none;
+    border: 2px #A67E96 solid;
     width: 467px;
     max-width: 467px;
     height: 250px;
@@ -1642,7 +1837,7 @@ nav {
 }
 
 .submit:hover {
-    background: pink;
+    background: #962959;
 }
 
 
@@ -1663,14 +1858,6 @@ nav {
 .closePopUp {
     display: flex;
     justify-content: flex-end;
-}
-
-.logPage {
-    padding: 10% 0 10%;
-    margin: 0 auto;
-    width: 50%;
-    display: flex;
-    flex-direction: row;
 }
 
 .formLog {
@@ -1718,7 +1905,6 @@ form {
     outline: none;
     width: 85%;
     border: 2px solid #a67e96;
-    text-transform: uppercase;
     font-size: 9px;
     color: #b1aeb3;
     margin: 0 0 5px;
@@ -1741,6 +1927,7 @@ form {
     margin: 20px 0 0 0;
     -webkit-transition: 0.3s ease;
     transition: 0.3s ease;
+    text-transform: uppercase;
 }
 
 .formLog .newPwd:hover {
@@ -1773,8 +1960,8 @@ form {
 }
 
 .divDescribeSite {
-    font-size: 13px;
-    margin: 35px 0 10px 25px;
+    font-size: 11px;
+    margin: 20px 0 10px 25px;
     width: 60%;
     height: 120px;
     color: #f2f2f2;
@@ -1786,7 +1973,7 @@ form {
     text-align: center;
     cursor: pointer;
     padding: 15px;
-    margin: 15px 8px 20px 25px;
+    margin: 15px 8px 20px 15px;
     border: 2px #A67E96 solid;
     color: #FFFFFF;
     transition: all 0.3s ease;
@@ -1816,31 +2003,25 @@ form {
 
 .titleSignUp {
     background-color: #f2f2f2;
-    font-size: 20px;
-    text-transform: uppercase;
-    width: 90%;
-    padding: 10px 0px 0Px 10px;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    box-shadow: 3px 4px 3px rgba(0, 0, 0, 0.3);
+    font-size: 10px;
 }
 
 .titleSignUp h2 {
-    margin: 0 0 0 20px;
+    margin: 0 0 0 30px;
     font-size: 20px;
+    text-transform: uppercase;
 }
 
 .titleSignUp img {
-    margin-left: 95%;
+    margin: 5px;
     width: 20px;
     height: 20px;
 }
 
 .logPage {
-    padding: 10% 0 10%;
+    padding: 8% 0 8%;
     margin: 0 auto;
-    width: 50%;
+    width: 40%;
 }
 
 .containerSignUp {
@@ -1850,24 +2031,23 @@ form {
     width: 455px;
     margin: auto;
     background-color: #f2f2f2;
-    text-transform: uppercase;
     padding: 30px;
     min-width: 455px;
 }
 
 .containerSignUp p {
-    margin: 5px 0 5px 0;
-    font-size: 12px;
-    margin: 15px 0 5px 0;
+    font-size: 11px;
+    margin: 15px 0 3px 0;
+    text-transform: uppercase;
 }
+
 
 .containerInputSignUp {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
-    align-items: center;
+    align-items: stretch;
     align-content: center;
-    font-size: 10px;
 }
 
 .divLeftSignUp {
@@ -1876,36 +2056,176 @@ form {
 
 .containerInputSignUp .inputTextSignUp input {
     background: transparent;
-    text-transform: uppercase;
     font-size: 9px;
     height: 40px;
     width: 200px;
     border: 2px #A67E96 solid;
-    padding: 0 0 0 15px;
-    font-weight: normal;
+    padding: 0 0 0 10px;
 }
 
-
 /* sign up Users*/
-
 .listBirthDay {
     background: transparent;
-    text-transform: uppercase;
     font-size: 9px;
     height: 40px;
-    width: 218px;
+    width: 212px;
     border: 2px #A67E96 solid;
-    padding: 0 0 0 15px;
+    padding: 0 0 0 10px;
     -webkit-appearance: button;
     -webkit-border-radius: 2px;
     background-repeat: no-repeat;
     background-image: url(http://scubeproject.com/img/landing/down.png);
     background-size: 25px;
     background-position: 97% center;
+
+}
+
+/* sign up users*/
+
+.listSelect {
+    text-transform: uppercase;
+    -webkit-appearance: button;
+    -webkit-border-radius: 2px;
+    background-repeat: no-repeat;
+    background-image: url(http://scubeproject.com/img/landing/down.png);
+    background-size: 25px;
+    background-position: 97% center;
+    color: #FFFFFF;
+    border: 0;
+    width: 215px;
+    height: 43px;
+    background-color: #A67E96;
+    padding-left: 15px;
+    font-size: 9px;
 }
 
 
-/* SIGN UP USERS */
+.centerDivSignUp {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+}
+
+.centerDivSignUp input {
+    background: transparent;
+    font-size: 9px;
+    height: 40px;
+    width: 98%;
+    border: 2px #A67E96 solid;
+    padding: 0 0 0 10px;
+}
+
+.emailGender {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    align-content: center;
+    justify-content: space-between;
+}
+
+.emailGender input {
+    font-weight: normal;
+    background: transparent;
+    font-size: 9px;
+    height: 40px;
+    width: 200px;
+    border: 2px #A67E96 solid;
+    padding: 0 0 0 15px;
+    margin: 0 35px 0 0;
+}
+
+.postalCode {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    margin: 0 0 0 30px;
+}
+
+.postalCodeVictim {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
+.postalInput {
+    font-weight: normal;
+    background: transparent;
+    font-size: 9px;
+    height: 40px;
+    width: 200px;
+    border: 2px #A67E96 solid;
+    padding: 0 0 0 15px;
+    margin: 0px 32px 0px 0px;
+}
+
+.buttonBottom {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+}
+
+.inputButtonSignUp {
+     margin-top: 28px;
+     width: 213px;
+     background-color: #8A2552;
+     font-size: 10px;
+     height: 43px;
+     border: 0;
+     color: #FFFFFF;
+     text-transform: uppercase;
+ }
+
+ .inputButtonSignUp:hover {
+    background-color: #962959;
+}
+
+.containerGenre {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-items: center;
+    align-content: center;
+    width: 100%;
+}
+
+.containerEmail {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+
+}
+
+.containerEmail input{
+    background: transparent;
+    font-size: 9px;
+    height: 40px;
+    width: 200px;
+    border: 2px #A67E96 solid;
+    padding: 0 0 0 10px;
+}
+
+.listGenre {
+    -webkit-appearance: button;
+    -webkit-border-radius: 2px;
+    background-repeat: no-repeat;
+    background-image: url(http://scubeproject.com/img/landing/down.png);
+    background-size: 25px;
+    background-position: 97% center;
+    color: #FFFFFF;
+    border: 0;
+    width: 215px;
+    height: 43px;
+    background-color: #A67E96;
+    padding-left: 15px;
+    font-size: 9px;
+}
 
 .listProfession {
     -webkit-appearance: button;
@@ -1923,84 +2243,6 @@ form {
     text-transform: uppercase;
     font-size: 9px;
 }
-
-.centerDivSignUp {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    justify-content: flex-start;
-}
-
-.centerDivSignUp input {
-    font-weight: normal;
-    background: transparent;
-    text-transform: uppercase;
-    font-size: 9px;
-    height: 40px;
-    width: 99%;
-    border: 2px #A67E96 solid;
-    padding: 0 0 0 15px;
-}
-
-.emailGender {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    align-items: center;
-    align-content: center;
-    justify-content: space-between;
-}
-
-.emailGender input {
-    font-weight: normal;
-    background: transparent;
-    text-transform: uppercase;
-    font-size: 9px;
-    height: 40px;
-    width: 200px;
-    border: 2px #A67E96 solid;
-    padding: 0 0 0 15px;
-    margin: 0 35px 0 0;
-}
-
-.postalCode {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-}
-
-.postalInput {
-    font-weight: normal;
-    background: transparent;
-    text-transform: uppercase;
-    font-size: 9px;
-    height: 40px;
-    width: 200px;
-    border: 2px #A67E96 solid;
-    padding: 0 0 0 15px;
-    margin: 0px 32px 0px 0px;
-}
-
-.buttonBottom {
-    display: flex;
-    align-items: flex-end;
-}
-
-.inputButtonSignUp {
-    width: 215px;
-    background-color: #8A2552;
-    text-transform: uppercase;
-    font-size: 10px;
-    height: 43px;
-    border: 0;
-    color: #FFFFFF;
-    transition: all 0.3s ease;
-}
-
-.inputButtonSignUp:hover {
-    background-color: #962959;
-}
-
 
 /* END SIGN UP */
 
@@ -2128,6 +2370,12 @@ form {
     box-shadow: 3px 4px 3px rgba(0, 0, 0, 0.3);
 }
 
+.memberDeleteButtons {
+    background-color: #f2f2f2;
+    text-align: center;
+    padding: 5% 0 5% 0;
+}
+
 .memberSignIn a {
     text-decoration: none;
     color: #8A2552;
@@ -2137,7 +2385,12 @@ form {
     font-weight: bold;
 }
 
-
+.memberDeleteAccount {
+    background-color: #f2f2f2;
+    text-align: center;
+    color: #4c4c4e;
+    font-size: 13px;
+}
 /* END CHOOSE SIGN UP */
 
 
@@ -2190,6 +2443,10 @@ form {
     justify-content: space-around;
     height: 50px;
     padding: 0px 30px 0px 30px
+}
+
+.containerInput span {
+    color: #4c4a4d;
 }
 
 .carListPro {
@@ -2288,6 +2545,242 @@ form {
 
 
 /* END LIST PRO */
+
+/* MESSAGE DELETE ACCOUNT*/
+.containerAccountDelete {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    width: 100%;
+}
+
+.titleAccountDelete {
+    background-color: #42B6B2;
+    width: 50%;
+    height: 120px;
+}
+
+.titleAccountDelete h1 {
+    margin: 35px 0px 3px 15px;
+    text-transform: uppercase;
+    color: white;
+    font-size: 20px;
+}
+
+.underLineAccountDelete {
+    background-color:#FFFFFF;
+    height: 2px;
+    width: 60px;
+    margin: 0 0 0 15px;
+}
+
+.messageDeleteAccount {
+    background-color: #FFFFFF;
+    width: 50%;
+    height: 120px;
+    text-align: center;
+
+}
+
+.messageDeleteAccount p {
+    text-transform: uppercase;
+    font-size: 13px;
+    margin-top: 50px;
+}
+
+/* END MESSAGE DELETE ACCOUNT */
+
+/* MESSAGE RESEARCH MESSAGE */
+
+.containerResearch {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    width: 100%;
+}
+
+.titleResearch {
+    background-color: #42B6B2;
+    width: 50%;
+    height: 120px;
+}
+
+.titleResearch h1 {
+    margin: 35px 0 3px 15px;
+    text-transform: uppercase;
+    color: white;
+    font-size: 20px;
+}
+
+.underLineResearch {
+    background-color:#FFFFFF;
+    height: 2px;
+    width: 130px;
+    margin: 2px 0 0 15px;
+}
+
+.messageResearch {
+    background-color: #FFFFFF;
+    width: 50%;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-items: center;
+    align-content: center;
+
+}
+
+.messageResearch p {
+    text-transform: uppercase;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.proInfo {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+
+.proInfo p {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.proInfo span {
+    font-size: 15px;
+}
+
+.buttonUnResearch, .buttonTwoResearch {
+    width: 150px;
+    height: 40px;
+    text-transform: uppercase;
+    border: 0;
+    color: #FFFFFF;
+}
+
+.buttonUnResearch {
+    background-color: #50324C;
+    margin-right: 20px;
+}
+
+.buttonTwoResearch {
+    background-color: #8A2552;
+}
+
+
+/* END RESEARCH MESSAGE */
+
+/* RESEARCH */
+
+.messageValidation {
+    background-color: #FFFFFF;
+    width: 50%;
+    height: 150px;
+    text-align: center;
+}
+
+.messageValidation p {
+    text-transform: uppercase;
+    margin-top: 60px;
+}
+
+/* END RESEARCH */
+
+/* RESEARCH */
+
+.divResearch {
+    background-color: #FFFFFF;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-items: center;
+    align-content: center;
+}
+
+.divResearchPsyJuriste {
+    background-color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+    width: 100%;
+}
+
+.buttonPsychologue , .buttonJuriste {
+    width: 50%;
+    height: 50px;
+    text-transform: uppercase;
+    border: 0;
+    color: white;
+    margin: 10px 0px 10px 0px;
+}
+
+.buttonPsychologue {
+    background-color: #8A2552;
+}
+
+.buttonJuriste {
+    background-color: #50324C;
+}
+
+.lineResearch {
+    background-color: #F2F2F2;
+    width: 75%;
+    height: 1px;
+    margin: 30px 0 30px 0
+}
+
+.divResearchByName {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    margin-bottom: 40px;
+}
+
+.divResearchByName span {
+    font-size: 14px;
+    text-transform: uppercase;
+    color: #b3b2b2;
+    margin-right: 25px;
+}
+
+.divResearchByName input {
+    width: 35%;
+    height: 35px;
+    border: 0;
+    background-color: #F2F2F2;
+    padding: 0 0 0 15px;
+}
+
+.divResearchByName button {
+    width: 25%;
+    height: 35px;
+    border: 0;
+    color: #FFFFFF;
+    background-color: #A67E96;
+    text-transform: uppercase;
+    font-size: 10px;
+}
+/* RESEARCH */
 
 
 /* FORUM */
@@ -2491,7 +2984,7 @@ footer {
 }
 
 .logoRights {
-    margin-top: 5px;
+    padding: 10px 0 10px 0;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -2537,12 +3030,6 @@ footer {
 
 .imgCross img {
     margin: 0;
-}
-
-.titleSignUp img {
-    margin: 5px 0 0 5px;
-    width: 20px;
-    height: 20px;
 }
 
 .notForUser {

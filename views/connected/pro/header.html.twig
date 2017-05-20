@@ -1,10 +1,12 @@
 <header>
-    ADD BUTTON FOR LOGOUT!
     <div class="topContainer">
         <div class="topHeader">
             <div class="logoTitle">
                 <div><img src="web/style/img/logoBullE.png" alt="logo Bull-E"></div>
                 <a href="?action=home"><h1>Bull-E</h1></a>
+            </div>
+            <div class="supportUsBtn">
+                <input type="submit" value="nous soutenir" class="suppBtn">
             </div>
             <div class="accessProfileMain">
                 <div class="signInUp accessProfile">
@@ -12,11 +14,14 @@
                         <p class="username"><a href="?action=account">{{ currentUser['pseudo'] }}</a></p>
                         <div class="myAccount">
                             <p class="account"><a href="?action=account">mon compte</a></p>
+                            <p class="separator">/</p>
+                            <p class="account"><a href="?action=inbox">messagerie</a></p>
                         </div>
+                        <p class="disconnect"><a href="?action=toSuppress" id="logout">déconnexion</a></p>
                     </form>
                 </div>
                 <div class="accountProfile">
-                    <img class="accountPicture" src="accountPicture.png" alt="account picture">
+                    <img class="accountPicture" src="web/style/img/accountPicture.png" alt="account picture">
                 </div>
             </div>
         </div>

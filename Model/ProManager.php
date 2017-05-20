@@ -144,7 +144,14 @@ class ProManager extends UserManager
         if ($_POST['type'] !== 'lawyer' && $_POST['type'] !== 'psy')
         {
             $arrayReturned['formOk'] = false;
-            $this->logManager->generateAccessMessage('tried to give the type '.$_POST['type'], 'security');
+            if ($_POST['type'] !== 'choose')
+            {
+                $this->logManager->generateAccessMessage('tried to give the type '.$_POST['type'], 'security');
+            }
+            else
+            {
+                $arrayReturned[0]['type'] = 'This field is required';
+            }
         }
 
         if ($arrayReturned['formOk'] === true)

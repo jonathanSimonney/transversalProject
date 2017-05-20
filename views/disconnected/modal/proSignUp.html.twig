@@ -18,6 +18,12 @@
                                 <!--TODO-->
                             </div>
                             <div class="inputTextSignUp">
+                                <label for="freeSlot">
+                                    <p>Nombre d'utilisateur maximum</p>
+                                </label>
+                                <input type="number" placeholder="nombre d'utilisateur maximum" name="free_slot" id="freeSlot">
+                            </div>
+                            <div class="inputTextSignUp">
                                 <label for="password">
                                     <p>mot de passe*</p>
                                 </label>
@@ -31,13 +37,21 @@
                                 <label for="type">
                                     <p>profession*</p>
                                 </label>
-                                <select class="listProfession" id="type" name="type">
+                                <select class="listSelect" id="type" name="type">
                                     <option value="choose">choisissez votre profession</option>
                                     <!-- TODO -->
                                     <option value="psy">psychologue</option>
                                     <option value="lawyer">juriste</option>
                                 </select>
                                 <!--TODO-->
+                            </div>
+                            <div>
+                                <p>Genre</p>
+                                <select class="listSelect" name="gender">
+                                    <option value="choose">Choisissez votre genre</option> <!-- TODO -->
+                                    <option value="man">Homme</option>
+                                    <option value="woman">Femme</option>
+                                </select>
                             </div>
                             <div class="inputTextSignUp">
                                 <label for="confirmPassword">
@@ -58,36 +72,23 @@
                         </div>
                     </div>
 
-                    <div class="emailGender">
-                        <div>
+                    <div class="containerEmail">
+                        <div class="emailInput">
                             <label for="email">
                                 <p>adresse email*</p>
                             </label>
-                            <input type="email" placeholder="entrer votre adresse email" name="email" id="email">
-                            <!-- TODO adresse mail-->
+                            <input type="text" placeholder="Entrer votre adresse email" name="email" id="email"> <!-- TODO adresse mail-->
                         </div>
-                        <div class="inputTextSignUp">
-                            <label for="gender">
-                                <p>genre*</p>
-                            </label>
-                            <select class="listProfession" id="gender" name="gender">
-                                <option value="choose">choisissez votre genre</option>
-                                <!-- TODO -->
-                                <option value="woman">femme</option>
-                                <option value="man">homme</option>
-                            </select>
-                            <!--TODO-->
-                        </div>
-                    </div>
-
-                    <div class="postalCode">
-                        <div class="inputTextSignUp">
+                        <div class="postalCode">
                             <label for="location">
                                 <p>code postal</p>
                             </label>
-                            <input type="text" class="postalInput" placeholder="entrez votre code postal" name="location" id="location">
+                            <input type="text" class="postalInput" placeholder="Entrez votre code postal" name="location" id="location">
                             <!--TODO code postal-->
                         </div>
+                    </div>
+                    <div>
+
                         <div class="buttonBottom">
                             <input class="inputButtonSignUp" type="submit" value="valider et créer mon compte">
                             <!--TODO valide compte-->
@@ -98,3 +99,8 @@
         </div>
     </div>
 </div>
+
+
+</html>
+
+

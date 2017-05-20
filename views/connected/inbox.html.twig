@@ -39,30 +39,32 @@
             <div>
                 <span>
                     {% if receptorOrSender == 'receptor' %}
-                        Element envoyés
+                        Éléments envoyés
                     {% else %}
                         Boîte de réception
                     {% endif %}
-                </span> <span id="messageNumber">{{ message|length }}</span> messages</div>
+                </span>(<span id="messageNumber">{{ message|length }}</span>message(s))</div>
         </div>
         <div class="inboxInfo">
             <div class="inboxActions">
-                <button id="suppressEmail">supprimer</button>
+                <button id="suppressEmail" class="suppEmail">supprimer</button>
             </div>
 
-            <div class="inboxUnderline"></div>
-            {% for mail in message %}
-                <div class="typeOfInfo">
-                    <input type="checkbox" class="checkbox checkboxMailId" value="{{ mail['id'] }}" name="mailId">
-                    <div class="content">
-                        <div class="nameDate">
-                            <span class="name">{{ mail[receptorOrSender]['pseudo'] }}</span>
-                        </div>
-                        <p>{{ mail['shortObject'] }}</p>
-                    </div>
-                </div>
+            <div class="containerInbox">
                 <div class="inboxUnderline"></div>
-            {% endfor %}
+                {% for mail in message %}
+                    <div class="typeOfInfo">
+                        <input type="checkbox" class="checkbox checkboxMailId" value="{{ mail['id'] }}" name="mailId">
+                        <div class="content">
+                            <div class="nameDate">
+                                <span class="name">{{ mail[receptorOrSender]['pseudo'] }}</span>
+                            </div>
+                            <p>{{ mail['shortObject'] }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+                <div class="inboxUnderline"></div>
+            </div>
         </div>
     </div>
 </div>

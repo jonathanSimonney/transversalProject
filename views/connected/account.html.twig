@@ -16,15 +16,19 @@
                     <p>mes contacts</p>
                 </a>
             </div>
+            <div class="containerAccount">
             {% for key, name in currentUser['contact'] %}
                 <div class="accountContacts contact">
                     <span>
                         {{ key }}
                         <input type="number" class="notForUser" value="{{ name['id'] }}">
                     </span>
-                    <span class="status">disponible</span>
+                    <div class="span">
+                        <span class="status"><a href="invalid">MP</a></span><span class="status">/</span><span class="status"><a href="invalid">supprimer</a></span>
+                    </div>
                 </div>
             {% endfor %}
+        </div>
 
         </div>
         <div class="accountContent" id="receptor">
@@ -80,8 +84,8 @@
                 </div>
                 <div class="accountUnderline"></div>
                 <div class="accountEdit">
+                    <input type="submit" id="suppressAccount" value="supprimer mon compte" class="deleteBtn">
                     <input type="submit" id="enableModif" value="modifier" class="contactBtn">
-                    <input type="submit" id="suppressAccount" value="supprimer" class="contactBtn">
                 </div>
             </div>
         </div>
