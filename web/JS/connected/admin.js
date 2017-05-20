@@ -102,9 +102,8 @@ $('#seeUsers').click(function(e){
                         var added = $('<p>'+data['pseudo']+'</p>');
                         added.appendTo('.accountActive');
                         arrayUsers['registered_user'][data['pseudo']] = data;
-                        added.click();
-                        alert('removel in progress!');
                         $('.accountInactive .usersSelected').remove();
+                        added.click();
                     })
                 })
             });
