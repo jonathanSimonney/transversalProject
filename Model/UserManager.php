@@ -63,11 +63,14 @@ class UserManager extends BaseManager
         return password_hash($pass, PASSWORD_BCRYPT);
     }
 
-    protected function userRegisterWithParams($data, array $arrayFields, bool $trueInscription)
+    protected function userRegisterWithParams($data, array $arrayFields, bool $trueInscription, bool $dataNeedsTransformation = true)//todo sorry, would be better to put data transform out of ther, but no time.
     {
         $table = $trueInscription ? 'users' : 'unregistered_users';
         $user = [];
-        $data = $this->transformData($data);//currently useless (function with only one instruction... But allows easier improvement if in the future one want to add other
+        if ($dataNeedsTransformation)
+        {
+            $data = $this->transformData($data);//currently useless (function with only one instruction... But allows easier improvement if in the future one want to add other
+        }
         // transformation to data before inscription in db.
         foreach ($arrayFields as $field)
         {
