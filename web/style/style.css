@@ -3368,3 +3368,13 @@ footer {
 .notForUser {
     display: none;
 }
+
+.flexPower{
+    display: flex;
+    flex-direction:row;
+}
+
+.errorMessage{
+    color:red;
+    font-size: 2vh;
+}

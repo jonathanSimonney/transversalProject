@@ -19,10 +19,18 @@ $('#signIn').click(function (e) {
                 if (data.state === true){
                     location.reload();
                 }
-                if (data.state === false && data.reason === 'password'){
+                if (data.state === false){
+                    $('#errorMessage').removeClass('notForUser');
+                    if (data.reason === 'password'){
+                        $('#userIndic').text(data.data);
+                        ($('#userIndic')).parent().removeClass('notForUser');
+                        $('#errorMessage').text('Mot de passe incorrect');
+                    }
+
+                    if (data.reason === 'utilisateur non enregistré'){
+                        $('#errorMessage').text('Cet utilisateur n\'existe pas');
+                    }
                     console.log(data.data, $('#userIndic'));
-                    $('#userIndic').text(data.data);
-                    ($('#userIndic')).parent().removeClass('notForUser');
                 }
                 console.log(data);
             });
