@@ -71,12 +71,12 @@ class ProManager extends UserManager
         return $this->getProWithMinimumUserConnected($proArray);
     }
 
-    public function findProfessionalByName($type, $name)
+    public function findProfessionalByName($name)
     {
-        $pro = $this->DBManager->findOneSecure('SELECT * FROM users WHERE pseudo = :pseudo AND type = :type', ['pseudo' => $name, 'type' => $type]);
-        if($pro === false)
+        $pro = $this->DBManager->findOneSecure('SELECT * FROM users WHERE pseudo = :pseudo', ['pseudo' => $name]);
+        if($pro === false || !in_array($pro['type'], ['lawyer', 'psy']))
         {
-            $_SESSION['errorMessage']['other'] = 'No professional of this name and type exists. Sorry.';
+            $_SESSION['errorMessage']['other'] = 'No professional of this name exists. Sorry.';
             return;
         }
 

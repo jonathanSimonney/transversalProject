@@ -44,7 +44,7 @@ class ProController extends UserController
         }
     }
 
-    public function findProfessionalAction()
+    public function findAutoProfessionalAction()
     {
         if ($_SESSION['currentUser']['data']['type'] !== 'victime')
         {
@@ -54,7 +54,7 @@ class ProController extends UserController
         {
             $_SESSION['errorMessage'] = [];
 
-            if ($this->formManager->checkRequiredField(['professionalType', 'autoMatch']))
+            if ($this->formManager->checkRequiredField(['professionalType']))
             {
                 if ((int)$_SESSION['currentUser']['data'][$_POST['professionalType'].'_id'] !== 0)
                 {
@@ -62,14 +62,7 @@ class ProController extends UserController
                 }
                 else
                 {
-                    if ($_POST['autoMatch'] === 'true')
-                    {
-                        $pro = $this->proManager->findAutoProfessional($_POST['professionalType']);
-                    }
-                    elseif ($this->formManager->checkRequiredField(['username']))
-                    {
-                        $pro = $this->proManager->findProfessionalByName($_POST['professionalType'], $_POST['username']);
-                    }
+                    $pro = $this->proManager->findAutoProfessional($_POST['professionalType']);
                 }
 
                 if (count($_SESSION['errorMessage']) === 0)
@@ -77,6 +70,38 @@ class ProController extends UserController
                     $this->proManager->takeProfessional($pro);
                     $this->logManager->generateAccessMessage('took pro of pseudo '.$pro['pseudo'].' and of id '.$pro['id'], 'access');
                 }
+            }
+
+            if (count($_SESSION['errorMessage']) !== 0)
+            {
+                echo json_encode(['error' => $_SESSION['errorMessage']]);
+            }
+        }
+    }
+
+    public function findUsernameProfessionalAction()
+    {
+        if ($_SESSION['currentUser']['data']['type'] !== 'victime')
+        {
+            $this->logManager->generateAccessMessage('tried to contact a pro (but he is also a pro!)', 'security');
+        }
+        else
+        {
+            $_SESSION['errorMessage'] = [];
+
+            if ($this->formManager->checkRequiredField(['username']))
+            {
+                $potentialPro = $this->proManager->findProfessionalByName($_POST['username']);
+                if ($potentialPro !== null && (int)$_SESSION['currentUser']['data'][$potentialPro['type'].'_id'] !== 0)
+                {
+                    $_SESSION['errorMessage']['other'] = 'You already have a professional of this type. Please suppress it before you connect with a new professional.';
+                }
+            }
+
+            if (count($_SESSION['errorMessage']) === 0)
+            {
+                $this->proManager->takeProfessional($potentialPro);
+                $this->logManager->generateAccessMessage('took pro of pseudo '.$potentialPro['pseudo'].' and of id '.$potentialPro['id'], 'access');
             }
 
             if (count($_SESSION['errorMessage']) !== 0)
