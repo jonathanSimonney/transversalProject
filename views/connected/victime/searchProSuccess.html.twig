@@ -1,0 +1,20 @@
+{%  extends 'layout.html.twig' %}
+
+{% block content %}
+<div class="containerResearch">
+    <div class="titleResearch">
+        <h1>rechercher un professionnel</h1>
+        <div class="underLineResearch"></div>
+    </div>
+    <div class="messageResearch">
+        <div>
+            <p>vous avez été mis(e) en relation avec :</p>
+        </div>
+        <div class="proInfo">
+            <p>{{ username }}</p>
+            <span>{{ gender }}</span>
+            <span>{{ location }}</span>
+        </div>
+    </div>
+</div>
+{% endblock %}

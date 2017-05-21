@@ -69,6 +69,7 @@ class ProController extends UserController
                 {
                     $this->proManager->takeProfessional($pro);
                     $this->logManager->generateAccessMessage('took pro of pseudo '.$pro['pseudo'].' and of id '.$pro['id'], 'access');
+                    echo json_encode(['pseudo' => $pro['pseudo'], 'gender' => $pro['gender'], 'location' => $pro['location']]);
                 }
             }
 
@@ -102,6 +103,7 @@ class ProController extends UserController
             {
                 $this->proManager->takeProfessional($potentialPro);
                 $this->logManager->generateAccessMessage('took pro of pseudo '.$potentialPro['pseudo'].' and of id '.$potentialPro['id'], 'access');
+                echo json_encode(['pseudo' => $potentialPro['pseudo'], 'gender' => $potentialPro['gender'], 'location' => $potentialPro['location']]);
             }
 
             if (count($_SESSION['errorMessage']) !== 0)

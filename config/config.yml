@@ -22,6 +22,7 @@ routes: #todo take out useless routes ; reorganize controller (one controller fo
     # changeFreeSlot:         'Pro:changeFreeSlot:connected:post'
     findAutoPro:             'Pro:findAutoProfessional:connected:post'
     findUsernamePro:         'Pro:findUsernameProfessional:connected:post'
+    proSuccess:              'Default:showProSuccess:connected:get'
     abandonPro:              'Pro:abandonProfessional:connected:post'
     proInscription:          'User:professionalInscription:disconnected:post'
     victimInscription:       'User:victimInscription:disconnected:post'

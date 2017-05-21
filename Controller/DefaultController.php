@@ -106,6 +106,11 @@ class DefaultController extends BaseController
         $this->simplyShowPage('connected/victime/searchProForm.html.twig');
     }
 
+    public function showProSuccessAction()
+    {
+        $this->simplyShowPage('connected/victime/searchProSuccess.html.twig', $_GET);
+    }
+
     public function getProfessionalListAction()
     {
         $proArray = $this->userManager->getAllProfessionalData();
