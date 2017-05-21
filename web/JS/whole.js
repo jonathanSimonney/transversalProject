@@ -47,13 +47,13 @@ function linkFormEvent(form, action, responseFunction){
 
 function debugAnswer(request){
     //document.write(request.responseText);//todo comment this before final commit! EXTREMELY IMPORTANT!!!
-    if (request.responseText !== ''){
+    /*if (request.responseText !== ''){
         document.getElementById('debug').innerHTML = request.responseText;
         console.log(JSON.parse(request.responseText));
         alert("Vous avez un message (dans la console)");
     }else{
         alert('no answer???');
-    }
+    }*/
 }
 
 function linkAllFormEvent(objectForm){

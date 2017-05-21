@@ -28,7 +28,7 @@ not online, but he shall come afterwards.)
      
 >mail_config:  
    host:     'smtp.example.com;smtp2.example.com'  
-   _(put smtp.gmai.com if you have a gmail adress, for example)_  
+   _(put smtp.gmail.com if you have a gmail adress, for example)_  
    adress:   _your server email adress_  
    password: _its password_  
 
@@ -48,3 +48,4 @@ possible amelioration :
   These shall be put to extend a single template, to avoid code repetition.
  
  - There are also many useless routes.
+ - The errors are absolutely not handled (which makes our UX completely awful).
