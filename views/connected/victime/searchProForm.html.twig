@@ -1,0 +1,24 @@
+{%  extends 'layout.html.twig' %}
+
+{% block content %}
+<div class="containerResearch">
+    <div class="titleResearch">
+        <h1>rechercher un professionnel</h1>
+        <div class="underLineResearch"></div>
+    </div>
+    <div class="divResearch">
+        <div class="divResearchPsyJuriste">
+            <button class="buttonPsychologue">trouver un(e) psychologue disponible</button>
+            <button class="buttonJuriste">trouver un(e) juriste disponible</button>
+        </div>
+        <div class="lineResearch"></div>
+        <div class="divResearchByName">
+            <span>ou</span>
+            <input type="text" id="research" placeholder="RECHERCHER UN NOM..."> <!-- TODO -->
+            <button class="buttonResearch">rechercher</button>
+        </div>
+    </div>
+</div>
+
+<script src="web/JS/connected/searchPro.js"></script>
+{% endblock %}

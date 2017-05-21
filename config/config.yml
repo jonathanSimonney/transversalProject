@@ -1,8 +1,9 @@
-routes:
+routes: #todo take out useless routes ; reorganize controller (one controller for modale, for example?
     home:                    'Default:showHomePage:both:get' #todo misses picture. See link as well
     about:                   'Default:showAboutPage:both:get'
     forum:                   'Default:showForumPage:both:get' #not functional
     contact:                 'Default:showContactPage:both:get' #not functionnal
+    searchProForm:           'Default:seeSearchProForm:connected:get'
     getSignInModal:          'Default:showSignIn:disconnected:get'
     getSignUpModal:          'Default:showSignUp:disconnected:get'
     getProSignUpModal:       'Default:showProSignUp:disconnected:get'

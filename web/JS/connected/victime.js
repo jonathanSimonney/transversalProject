@@ -1,3 +1,3 @@
-/**
- * Created by user on 18/05/2017.
- */
+$('#searchPro').click(function () {
+    window.location.replace('?action=searchProForm');
+});

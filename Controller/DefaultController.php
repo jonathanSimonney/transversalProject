@@ -101,6 +101,11 @@ class DefaultController extends BaseController
         $this->simplyShowPage('both/legal.html.twig');
     }
 
+    public function seeSearchProFormAction()
+    {
+        $this->simplyShowPage('connected/victime/searchProForm.html.twig');
+    }
+
     public function getProfessionalListAction()
     {
         $proArray = $this->userManager->getAllProfessionalData();
