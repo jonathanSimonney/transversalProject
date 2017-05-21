@@ -56,7 +56,7 @@ header {
 }
 
 nav {
-font-family: "Avenir Next";
+    font-family: "Avenir Next";
     background-color: #4c4a4e;
 }
 
@@ -178,6 +178,10 @@ font-family: "Avenir Next";
     font-family: "Avenir Next";
     font-size: 13px;
     font-weight: bold;
+    height: 18px;
+    width: 150px;
+    overflow: auto;
+    word-break: break-all;
 }
 
 .account {
@@ -239,10 +243,10 @@ font-family: "Avenir Next";
 }
 
 .accountPicture {
-    width: 70px;
-    height: 70px;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
-    background: black;
+    background: none;
 }
 
 
@@ -462,32 +466,39 @@ font-family: "Avenir Next";
 }
 
 .forumMsg h3 {
+    display: flex;
+    align-items: center;
+    align-content: center;
     font-size: 15px;
     font-weight: normal;
     font-family: "Raleway";
-    margin: 5px 0 0 0;
+    margin: 5px 0 10px 0;
     color: #8a2552;
     font-style: italic;
+    height: 50px;
 }
 
 .forumMsg p {
     font-size: 10px;
     color: #949295;
     margin: 5px 0 0 0;
+    height: 70px;
+    overflow: auto;
 }
 
 .forumMsg span {
-    font-family: "Avenir Next";
     text-transform: uppercase;
-    font-size: 7px;
+    font-size: 9px;
 }
 
 .forumMsg .username {
+    font-family: "Avenir Next";
     font-weight: bold;
     color: #8a2552;
 }
 
 .forumMsg .date {
+    font-family: "Avenir Next";
     font-weight: bold;
     color: #000000;
 }
@@ -646,7 +657,7 @@ font-family: "Avenir Next";
 
 .profilePicture img {
     width: 150px;
-    height: 130px;
+    height: 150px;
 }
 
 .profileMain input {
@@ -715,6 +726,7 @@ font-family: "Avenir Next";
 }
 
 .memberInfo img {
+    margin: 0 5px 0 0;
     width: 15px;
     height: 15px;
 }
@@ -1664,6 +1676,10 @@ font-family: "Avenir Next";
     font-size: 22px;
 }
 
+.aboutContainer p {
+    margin: 5px 0 5px 0;
+}
+
 .aboutContainer .aboutUnderline {
     background-color: #42B6B2;
     height: 2px;
@@ -1673,7 +1689,7 @@ font-family: "Avenir Next";
 
 .text2 {
     background-color: #A67E96;
-    color: white;
+    color: #FFFFFF;
     padding: 50px;
     font-size: 13px;
 }
@@ -1683,6 +1699,18 @@ font-family: "Avenir Next";
     margin: 30px 0 30px 0;
 }
 
+
+.text2 .aboutTittle h1 {
+    color: #FFFFFF;
+}
+
+.text2 .aboutUnderline {
+    background: #FFFFFF;
+}
+
+.text2 .aboutTittle {
+    margin: 0 0 20px 0;
+}
 
 /* END ABOUT */
 
@@ -2157,9 +2185,9 @@ form {
     -webkit-appearance: button;
     -webkit-border-radius: 2px;
     background-repeat: no-repeat;
-    background-image: url(http://scubeproject.com/img/landing/down.png);
-    background-size: 25px;
-    background-position: 97% center;
+    background-image: url(img/iconChevron.png);
+    background-size: 20px;
+    background-position: 93% center;
 
 }
 
@@ -2170,9 +2198,9 @@ form {
     -webkit-appearance: button;
     -webkit-border-radius: 2px;
     background-repeat: no-repeat;
-    background-image: url(http://scubeproject.com/img/landing/down.png);
-    background-size: 25px;
-    background-position: 97% center;
+    background-image: url(img/iconChevron.png);
+    background-size: 20px;
+    background-position: 93% center;
     color: #FFFFFF;
     border: 0;
     width: 215px;
@@ -2251,17 +2279,17 @@ form {
 }
 
 .inputButtonSignUp {
-     margin-top: 28px;
-     width: 213px;
-     background-color: #8A2552;
-     font-size: 10px;
-     height: 43px;
-     border: 0;
-     color: #FFFFFF;
-     text-transform: uppercase;
- }
+    margin-top: 28px;
+    width: 213px;
+    background-color: #8A2552;
+    font-size: 10px;
+    height: 43px;
+    border: 0;
+    color: #FFFFFF;
+    text-transform: uppercase;
+}
 
- .inputButtonSignUp:hover {
+.inputButtonSignUp:hover {
     background-color: #962959;
 }
 
@@ -2298,9 +2326,9 @@ form {
     -webkit-appearance: button;
     -webkit-border-radius: 2px;
     background-repeat: no-repeat;
-    background-image: url(http://scubeproject.com/img/landing/down.png);
-    background-size: 25px;
-    background-position: 97% center;
+    background-image: url(img/iconChevron.png);
+    background-size: 20px;
+    background-position: 93% center;
     color: #FFFFFF;
     border: 0;
     width: 215px;
@@ -2314,9 +2342,9 @@ form {
     -webkit-appearance: button;
     -webkit-border-radius: 2px;
     background-repeat: no-repeat;
-    background-image: url(http://scubeproject.com/img/landing/down.png);
-    background-size: 25px;
-    background-position: 97% center;
+    background-image: url(img/iconChevron.png);
+    background-size: 20px;
+    background-position: 93% center;
     color: #FFFFFF;
     border: 0;
     width: 215px;
@@ -2686,6 +2714,7 @@ form {
     align-items: center;
     align-content: center;
     width: 100%;
+    padding: 30px;
 }
 
 .titleResearch {
@@ -2962,7 +2991,8 @@ form {
     align-content: center;
 }
 
-.containerChat H2 {
+.containerChat h2 {
+    width: 220px;
     font-size: 14px;
     font-weight: bold;
     color: #8A2552;
@@ -3362,11 +3392,20 @@ footer {
 }
 
 .imgCross img {
-    margin: 0;
+    cursor: pointer;
+    width: 15px;
+    height: 15px;
+    margin: 5px;
 }
 
 .notForUser {
     display: none;
+}
+
+@media screen and (min-width: 425px) {
+}
+
+@media screen and (min-width: 1025px) {
 }
 
 .flexPower{
@@ -3377,4 +3416,571 @@ footer {
 .errorMessage{
     color:red;
     font-size: 2vh;
+}
+
+
+
+
+/* Media Queries*/
+
+
+@media screen and (min-width: 425px) {
+    /* ABOUT (425px) */
+    .aboutContainer {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-content: center;
+        width: 100%;
+        padding: 0;
+    }
+
+    .aboutContainer h1 {
+        color: #42B6B2;
+        text-transform: uppercase;
+        font-size: 50px;
+    }
+
+    .aboutTittle {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+        margin-top: 20px;
+    }
+
+    .aboutContainer .aboutUnderline {
+        background-color: #42B6B2;
+        height: 5px;
+        width: 300px;
+        margin: 1% 20% 0 0;
+    }
+
+    .text2 {
+        background-color: #A67E96;
+        color: white;
+        padding: 50px;
+        font-size: 13px;
+    }
+
+    .text2 .aboutTittle {
+        margin-bottom: 30px;
+    }
+
+    .text2 .aboutTittle h1 {
+        color: #FFFFFF;
+    }
+
+    .text2 .aboutTittle .aboutUnderline {
+        background-color: #FFFFFF;
+    }
+
+    .text1 {
+        font-size: 13px;
+        padding: 50px;
+        margin: 0;
+    }
+
+    /* HEADER */
+    .logoTitle img {
+        display: none;
+    }
+
+    .topContainer {
+        width: 90%;
+    }
+
+    .topHeader h1 {
+        font-size: 80px;
+    }
+
+    .supportUsBtn {
+        display: none;
+    }
+
+    .topHeader .signUp {
+        width: 230px;
+        font-size: 25px;
+        padding: 12px 25px;
+    }
+
+    .signInUp .signIn {
+        width: 230px;
+        height: 50px;
+        font-size: 18px;
+    }
+
+    .navigation ul {
+        padding: 30px;
+    }
+
+    .menu li a {
+        font-size: 25px;
+    }
+    /* END HEADER */
+
+    /* HEADER VICTIM */
+    .accountPicture {
+        display: none;
+    }
+
+    .accessProfile .username {
+        font-size: 30px;
+        height: 40px;
+        width: 150px;
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .account {
+        font-size: 25px;
+    }
+
+    .separator {
+        font-size: 25px;
+    }
+
+    .disconnect {
+        font-size: 25px;
+    }
+    /* HEADER VICTIM */
+
+    /* HOMEPAGE */
+    .homeImg {
+        display: none;
+    }
+
+    .homeContainer {
+        width: 90%;
+    }
+
+    .homeContent {
+        width: 90%;
+    }
+
+    .homeContent p {
+        height: 300px;
+    }
+
+    .homeContent h2 {
+        font-size: 40px;
+    }
+
+    .homeContact {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .homeContact input {
+        font-size: 25px;
+        padding: 20px 21% 20px ;
+    }
+
+    .forumMain {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .forumMsg {
+        width: 90%;
+        height: 300px;
+        margin: 10px 0 10px 0;
+    }
+
+    .forumMsg h3 {
+        font-size: 35px;
+    }
+
+    .forumMsg p {
+        font-size: 15px;
+        height: 150px;
+        margin: 30px 0 30px 0;
+    }
+
+    .forumMsg span {
+        font-size: 18px;
+    }
+
+    .supportUsBg {
+        background: #a67e96;
+    }
+
+    .supportUs {
+        width: 80%;
+    }
+
+    .supportUs h3 {
+        font-size: 50px;
+    }
+
+    .supportUsContent {
+        display: flex;
+        flex-direction: column;
+        background: none;
+    }
+
+    .horizontalLine {
+        display: none;
+    }
+
+    .supportUsContent .pro {
+        background: #FFFFFF;
+        padding: 40px;
+        margin: 10px 0 20px 0;
+        width: 100%;
+    }
+
+    .supportUsContent .particular {
+        background: #FFFFFF;
+        padding: 40px;
+        margin: 10px 0 20px 0;
+        width: 100%;
+    }
+
+    .supportUsContent input {
+        font-size: 25px;
+        margin: 40px 0 10px 0;
+        padding: 30px;
+        width: 100%;
+    }
+
+    .supportUsContent h4 {
+        font-size: 40px;
+    }
+
+    .supportUsContent p {
+        font-size: 30px;
+    }
+
+    .partnersContainer {
+        width: 90%;
+    }
+
+    .partnersTitle h3 {
+        font-size: 50px;
+    }
+
+    .partners {
+        width: 380px;
+        height: 280px;
+        margin: 25px;
+    }
+
+    /* END HOMEPAGE */
+
+    /* FOOTER */
+    .footerContainer {
+        width: 70%;
+    }
+
+    .links {
+        font-size: 20px;
+    }
+
+    .logoRights {
+        padding: 20px 0 20px 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        width: 80%;
+        margin: auto;
+    }
+
+    .twitter {
+        width: 70px;
+    }
+
+    .facebook {
+        height: 60px;
+    }
+
+    .copyrights {
+        font-size: 30px;
+        padding: 20px 0 20px 0;
+    }
+    /* END FOOTER */
+    /* END ABOUT (425px) */
+}
+
+
+@media screen and (min-width: 1025px) {
+
+    /* SignIn (1025px)*/
+    .titleSignIn {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+    }
+
+    .titleSignIn span {
+        color: red;
+        font-size: 10px;
+        margin-left: 10px;
+    }
+    /* END SignIn (1025px)*/
+
+    /* ABOUT (1025px) */
+
+    .aboutContainer {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-content: center;
+        width: 55%;
+        margin: auto;
+        padding: 40px;
+    }
+
+    .aboutTittle {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        align-items: stretch;
+        align-content: stretch;
+        margin-top: 0;
+    }
+
+    .aboutContainer h1 {
+        color: #42B6B2;
+        text-transform: uppercase;
+        font-size: 22px;
+    }
+
+
+    .aboutContainer .aboutUnderline {
+        background-color: #42B6B2;
+        height: 2px;
+        width: 110px;
+        margin: 4px 0 0 0;
+    }
+
+    .text2 {
+        background-color: #A67E96;
+        color: white;
+        padding: 50px;
+        font-size: 13px;
+    }
+
+    .text2 .aboutTittle{
+        display: none;
+    }
+
+    .text1 {
+        font-size: 13px;
+        padding: 0;
+        margin: 30px 0 30px 0;
+    }
+
+    /* HEADER */
+    .topContainer {
+        width: 65%;
+    }
+
+    .logoTitle img {
+        display: block;
+    }
+
+    .topHeader h1 {
+        font-size: 35px;
+    }
+
+    .supportUsBtn {
+        display: block;
+    }
+
+    .topHeader .signUp {
+        width: 100%;
+        font-size: 11px;
+    }
+
+    .signInUp .signIn {
+        width: 100%;
+        height: 20px;
+        font-size: 9px;
+    }
+
+    .navigation ul {
+        padding: 0;
+    }
+
+    .menu li a {
+        font-size: 11px;
+    }
+    /* END HEADER */
+
+    /* HEADER VICTIM */
+    .accountPicture {
+        display: block;
+    }
+
+    .accessProfile .username {
+        font-size: 13px;
+        height: 18px;
+        width: 150px;
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .account {
+        font-size: 10px;
+    }
+
+    .separator {
+        font-size: 10px;
+    }
+
+    .disconnect {
+        font-size: 10px;
+    }
+    /* HEADER VICTIM */
+
+    /* HOMEPAGE */
+    .homeImg {
+        display: block;
+    }
+
+    .homeContainer {
+        width: 65%;
+    }
+
+    .homeContent {
+        width: 60%;
+    }
+
+    .homeContent p {
+        height: 130px;
+    }
+
+    .homeContent h2 {
+        font-size: 20px;
+    }
+
+    .homeContact {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .homeContact input {
+        font-size: 10px;
+        padding: 12px;
+    }
+
+    .forumMain {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .forumMsg {
+        width: 200px;
+        height: 160px;
+        margin: 0;
+    }
+
+    .forumMsg h3 {
+        font-size: 15px;
+    }
+
+    .forumMsg p {
+        font-size: 10px;
+        height: 70px;
+        margin: 5px 0 0 0;
+    }
+
+    .forumMsg span {
+        font-size: 9px;
+    }
+
+    .supportUsBg {
+        background: #F2F2F2;
+    }
+
+    .supportUs {
+        width: 75%;
+    }
+
+    .supportUs h3 {
+        font-size: 16px;
+    }
+
+    .supportUsContent {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        background: #FFFFFF;
+    }
+
+    .supportUsContent .pro {
+        padding: 0;
+        width: 45%;
+    }
+
+    .supportUsContent .particular {
+        padding: 0;
+        width: 45%;
+    }
+
+    .horizontalLine {
+        display: block;
+    }
+
+    .supportUsContent input {
+        font-size: 10px;
+        margin: 15px 0 10px 0;
+        padding: 12px;
+        width: 70%;
+    }
+
+    .supportUsContent h4 {
+        font-size: 14px;
+    }
+
+    .supportUsContent p {
+        font-size: 12px;
+    }
+
+    .partnersContainer {
+        width: 50%;
+    }
+
+    .partnersTitle h3 {
+        font-size: 20px;
+    }
+
+    .partners {
+        width: 130px;
+        height: 100px;
+        margin: 10px;
+    }
+    /* END HOMEPAGE */
+
+    /* FOOTER */
+    .footerContainer {
+        width: 55%;
+    }
+    .links {
+        font-size: 12px;
+    }
+    .logoRights {
+        display: flex;
+        flex-direction: row;
+        padding: 10px 0 10px 0;
+    }
+    .twitter {
+        width: 20px;
+    }
+    .facebook {
+        height: 18px;
+    }
+    .copyrights {
+        font-size: 10px;
+        padding: 0;
+    }
+    /* END FOOTER */
+    /* END ABOUT (1025px) */
 }
