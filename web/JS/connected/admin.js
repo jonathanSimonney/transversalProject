@@ -8,7 +8,6 @@ $('#seeLogs').click(function(e){
         document.getElementById('actionReceptor').className = 'containerConsole';
         jqueryAsynchronousTreatment('?action=getLogs', [], function (serverData) {
             arrayLogs = JSON.parse(serverData.responseText);
-            console.log(arrayLogs);
             $('#logContent').html(arrayLogs['access']);//.replace('&', '&amp;').replace('<', '&lt;')
 
             $('.typeConsole p').click(function(e){
@@ -18,7 +17,6 @@ $('#seeLogs').click(function(e){
 
                 $('.selectedLog').removeClass('selectedLog');
                 $(e.currentTarget).addClass('selectedLog');
-                console.log($(e.currentTarget).text());
                 $('#logContent').html(arrayLogs[$(e.currentTarget).text()]);
             })
         });
@@ -36,7 +34,6 @@ $('#seeUsers').click(function(e){
 
         jqueryAsynchronousTreatment('?action=getUserList', [], function (serverData) {
             arrayUsers = JSON.parse(serverData.responseText);
-            console.log(arrayUsers);
 
             for (i in arrayUsers['unregistered_user']){
                 $('.accountInactive').append('<p>'+encodeURIComponent(i)+'</p>');
@@ -81,7 +78,6 @@ $('#seeUsers').click(function(e){
                 $('#dataInactiveUser').removeClass('notForUser');
 
                 var data = arrayUsers['unregistered_user'][decodeURIComponent($(e.currentTarget).text())];
-                console.log(arrayUsers['unregistered_user'], decodeURIComponent($(e.currentTarget).text()));
 
                 $('#inactiveEmail').text(data['email']);
                 $('#inactiveType').text(data['type']);

@@ -20,11 +20,9 @@ $('#signIn').click(function (e) {
                     location.reload();
                 }
                 if (data.state === false && data.reason === 'password'){
-                    console.log(data.data, $('#userIndic'));
                     $('#userIndic').text(data.data);
                     ($('#userIndic')).parent().removeClass('notForUser');
                 }
-                console.log(data);
             });
         })
     });

@@ -10,14 +10,12 @@ function asynchronousTreatment(path,params, responseFunction){
 }
 
 function jqueryAsynchronousTreatment(path, data, responseFunction, successFunc, errorFunc){//yes, I know, should keep code logical and coherent, but hey, I AM ALONE AND HAVE ONE WEEK TO DO EVERYTHING!
-    console.log(data);
     $.ajax({
         url: path,
         type: 'post',
         dataType: 'json',
         data: data,
         success: function(serverData, statut) {
-            console.log(successFunc, errorFunc);
             if (successFunc !== undefined){
                 successFunc(serverData);
             }
@@ -26,7 +24,6 @@ function jqueryAsynchronousTreatment(path, data, responseFunction, successFunc, 
             }
         },
         error: function (result, status, error) {
-            console.log(result, status, error);
         },
         complete: function (serverData) {
             responseFunction(serverData);
@@ -46,14 +43,7 @@ function linkFormEvent(form, action, responseFunction){
 }
 
 function debugAnswer(request){
-    //document.write(request.responseText);//todo comment this before final commit! EXTREMELY IMPORTANT!!!
-    /*if (request.responseText !== ''){
-        document.getElementById('debug').innerHTML = request.responseText;
-        console.log(JSON.parse(request.responseText));
-        alert("Vous avez un message (dans la console)");
-    }else{
-        alert('no answer???');
-    }*/
+    
 }
 
 function linkAllFormEvent(objectForm){
@@ -111,7 +101,6 @@ function openModal(htmlPath, receptor, additionalAction){
             }
         },
         error: function (result, status, error) {
-            console.log(result, status, error);
         },
         complete: function (serverData) {
         }

@@ -1,5 +1,4 @@
 function searchProSuccessFunction(serverData){
-    console.log(serverData['error']);
     if (serverData['error'] === undefined)
     {
         window.location.replace('?action=proSuccess&username='+encodeURIComponent(serverData['pseudo'])+'&gender='+
