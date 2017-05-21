@@ -34,6 +34,8 @@ not online, but he shall come afterwards.)
 
 Finally, create an _access.log_, a _message.log_ AND a _security.log_ file in the logs directory.
 
+Also import the db.sql file, and change the admin password with your own hash made with BC_Crypt algo.
+
 It was made by _Eugénie POUPET_, _Eddy TONG_ and _Jonathan SIMONNEY_. Please contact 
 one of us at _eugenie.poupet@supinternet.fr_, _eddy.tong@supinternet.fr_ or 
 _jonathan.simonney@supinternet.fr_ if you experiment any problem with this repository.
