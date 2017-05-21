@@ -3,7 +3,10 @@
         <div id="modal" class="flex">
             <div class="formLog">
                 <form action="?action=login" method="POST" id="modalForm">
-                    <h2>connexion</h2>
+                    <div class="flexPower">
+                        <h2>connexion</h2>
+                        <span id="errorMessage" class="errorMessage notForUser">Mot de passe incorrect</span>
+                    </div>
                     <label for="pseudo"><p>nom d'utilisateur</p></label>
                     <input type="text" placeholder="entrer votre pseudo" name="username" id="pseudo">
                     <div class="indicPassword notForUser">
