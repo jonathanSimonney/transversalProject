@@ -136,7 +136,12 @@ class ProController extends UserController
 
             if (count($_SESSION['errorMessage']) !== 0)//too much repetitive, should do a function for it. No time though.
             {
+                http_response_code(403);
                 echo json_encode(['error' => $_SESSION['errorMessage']]);
+            }
+            else
+            {
+                echo json_encode('this professional is no more in your contact!');
             }
         }
     }

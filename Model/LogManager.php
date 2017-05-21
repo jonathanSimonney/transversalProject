@@ -45,7 +45,7 @@ class LogManager extends BaseManager
             $suAdress = $this->dbManager->findOne('SELECT email FROM users WHERE type = \'admin\'')['email'];
             $this->sendMail($suAdress,'security problem!','A message has been writen to the security.log file : <br>'.$newMessage, "A message was written to the security.log file. \r\n".$newMessage);
         }
-        fwrite($file, $newMessage."\n");
+        fwrite($file, str_replace('<', '&lt;', str_replace('&', '&amp;', $newMessage))."\n");
 
         fclose($file);
     }

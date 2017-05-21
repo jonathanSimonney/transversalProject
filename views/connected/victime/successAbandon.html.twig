@@ -1,0 +1,49 @@
+{%  extends 'layout.html.twig' %}
+
+{% block content %}
+    <div class="profileMain">
+        <div class="accountMenu">
+            <div class="accountSelect">
+                <a href="?action=account">
+                    <p><span>mon profil</span></p>
+                </a>
+                <div class="accountUnderline"></div>
+                <a href="?action=inbox">
+                    <p>messagerie</p>
+                </a>
+                <div class="accountUnderline"></div>
+                <a href="#">
+                    <p>mes contacts</p>
+                </a>
+            </div>
+            <div class="containerAccount">
+                {% for key, name in currentUser['contact'] %}
+                    <div class="accountContacts contact">
+                        <span>
+                            <span class="contactName">{{ key }}</span>
+                            <input type="number" class="notForUser" value="{{ name['id'] }}">
+                        </span>
+                        <div class="span">
+                            <span class="status"><a href="?action=showSendingMessageForm&dest={{ key }}" class="mp">MP</a></span>
+                            {% if currentUser['type'] == 'victime' %}
+                                <span class="status">/</span>
+                                <span class="status"><a href="#" class="suppress">supprimer</a></span>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="accountContent" id="receptor">
+            <div class="topPart"><span>Se déconnecter d'un contact</span></div>
+            <div class="accountInfo">
+                <div class="confirmMsg"><p>Votre demande a bien été enregistrée.</p></div>
+                <div class="accountEdit">
+                    <input type="submit" value="retour au profil" class="backToProfile" >
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="web/JS/connected/contactList.js"></script>
+{% endblock %}

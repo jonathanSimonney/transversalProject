@@ -1,6 +1,29 @@
-*{
+@font-face {
+    font-family: "Source Sans Pro";
+    src: url("typo/SourceSansPro-Regular.otf");
+}
+
+@font-face {
+    font-family: "Avenir Next";
+    src: url("typo/Avenir Next.ttc");
+}
+
+@font-face {
+    font-family: "Raleway";
+    src: url("typo/Raleway-Regular.ttf");
+}
+
+* {
     margin: 0;
     padding: 0;
+}
+
+body {
+    font-family: "source sans pro";
+}
+
+input {
+    outline: none;
 }
 
 /* Header Back End*/
@@ -10,6 +33,7 @@
     width: 100%;
     height: 100px;
 }
+
 .headerBlockFlex {
     width: 70%;
     height: 100px;
@@ -23,6 +47,7 @@
 }
 
 .titleBullE h1 {
+    font-family: "avenir next";
     text-transform: uppercase;
     color: #cdcdcd;
     font-size: 35px;
@@ -153,7 +178,7 @@ body {
     border: 1px #cdcdcd solid;
     border-radius: 5px;
     background-color: #FFFFFF;
-
+    overflow: auto;
 }
 
 .divConsole p {
@@ -190,6 +215,15 @@ body {
     font-size: 14px;
 }
 
+.accountInactive p {
+    width: 90%;
+    word-break: break-all;
+}
+
+.accountActive p {
+    width: 90%;
+    word-break: break-all;
+}
 
 .divLine {
     height: 300px;
@@ -212,7 +246,6 @@ body {
 .textDescriptionUsers p {
     color: #4C4A4E;
     font-weight: bold;
-
 }
 
 .secondTextDescriptionUsers {
@@ -246,7 +279,6 @@ body {
     width: 80%;
     height: 40px;
     border: 0;
-
 }
 
 .submitUnBackEnd {
@@ -266,12 +298,6 @@ body {
 /* End User Back End s*/
 
 /* Back End POP UP*/
-
-* {
-    margin: 0;
-    padding: 0;
-}
-
 .opacityBg {
     position: fixed;
     top: 0;
@@ -280,6 +306,7 @@ body {
     right: 0;
     background-color: rgba(0, 0, 0, 0.4);
 }
+
 .allPopUp {
     height: 100%;
     box-shadow: 1px 3px 0px 1px rgba(0,0,0,0.65);
@@ -298,14 +325,13 @@ body {
     flex-direction: column;
     flex-wrap: wrap;
     justify-content: flex-start;
-
 }
 
 .PopUpSignUp p {
     text-transform: uppercase;
     font-size: 20px;
-
 }
+
 .crossImg {
     display: flex;
     flex-direction: column;

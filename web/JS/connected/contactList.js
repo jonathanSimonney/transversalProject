@@ -19,7 +19,9 @@ $('.contact').click(function (e) {
             })
         });
     }else if ($(e.target).hasClass('suppress')){
-        alert('user should be suppressed!');
+        e.preventDefault();
+        var toSuppress = encodeURIComponent($(e.currentTarget).children('span').children('.contactName').text());
+        openModal('?action=showAbandonForm&pseudo='+toSuppress, $('#receptor'));
     }else{
         window.location.replace('?action=getUserData&id='+id);
     }

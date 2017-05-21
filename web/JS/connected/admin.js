@@ -9,7 +9,7 @@ $('#seeLogs').click(function(e){
         jqueryAsynchronousTreatment('?action=getLogs', [], function (serverData) {
             arrayLogs = JSON.parse(serverData.responseText);
             console.log(arrayLogs);
-            $('#logContent').html(arrayLogs['access']);
+            $('#logContent').html(arrayLogs['access']);//.replace('&', '&amp;').replace('<', '&lt;')
 
             $('.typeConsole p').click(function(e){
                 if ($(e.currentTarget).hasClass('selectedLog')){

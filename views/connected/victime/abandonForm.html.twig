@@ -1,0 +1,35 @@
+
+    <div class="topPart"><span>Se déconnecter d'un contact</span></div>
+    <div class="disconnectContact">
+        <div class="confirmMsg">
+            <p>Vous souhaitez mettre fin à votre lien avec ce contact ?</p>
+            {% set contact = currentUser['contact'][pseudo] %}
+            {% set type = contact['type'] %}
+            {% set gender = contact['gender'] %}
+        </div>
+        <div class="discoInfo">
+            <span class="name">{{ contact['pseudo'] }}</span> <!-- TODO ADD USERNAME PRO -->
+            <span class="proGenre">
+                <span id="type">{% if type == 'psy' %}psychologue{% elseif type == 'lawyer' %}juriste{% else %}invalid{% endif %}</span>
+                 /
+                {% if gender == 'man' %}
+                    Homme
+                {% elseif gender == 'woman' %}
+                    Femme
+                {% else %}
+                    Invalid
+                {% endif %}
+            </span> <!-- TODO ADD PROFESSION PLUS GENRE -->
+            <span class="department">{{ contact['location'] }}</span> <!-- TODO ADD POSTAL CODE -->
+        </div>
+        <div>
+            <p>Pourquoi cette décision ? <span class="optional">(optionnel)</span></p>
+            <textarea name="textarea" id="reason" placeholder="Écrivez votre message..."></textarea>
+        </div>
+        <div class="contactCenter">
+            <input type="submit" value="annuler" class="cancelBtn" id="cancelSuppression">
+            <input type="submit" value="confirmer" class="contactBtn" id="doSuppression">
+        </div>
+    </div>
+
+    <script src="web/JS/connected/suppressContact.js"></script>

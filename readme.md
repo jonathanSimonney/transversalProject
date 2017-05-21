@@ -39,4 +39,12 @@ one of us at _eugenie.poupet@supinternet.fr_, _eddy.tong@supinternet.fr_ or
 _jonathan.simonney@supinternet.fr_ if you experiment any problem with this repository.
 
 possible amelioration :  
-- refactorisation of the code, mainly!
+#### refactorisation of the code, mainly!  
+- for example, there are three .html.twig extremely similar :  
+ -connected/victime/successAbandon ;  
+ -connected/account.html.twig, and  
+ -connected/inbox.html.twig
+ 
+  These shall be put to extend a single template, to avoid code repetition.
+ 
+ - There are also many useless routes.

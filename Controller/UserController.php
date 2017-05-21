@@ -177,4 +177,21 @@ class UserController extends DefaultController
             $this->logManager->generateAccessMessage('tried to show data of unexistant user.', 'security');
         }
     }
+
+    public function showAbandonFormAction()
+    {
+        if ($_SESSION['currentUser']['data']['type'] !== 'victime')
+        {
+            $this->logManager->generateAccessMessage('tried to access abandon form (but he is also a pro!)', 'security');
+        }
+        else
+        {
+            $this->simplyShowPage('connected/victime/abandonForm.html.twig', $_GET);
+        }
+    }
+
+    public function showSuccessAbandonFormAction()
+    {
+        $this->simplyShowPage('connected/victime/successAbandon.html.twig');
+    }
 }
