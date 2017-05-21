@@ -3546,6 +3546,10 @@ footer {
     .disconnect {
         font-size: 25px;
     }
+
+    .accountProfile {
+        display: none;
+    }
     /* HEADER VICTIM */
 
     /* HOMEPAGE */
@@ -3838,6 +3842,10 @@ footer {
     .disconnect {
         font-size: 10px;
     }
+
+    .accountProfile {
+        display: block;
+    }
     /* HEADER VICTIM */
 
     /* HOMEPAGE */
@@ -3983,4 +3991,61 @@ footer {
     }
     /* END FOOTER */
     /* END ABOUT (1025px) */
+}
+
+.docInitiative {
+    height: 200px;
+    overflow: auto;
+}
+
+.docInitiative p {
+    height: auto;
+    margin: 10px;
+}
+
+.docInitiative span {
+    font-weight: bold;
+    font-size: 17px;
+    margin: 10px 0 10px 30px;
+}
+
+
+
+.docRessource {
+    height: 200px;
+    overflow: auto;
+
+}
+
+.docRessource p {
+    height: auto;
+    margin: 10px;
+}
+
+.divRessource {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
+.divRessource .NP {
+    margin: 0 0 0 30px;
+    width: 110px;
+    height: 100px;
+}
+
+.divRessource .NAH {
+    width: 230px;
+    height: 130px;
+}
+
+.divRessource .ISC {
+    width: 190px;
+    height: 100px;
+}
+
+.divRessource .SP {
+    margin: 0 20px 0 30px;
+    width: 120px;
+    height: 100px;
 }
