@@ -83,7 +83,7 @@ class MessageController extends DefaultController
 
     public function sendMessageFormAction()
     {
-        $this->simplyShowPage('connected/sendMessageForm.html.twig');
+        $this->simplyShowPage('connected/sendMessageForm.html.twig', $_GET);
     }
 
     public function showEmailAction()

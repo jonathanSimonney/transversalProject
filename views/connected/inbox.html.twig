@@ -24,15 +24,20 @@
                 <p>mes contacts</p>
             </a>
         </div>
-        {% for key, name in currentUser['contact'] %}
-            <div class="accountContacts contact">
-                <span>
-                    {{ key }}
-                    <input type="number" class="notForUser" value="{{ name['id'] }}">
-                </span>
-                <span class="status">disponible</span>
-            </div>
-        {% endfor %}
+        <div class="containerAccount">
+            {% for key, name in currentUser['contact'] %}
+                <div class="accountContacts contact">
+                        <span>
+                            <span class="contactName">{{ key }}</span>
+                            <input type="number" class="notForUser" value="{{ name['id'] }}">
+                        </span>
+                    <div class="span">
+                        <span class="status"><a href="?action=showSendingMessageForm&dest={{ key }}" class="mp">MP</a></span><span class="status">/</span>
+                        <span class="status"><a href="invalid" class="suppress">supprimer</a></span>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
     </div>
     <div class="accountContent" id="receptor">
         <div class="topPart">
