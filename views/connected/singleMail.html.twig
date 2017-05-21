@@ -1,5 +1,5 @@
 <div class="topPart">
-    <span>{{ person['pseudo'] }}</span>
+    <span>Lire le message</span>
 </div>
 <div class="inboxInfo">
     <div class="view">
@@ -21,10 +21,18 @@
                 <p>{{ content|raw }}</p>
 
             </div>
-            <div class="downloadFile">
-                <button id="dlPJ" class="suppEmail">télécharger</button>
-            </div>
+
+            {% if PJ is not empty %}
+                <div class="downloadFile">
+                    <input class="notForUser" id="mailId" value="{{ id }}">
+                    <button id="dlPJ" class="suppEmail">télécharger</button>
+               </div>
+
+                
+            {% endif %}
         </div>
 
     </div>
 </div>
+
+<script src="web/JS/connected/mail.js"></script>

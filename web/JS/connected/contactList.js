@@ -18,7 +18,10 @@ $('.contact').click(function (e) {
                 });//didn't manage to make it work with jquery...
             })
         });
+    }else if ($(e.target).hasClass('suppress')){
+        alert('user should be suppressed!');
+    }else{
+        alert('show user data!');
     }
-    alert('uncertain future!');
     //window.location.replace('?action=getUserData&id='+id);
 });

@@ -17,7 +17,7 @@ routes: #todo take out useless routes ; reorganize controller (one controller fo
     sendMessage:             'Message:sendMessage:connected:post'
     # getReceivedMessage:     'Message:getReceivedMessage:connected:get'
     # getSentMessage:         'Message:getSentMessage:connected:get'
-    downloadPj:              'Message:downloadPj:connected:post'
+    downloadPj:              'Message:downloadPj:connected:get'
     suppressMessage:         'Message:suppressMessage:connected:post'
     # changeFreeSlot:         'Pro:changeFreeSlot:connected:post'
     findAutoPro:             'Pro:findAutoProfessional:connected:post'

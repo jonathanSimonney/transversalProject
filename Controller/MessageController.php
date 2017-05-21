@@ -51,12 +51,12 @@ class MessageController extends DefaultController
     }
 
     public function downloadPjAction(){
-        if ($this->mailManager->canActOnEmail($_POST['notForUser'])){
-            $this->mailManager->downloadPj($_POST['notForUser']);
+        if ($this->mailManager->canActOnEmail($_GET['notForUser'])){
+            $this->mailManager->downloadPj($_GET['notForUser']);
         }
         else
         {
-            $this->logManager->generateAccessMessage('tried to download PJ of mail '.$_POST['notForUser'], 'security');//todo add owner of file in log.
+            $this->logManager->generateAccessMessage('tried to download PJ of mail '.$_GET['notForUser'], 'security');//todo add owner of file in log.
         }
     }
 
