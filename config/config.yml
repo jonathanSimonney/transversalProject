@@ -41,5 +41,5 @@ routes: #todo take out useless routes ; reorganize controller (one controller fo
     seeUserList:             'Default:seeUserPage:admin:get'
     getUserList:             'Default:getUserList:admin:post'
     suppressionMessageModal: 'Default:getSuppressionMessage:admin:get'
-    # getUserData:            'User:showUserData:connected:get' not decided yet
+    getUserData:             'User:showUserData:both:get'
 defaut_route: 'home'

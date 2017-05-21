@@ -21,7 +21,7 @@ $('.contact').click(function (e) {
     }else if ($(e.target).hasClass('suppress')){
         alert('user should be suppressed!');
     }else{
-        alert('show user data!');
+        window.location.replace('?action=getUserData&id='+id);
     }
     //window.location.replace('?action=getUserData&id='+id);
 });

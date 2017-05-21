@@ -872,6 +872,50 @@ font-family: "Avenir Next";
     width: 130px;
 }
 
+.disconnectContact {
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    height: 400px;
+    background: #FFFFFF;
+    color: #4c4a4f;
+    font-size: 14px;
+}
+
+.disconnectContact .discoInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0 30px 0;
+}
+
+.disconnectContact textarea {
+    outline: none;
+    border: 0;
+    color: #4c4a4f;
+    background: #F2F2F2;
+    font-style: italic;
+    padding: 15px 0 0 15px;
+    margin: 10px 10px 0 10px;
+    width: 95%;
+    max-width: 95%;
+    height: 150px;
+    max-height: 150px;
+}
+
+.discoInfo .name {
+    font-weight: bold;
+}
+
+.discoInfo .proGenre {
+    font-style: italic;
+}
+
+.disconnectContact .optional {
+    font-style: italic;
+    color: #ababac;
+}
+
 .accountInfo {
     display: flex;
     flex-direction: column;
@@ -880,6 +924,22 @@ font-family: "Avenir Next";
     padding: 30px 0 30px 0;
     height: 400px;
     background: #FFFFFF;
+}
+
+.accountInfo .backToProfile {
+    color: #b78ca6;
+    border: 2px solid #b78ca6;
+    transition: 0.3s all ease;
+}
+
+.accountInfo .backToProfile:hover {
+    color: #cfa1bd;
+    border: 2px solid #cfa1bd;
+}
+
+.accountInfo .confirmMsg {
+    font-size: 14px;
+    color: #4c4a4f;
 }
 
 .accountInfo .accountUnderline {
@@ -913,6 +973,29 @@ font-family: "Avenir Next";
 
 .accountEdit {
     margin: 20px 0 0 0;
+}
+
+.contactCenter {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    margin: 20px 0 0 0;
+}
+
+.contactCenter .cancelBtn {
+    padding: 10px;
+    margin: 15px 20px 10px 0;
+    width: 150px;
+    color: #b78ca6;
+    border: 2px solid #b78ca6;
+    transition: 0.3s all ease;
+}
+
+.contactCenter .cancelBtn:hover {
+    color: #cfa1bd;
+    border: 2px solid #cfa1bd;
 }
 
 .valueInfo input {
@@ -2645,6 +2728,7 @@ form {
 }
 
 .proInfo {
+    margin: 20px 0 20px 0;
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
@@ -2781,6 +2865,8 @@ form {
     font-size: 10px;
 }
 /* RESEARCH */
+
+
 
 
 /* FORUM */
@@ -2925,6 +3011,253 @@ hr {
 
 
 /* END FORUM */
+
+/* FORUM SUBJECT */
+.tittleSubjectForum {
+    background-color: #42B6B2;
+    color: #FFFFFF;
+    width: 100%;
+    height: 110px;
+    vertical-align: middle;
+    font-size: 20px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    margin-bottom: 10px;
+}
+
+
+.submitForumSubject {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+
+.buttonForumSubjectUn, .buttonForumSubjectTwo {
+    margin: 35px 20px 30px 20px;
+    height: 45px;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.3s all;
+    text-transform: uppercase;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.buttonForumSubjectUn {
+    border: 1.5px #8A2552 solid;
+    color: #8A2552;
+    background: transparent;
+    width: 300px;
+}
+
+.buttonForumSubjectTwo {
+    background-color: #8A2552;
+    color: #FFFFFF;
+    border: 0;
+    width: 200px;
+}
+
+.containerResponseSubjectForum hr {
+    margin: 15px 0px 15px 0px;
+}
+
+.subjectResponse {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: stretch;
+}
+
+.infoSubjectResponse {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    align-content: center;
+}
+
+.infoSubjectResponse p {
+    color: #8A2552;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 15px;
+}
+
+.infoUser {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    align-content: stretch;
+    margin-bottom: 15px;
+}
+
+.infoUser span {
+    font-size: 12px;
+}
+.spanBold {
+    font-weight: bold;
+}
+
+.imgUser {
+    background-color: #FFFFFF;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 1px solid #4C4A4E;
+    margin-right: 10px;
+}
+
+.reportingSubject {
+    display: flex;
+    flex-direction: row;
+}
+
+.reportingSubject div {
+    margin: 25px 0px 0px 40px;
+}
+
+.divResponseForumSubject {
+    margin-left: 9%;
+    font-size: 15px;
+    line-height: 18px;
+    word-spacing: 1px;
+}
+/* ENd FORUM SUBJECT */
+
+/* REPLY SUBJECT FORUM */
+.containerReplySubject {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    padding: 30px;
+}
+
+.titleReplySubject {
+    width: 50%;
+    background-color: #42B6B2;
+    height: 110px;
+    text-align: center;
+}
+
+.titleReplySubject h1 {
+    margin-top: 45px;
+    color: white;
+    font-size: 16px;
+    text-transform: uppercase;
+}
+
+.typeYourMessage {
+    width: 49.9%;
+    height: 400px;
+    background-color: #FFFFFF;
+    border: 1px solid rgba(76, 74, 78, 0.53);
+}
+
+.typeYourMessage textarea {
+    width: 90%;
+    border: 0;
+    font-style: italic;
+    max-width: 90%;
+    max-height: 300px;
+    height: 300px;
+    overflow: auto;
+    outline: none;
+    padding: 20px;
+    color: #ababac;
+    font-size: 13px;
+}
+
+.lineReplySubject {
+    width: 95%;
+    background-color: rgba(76, 74, 78, 0.53);
+    height: 1px;
+    margin: 10px 15px 10px 15px;
+}
+
+.divSendReplySubject {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+    width: 100%;
+}
+
+.backToListReplySubject {
+    height: 25px;
+    width: 250px;
+    border: 2px solid #A67E96;
+    background:transparent;
+    color: #A67E96;
+    text-transform: uppercase;
+    font-size: 10px;
+    font-weight: bold;
+    margin: 0 0 0 17Px;
+    outline: none;
+}
+
+.buttonSendReplySubject {
+    height: 25px;
+    width: 100px;
+    color: #FFFFFF;
+    background-color: #A67E96;
+    text-transform: uppercase;
+    border: 0;
+    margin: 0 17px 0 0;
+    outline: none;
+}
+/* END REPLY SUBJECT FORUM */
+
+/* NEW SUBJECT FORUM */
+
+.typeYourMessageNewSubject {
+    width: 49.9%;
+    height: 455px;
+    background-color: #FFFFFF;
+    border: 1px solid rgba(76, 74, 78, 0.53);
+}
+
+.typeYourMessageNewSubject textarea {
+    width: 90%;
+    border: 0;
+    max-width: 90%;
+    max-height: 300px;
+    height: 300px;
+    overflow: auto;
+    outline: none;
+    padding: 15px 20px 5px 20px;
+    color: #ababac;
+    font-size: 13px;
+    font-style: italic;
+}
+
+.titleNewSubject {
+    font-style: italic;
+    width: 91%;
+    padding: 15px 20px 5px 20px;
+    border: 0;
+    color: #ababac;
+    font-size: 13px;
+    overflow: auto;
+    outline: none;
+}
+
+/* END NEW SUBJECT FORUM */
 
 
 /* FOOTER */

@@ -11,17 +11,16 @@ namespace Controller;
 
 use Model\AdminManager;
 use Model\ProManager;
-use Model\UserManager;
 use Model\VictimManager;
+use \DateTime;
 
-class UserController extends BaseController
+class UserController extends DefaultController
 {
-    protected $userManager;
 
     public function __construct(\Twig_Environment $twig, $accessLevel, $requestMethod)
     {
-        BaseController::__construct($twig, $accessLevel, $requestMethod);
-        $this->userManager = UserManager::getInstance();
+        Parent::__construct($twig, $accessLevel, $requestMethod);
+        //$this->userManager = UserManager::getInstance();
     }
 
 
@@ -156,16 +155,26 @@ class UserController extends BaseController
         }
     }
 
-    /*public function showUserDataAction() //not decided yet
+    public function showUserDataAction()
     {
-        if (!$this->userManager->hasAsContact($_GET['id'])){
-            $this->logManager->generateAccessMessage('tried to consult data of user of id : '.$_GET['id'], 'security');
-            die();
+        $userData = $this->userManager->getUserById($_GET['id'], 'type, gender, location, pseudo, birthdate');
+        if ($userData !== false)
+        {
+            if ($userData['type'] === 'victime')
+            {
+                $currentDate = new DateTime(date('Y-m-d'));
+                $age = $currentDate->diff(new DateTime($userData['birthdate']));
+                $userData['age'] = $age->y;
+                echo $this->simplyShowPage('both/profile/victime.html.twig', $userData);
+            }
+            else
+            {
+                echo $this->simplyShowPage('both/profile/pro.html.twig', $userData);
+            }
         }
-
-        $contact = $_SESSION['currentContact'];
-        unset($_SESSION['currentContact']);
-
-        $this->renderView('');
-    }*/
+        else
+        {
+            $this->logManager->generateAccessMessage('tried to show data of unexistant user.', 'security');
+        }
+    }
 }

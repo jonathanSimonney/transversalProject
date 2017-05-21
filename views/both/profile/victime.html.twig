@@ -1,0 +1,45 @@
+{%  extends 'layout.html.twig' %}
+
+{% block content %}
+<div class="profileMain">
+    <div class="profilePicture">
+        <img src="profilePicture.png" alt="profile picture">
+    </div>
+    <div class="profileContent">
+        <div class="memberUsername">
+            <h3>{{ pseudo }}</h3>
+            <!-- TODO ADD USERNAME -->
+        </div>
+        <div class="memberInfo">
+            <div class="about">
+                <h4><img src="pictoAbout.png" alt="about picto">à propos</h4>
+                <div class="profileUnderline"></div>
+                <p><span class="typeOfInfo">date de naissance</span>{{ birthdate }}</p> <!--To be seen -->
+                <!-- TODO ADD DATE OF BIRTH -->
+                <p><span class="typeOfInfo">âge</span> {{ age }} ans</p>
+                <!-- TODO ADD AGE -->
+                <p><span class="typeOfInfo">genre</span>
+                    {% if gender == 'man' %}
+                        Homme
+                    {% elseif gender == 'woman' %}
+                        Femme
+                    {% else %}
+                        Invalid
+                    {% endif %}
+                </p>
+                <!-- TODO ADD GENDER -->
+            </div>
+            <div class="infoForum about">
+                <h4><img src="pictoI.png" alt="i picto">info du forum</h4>
+                <div class="profileUnderline"></div>
+                <p><span class="typeOfInfo">nombre de messages</span> 2 messages</p>
+                <!-- TODO ADD NUMBER OF HOW MANY POSTS THE USER POSTED -->
+                <p><span class="typeOfInfo">date d'inscription</span> 10 avril 2016</p>
+                <!-- TODO ADD THE DATE WHEN MEMBER REGISTERED -->
+                <p><span class="typeOfInfo">dernière visite</span> 21 mai 2017</p>
+                <!-- TODO ADD WHEN WAS THE MEMBER'S LAST VISIT -->
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

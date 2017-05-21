@@ -9,7 +9,7 @@ use Model\VictimManager;
 
 class DefaultController extends BaseController
 {
-    private $userManager;
+    protected $userManager;
 
     public function __construct(\Twig_Environment $twig, $accessLevel, $requestMethod)
     {
