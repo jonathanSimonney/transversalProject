@@ -1,6 +1,7 @@
 *.idea
 *.sass_cache
 *.DS_Store
+cache/*
 test.php
 vendor/*
 private.yml
