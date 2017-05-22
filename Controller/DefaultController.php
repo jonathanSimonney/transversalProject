@@ -121,7 +121,7 @@ class DefaultController extends BaseController
     {
         $article = $_GET['article'] ?? 'what';
         $data = json_decode(file_get_contents('views/both/data/documentationData.json'), true);
-        var_dump(json_last_error_msg());
+        //var_dump(json_last_error_msg());
         $data = $data[$article] ?? ['title' => 'invalid link', 'content' => 'Sorry, but it seems you have clicked on an invalid link.
          Please contact us so we can fix it as quickly as possible, giving as many details as you can on how you came here.'];
 
